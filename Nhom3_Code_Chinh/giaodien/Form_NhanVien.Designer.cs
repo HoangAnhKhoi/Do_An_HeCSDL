@@ -90,7 +90,7 @@
             this.tabControl.Controls.Add(this.tabPageQuanLy);
             this.tabControl.Controls.Add(this.tabThuNgan);
             this.tabControl.Location = new System.Drawing.Point(4, 0);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(1048, 596);
@@ -101,9 +101,9 @@
             this.tabPageQuanLy.Controls.Add(this.groupBox1);
             this.tabPageQuanLy.Controls.Add(this.data_nv);
             this.tabPageQuanLy.Location = new System.Drawing.Point(4, 25);
-            this.tabPageQuanLy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageQuanLy.Margin = new System.Windows.Forms.Padding(4);
             this.tabPageQuanLy.Name = "tabPageQuanLy";
-            this.tabPageQuanLy.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageQuanLy.Padding = new System.Windows.Forms.Padding(4);
             this.tabPageQuanLy.Size = new System.Drawing.Size(1040, 567);
             this.tabPageQuanLy.TabIndex = 0;
             this.tabPageQuanLy.Text = "Quản lý";
@@ -137,9 +137,9 @@
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.groupBox1.Location = new System.Drawing.Point(568, 4);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(461, 551);
             this.groupBox1.TabIndex = 41;
             this.groupBox1.TabStop = false;
@@ -159,7 +159,7 @@
             this.date_ngaysinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.date_ngaysinh.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.date_ngaysinh.Location = new System.Drawing.Point(143, 127);
-            this.date_ngaysinh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.date_ngaysinh.Margin = new System.Windows.Forms.Padding(4);
             this.date_ngaysinh.Name = "date_ngaysinh";
             this.date_ngaysinh.Size = new System.Drawing.Size(293, 26);
             this.date_ngaysinh.TabIndex = 65;
@@ -169,7 +169,7 @@
             this.rdn_nu.AutoSize = true;
             this.rdn_nu.Checked = true;
             this.rdn_nu.Location = new System.Drawing.Point(301, 175);
-            this.rdn_nu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdn_nu.Margin = new System.Windows.Forms.Padding(4);
             this.rdn_nu.Name = "rdn_nu";
             this.rdn_nu.Size = new System.Drawing.Size(47, 21);
             this.rdn_nu.TabIndex = 64;
@@ -181,7 +181,7 @@
             // 
             this.rbn_nam.AutoSize = true;
             this.rbn_nam.Location = new System.Drawing.Point(159, 175);
-            this.rbn_nam.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbn_nam.Margin = new System.Windows.Forms.Padding(4);
             this.rbn_nam.Name = "rbn_nam";
             this.rbn_nam.Size = new System.Drawing.Size(58, 21);
             this.rbn_nam.TabIndex = 63;
@@ -191,7 +191,7 @@
             // txt_luong
             // 
             this.txt_luong.Location = new System.Drawing.Point(144, 388);
-            this.txt_luong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_luong.Margin = new System.Windows.Forms.Padding(4);
             this.txt_luong.Name = "txt_luong";
             this.txt_luong.Size = new System.Drawing.Size(293, 22);
             this.txt_luong.TabIndex = 62;
@@ -221,7 +221,7 @@
             // txt_cccdnv
             // 
             this.txt_cccdnv.Location = new System.Drawing.Point(144, 306);
-            this.txt_cccdnv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_cccdnv.Margin = new System.Windows.Forms.Padding(4);
             this.txt_cccdnv.Name = "txt_cccdnv";
             this.txt_cccdnv.Size = new System.Drawing.Size(293, 22);
             this.txt_cccdnv.TabIndex = 58;
@@ -240,7 +240,7 @@
             // txt_sdtnv
             // 
             this.txt_sdtnv.Location = new System.Drawing.Point(144, 261);
-            this.txt_sdtnv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_sdtnv.Margin = new System.Windows.Forms.Padding(4);
             this.txt_sdtnv.Name = "txt_sdtnv";
             this.txt_sdtnv.Size = new System.Drawing.Size(293, 22);
             this.txt_sdtnv.TabIndex = 56;
@@ -259,7 +259,7 @@
             // txt_dchinv
             // 
             this.txt_dchinv.Location = new System.Drawing.Point(144, 215);
-            this.txt_dchinv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_dchinv.Margin = new System.Windows.Forms.Padding(4);
             this.txt_dchinv.Name = "txt_dchinv";
             this.txt_dchinv.Size = new System.Drawing.Size(293, 22);
             this.txt_dchinv.TabIndex = 54;
@@ -300,7 +300,7 @@
             // txt_tennv
             // 
             this.txt_tennv.Location = new System.Drawing.Point(143, 82);
-            this.txt_tennv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_tennv.Margin = new System.Windows.Forms.Padding(4);
             this.txt_tennv.Name = "txt_tennv";
             this.txt_tennv.Size = new System.Drawing.Size(293, 22);
             this.txt_tennv.TabIndex = 48;
@@ -308,7 +308,7 @@
             // txt_manv
             // 
             this.txt_manv.Location = new System.Drawing.Point(143, 31);
-            this.txt_manv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_manv.Margin = new System.Windows.Forms.Padding(4);
             this.txt_manv.Name = "txt_manv";
             this.txt_manv.Size = new System.Drawing.Size(293, 22);
             this.txt_manv.TabIndex = 46;
@@ -328,7 +328,7 @@
             this.btn_suanv.Image = null;
             this.btn_suanv.ImageSize = new System.Drawing.Size(20, 20);
             this.btn_suanv.Location = new System.Drawing.Point(159, 492);
-            this.btn_suanv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_suanv.Margin = new System.Windows.Forms.Padding(4);
             this.btn_suanv.Name = "btn_suanv";
             this.btn_suanv.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btn_suanv.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -357,7 +357,7 @@
             this.btn_xoanv.Image = null;
             this.btn_xoanv.ImageSize = new System.Drawing.Size(20, 20);
             this.btn_xoanv.Location = new System.Drawing.Point(301, 492);
-            this.btn_xoanv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_xoanv.Margin = new System.Windows.Forms.Padding(4);
             this.btn_xoanv.Name = "btn_xoanv";
             this.btn_xoanv.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btn_xoanv.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -397,7 +397,7 @@
             this.btn_themnv.Image = null;
             this.btn_themnv.ImageSize = new System.Drawing.Size(20, 20);
             this.btn_themnv.Location = new System.Drawing.Point(15, 492);
-            this.btn_themnv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_themnv.Margin = new System.Windows.Forms.Padding(4);
             this.btn_themnv.Name = "btn_themnv";
             this.btn_themnv.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btn_themnv.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -460,7 +460,7 @@
             this.Column8,
             this.Column9});
             this.data_nv.Location = new System.Drawing.Point(0, 0);
-            this.data_nv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.data_nv.Margin = new System.Windows.Forms.Padding(4);
             this.data_nv.Name = "data_nv";
             this.data_nv.RowHeadersVisible = false;
             this.data_nv.RowHeadersWidth = 50;
@@ -560,10 +560,10 @@
             // 
             this.tabThuNgan.Controls.Add(this.data_nv_thungan);
             this.tabThuNgan.Location = new System.Drawing.Point(4, 25);
-            this.tabThuNgan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabThuNgan.Margin = new System.Windows.Forms.Padding(4);
             this.tabThuNgan.Name = "tabThuNgan";
-            this.tabThuNgan.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabThuNgan.Size = new System.Drawing.Size(1040, 567);
+            this.tabThuNgan.Padding = new System.Windows.Forms.Padding(4);
+            this.tabThuNgan.Size = new System.Drawing.Size(1040, 561);
             this.tabThuNgan.TabIndex = 1;
             this.tabThuNgan.Text = "Thu ngân";
             this.tabThuNgan.UseVisualStyleBackColor = true;
@@ -594,7 +594,7 @@
             this.dataGridViewTextBoxColumn8,
             this.dataGridViewTextBoxColumn9});
             this.data_nv_thungan.Location = new System.Drawing.Point(0, 0);
-            this.data_nv_thungan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.data_nv_thungan.Margin = new System.Windows.Forms.Padding(4);
             this.data_nv_thungan.Name = "data_nv_thungan";
             this.data_nv_thungan.RowHeadersVisible = false;
             this.data_nv_thungan.RowHeadersWidth = 50;
@@ -691,7 +691,7 @@
             this.ClientSize = new System.Drawing.Size(1056, 597);
             this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form_NhanVien";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form_NhanVien_Load);

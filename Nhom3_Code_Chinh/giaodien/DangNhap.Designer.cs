@@ -96,7 +96,7 @@
             this.check_show.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.check_show.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.check_show.Location = new System.Drawing.Point(184, 359);
-            this.check_show.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.check_show.Margin = new System.Windows.Forms.Padding(4);
             this.check_show.Name = "check_show";
             this.check_show.Size = new System.Drawing.Size(149, 24);
             this.check_show.TabIndex = 3;
@@ -127,7 +127,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(313, 411);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 28);
             this.button2.TabIndex = 5;
@@ -145,7 +145,7 @@
             this.button1.Font = new System.Drawing.Font("Century Gothic", 10F);
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(131)))), ((int)(((byte)(168)))), ((int)(((byte)(55)))));
             this.button1.Location = new System.Drawing.Point(396, 468);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(144, 34);
             this.button1.TabIndex = 6;
@@ -171,7 +171,7 @@
             this.txt_nameacc.Font = new System.Drawing.Font("Century Gothic", 11F);
             this.txt_nameacc.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.txt_nameacc.Location = new System.Drawing.Point(184, 255);
-            this.txt_nameacc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_nameacc.Margin = new System.Windows.Forms.Padding(4);
             this.txt_nameacc.Name = "txt_nameacc";
             this.txt_nameacc.Size = new System.Drawing.Size(355, 30);
             this.txt_nameacc.TabIndex = 1;
@@ -184,7 +184,7 @@
             this.txt_pass.Font = new System.Drawing.Font("Century Gothic", 11F);
             this.txt_pass.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.txt_pass.Location = new System.Drawing.Point(184, 321);
-            this.txt_pass.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_pass.Margin = new System.Windows.Forms.Padding(4);
             this.txt_pass.Name = "txt_pass";
             this.txt_pass.Size = new System.Drawing.Size(355, 30);
             this.txt_pass.TabIndex = 2;
@@ -211,7 +211,7 @@
             this.rbn_thungan.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbn_thungan.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.rbn_thungan.Location = new System.Drawing.Point(251, 214);
-            this.rbn_thungan.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbn_thungan.Margin = new System.Windows.Forms.Padding(4);
             this.rbn_thungan.Name = "rbn_thungan";
             this.rbn_thungan.Size = new System.Drawing.Size(103, 24);
             this.rbn_thungan.TabIndex = 19;
@@ -229,7 +229,7 @@
             this.rbn_quanly.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbn_quanly.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.rbn_quanly.Location = new System.Drawing.Point(373, 213);
-            this.rbn_quanly.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbn_quanly.Margin = new System.Windows.Forms.Padding(4);
             this.rbn_quanly.Name = "rbn_quanly";
             this.rbn_quanly.Size = new System.Drawing.Size(89, 24);
             this.rbn_quanly.TabIndex = 20;
@@ -258,7 +258,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load);

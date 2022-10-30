@@ -14,6 +14,7 @@ namespace giaodien
     public partial class Form_NhanVien : Form
     {
         DataBase db = new DataBase();
+        GarageDB ga = new GarageDB();
         public Form_NhanVien()
         {
             InitializeComponent();
@@ -123,14 +124,11 @@ namespace giaodien
         private void txt_luong_Leave(object sender, EventArgs e)
         {
         }
-
-        private void btn_themnv_Click_1(object sender, EventArgs e)
+        private int them_sua_NV(SqlCommand cmd)
         {
             int gTinh = 0;
             if (rdn_nu.Checked == false)
                 gTinh = 1;
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "EXECUTE THEM_NV @nguoiid,@hoten,@diachi,@dienthoai,@ngaysinh,@cccd,@gioitinnh,@macv,@luong,@result output";
             SqlParameter maNVParam = new SqlParameter("@nguoiid", txt_manv.Text);
             maNVParam.SqlDbType = SqlDbType.Char;
             maNVParam.Size = 6;
@@ -170,93 +168,61 @@ namespace giaodien
             cmd.Parameters.Add(gTinhParam);
             cmd.Parameters.Add(resultParam);
             db.ExecuteCMD(cmd);
-            int result = (int)cmd.Parameters["@result"].Value;
-            if (result == 0)
+            return (int)cmd.Parameters["@result"].Value;
+        }
+        private void btn_themnv_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "EXECUTE THEM_NV @nguoiid,@hoten,@diachi,@dienthoai,@ngaysinh,@cccd,@gioitinnh,@macv,@luong,@result output";
+                int result = them_sua_NV(cmd);
+                if (result == 0)
+                    MessageBox.Show("Thêm không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
+                Form_NhanVien_Load(sender, e);
+            }
+            catch(Exception a)
+            {
                 MessageBox.Show("Thêm không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
-                MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
-            Form_NhanVien_Load(sender, e);
+            }
         }
 
         private void btn_suanv_Click_1(object sender, EventArgs e)
         {
-            int gTinh = 0;
-            if (rdn_nu.Checked == false)
-                gTinh = 1;
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "EXECUTE SUA_NV @nguoiid,@hoten,@diachi,@dienthoai,@ngaysinh,@cccd,@gioitinnh,@macv,@luong,@result output";
-            SqlParameter maNVParam = new SqlParameter("@nguoiid", txt_manv.Text);
-            maNVParam.SqlDbType = SqlDbType.Char;
-            maNVParam.Size = 6;
-            SqlParameter hoTenParam = new SqlParameter("@hoten", txt_tennv.Text);
-            hoTenParam.SqlDbType = SqlDbType.NVarChar;
-            hoTenParam.Size = 30;
-            SqlParameter diaChiParam = new SqlParameter("@diachi", txt_dchinv.Text);
-            diaChiParam.SqlDbType = SqlDbType.NVarChar;
-            diaChiParam.Size = 30;
-            SqlParameter sdtParam = new SqlParameter("@dienthoai", txt_sdtnv.Text);
-            sdtParam.SqlDbType = SqlDbType.Char;
-            sdtParam.Size = 11;
-            string ngaySinh = date_ngaysinh.Value.ToString();
-            SqlParameter ngaySinhParam = new SqlParameter("@ngaysinh", ngaySinh);
-            ngaySinhParam.SqlDbType = SqlDbType.Date;
-            SqlParameter cccdParam = new SqlParameter("@cccd", txt_cccdnv.Text);
-            cccdParam.SqlDbType = SqlDbType.Char;
-            cccdParam.Size = 11;
-            SqlParameter gTinhParam = new SqlParameter("@gioitinnh", gTinh);
-            gTinhParam.SqlDbType = SqlDbType.Bit;
-            SqlParameter maChucVuParam = new SqlParameter("@macv", cb_chucvu.SelectedValue.ToString());
-            maChucVuParam.SqlDbType = SqlDbType.Char;
-            maChucVuParam.Size = 6;
-            SqlParameter luongParam = new SqlParameter("@luong", txt_luong.Text);
-            luongParam.SqlDbType = SqlDbType.Decimal;
-            SqlParameter resultParam = new SqlParameter("@result", 0);
-            resultParam.SqlDbType = SqlDbType.Int;
-            resultParam.Direction = ParameterDirection.Output;
-            cmd.Parameters.Add(luongParam);
-            cmd.Parameters.Add(maChucVuParam);
-            cmd.Parameters.Add(maNVParam);
-            cmd.Parameters.Add(hoTenParam);
-            cmd.Parameters.Add(diaChiParam);
-            cmd.Parameters.Add(sdtParam);
-            cmd.Parameters.Add(ngaySinhParam);
-            cmd.Parameters.Add(cccdParam);
-            cmd.Parameters.Add(gTinhParam);
-            cmd.Parameters.Add(resultParam);
-            // int result = int.Parse(db.ExecuteCMD(cmd).Rows[0][0].ToString());
-            db.ExecuteCMD(cmd);
-            int result = (int)cmd.Parameters["@result"].Value;
-            /*string query= "DECLARE @result as int EXECUTE THEM_NV '" + txt_manv.Text+"','"+txt_tennv.Text+"','"+txt_dchinv.Text+"','"+txt_sdtnv.Text+"','"+date_ngaysinh.Text+"','"
-                                                +txt_cccdnv.Text+"',"+gTinh.ToString()+",'"+txt_macv.Text+"',"+txt_luong.Text+",@result output SELECT @result";
-            db.Execute(query);
-            DataTable d = db.Execute(query);
-            int result = int.Parse(db.Execute(query).Rows[0][0].ToString());*/
-            if (result == 0)
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "EXECUTE SUA_NV @nguoiid,@hoten,@diachi,@dienthoai,@ngaysinh,@cccd,@gioitinnh,@macv,@luong,@result output";
+                int result = them_sua_NV(cmd);
+                if (result == 0)
+                    MessageBox.Show("Sửa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
+                Form_NhanVien_Load(sender, e);
+            }
+            catch (Exception a)
+            {
                 MessageBox.Show("Sửa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
-                MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
-            Form_NhanVien_Load(sender, e);
+            }
         }
 
         private void btn_xoanv_Click_1(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "EXECUTE XOA_NV @nguoiid,@result output";
-            SqlParameter maNVParam = new SqlParameter("@nguoiid", txt_manv.Text);
-            maNVParam.SqlDbType = SqlDbType.Char;
-            maNVParam.Size = 6;
-            SqlParameter resultParam = new SqlParameter("@result", 0);
-            resultParam.SqlDbType = SqlDbType.Int;
-            resultParam.Direction = ParameterDirection.Output;
-            cmd.Parameters.Add(resultParam);
-            cmd.Parameters.Add(maNVParam);
-            db.ExecuteCMD(cmd);
-            int result = (int)cmd.Parameters["@result"].Value;
-            if (result == 0)
+            try
+            {
+                int result = ga.delete(ga.NHANVIEN, txt_manv.Text);
+                if (result == 0)
+                    MessageBox.Show("Xóa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                Form_NhanVien_Load(sender, e);
+            }
+            catch (Exception a)
+            {
                 MessageBox.Show("Xóa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
-                MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
-            Form_NhanVien_Load(sender, e);
+            }
         }
     }
 }

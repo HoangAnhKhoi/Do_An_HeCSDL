@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace giaodien
 {
@@ -11,13 +12,43 @@ namespace giaodien
     {
         DataBase db;
         public string CT = "CHITIET_HD";
-        public string CV = "CONGVIEC";
         public string DN = "DANGNHAP";
         public string HD = "HOPDONG";
-        public string KH = "KHACHHANG";
-        public string PT = "PHIEUTHU";
         public string THO = "THO";
         public string NHOM = "NHOM";
+        public string CV = "CV";
+        public string VL = "VL";
+        public string NCC = "NCC";
+        public string KH = "KH";
+        public string PT = "PHIEUTHU";
+        public string NHANVIEN = "NV";
+        public int delete(string nameTable, string id)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "EXECUTE XOA_" + nameTable + " @nguoiid,@result output";
+            SqlParameter maNVParam = new SqlParameter("@nguoiid", id);
+            maNVParam.SqlDbType = SqlDbType.Char;
+            maNVParam.Size = 6;
+            SqlParameter resultParam = new SqlParameter("@result", 0);
+            resultParam.SqlDbType = SqlDbType.Int;
+            resultParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(resultParam);
+            cmd.Parameters.Add(maNVParam);
+            db.ExecuteCMD(cmd);
+            return (int)cmd.Parameters["@result"].Value;
+        }
+        public string LayMaSo(string name)
+        {
+            string[] arrListStr = DateTime.Now.ToString().Split(' ');
+            string[] dmy = arrListStr[0].Split('/');
+            string[] hms = arrListStr[1].Split(':');
+            string result = "";
+            foreach (string i in dmy)
+                result = result + i;
+            foreach (string i in hms)
+                result = result + i;
+            return name + result;
+        }
         public GarageDB()
         {
             db = new DataBase();

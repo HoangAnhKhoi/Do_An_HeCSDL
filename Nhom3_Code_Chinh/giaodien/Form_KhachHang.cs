@@ -14,6 +14,7 @@ namespace giaodien
     public partial class Form_KhachHang : Form
     {
         DataBase db = new DataBase();
+        GarageDB ga = new GarageDB();
         public Form_KhachHang()
         {
             InitializeComponent();
@@ -95,47 +96,57 @@ namespace giaodien
         }
         private void btn_themKH_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "EXECUTE THEM_KH @nguoiid,@hoten,@diachi,@dienthoai,@ngaysinh,@cccd,@gioitinnh,@result output";
-            int result = them_sua_KH(cmd);
-            if (result == 0)
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "EXECUTE THEM_KH @nguoiid,@hoten,@diachi,@dienthoai,@ngaysinh,@cccd,@gioitinnh,@result output";
+                int result = them_sua_KH(cmd);
+                if (result == 0)
+                    MessageBox.Show("Thêm không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
+                Form_KhachHang_Load(sender, e);
+            }
+            catch (Exception a)
+            {
                 MessageBox.Show("Thêm không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
-                MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
-            Form_KhachHang_Load(sender, e);
+            }
         }
 
         private void btn_suaKH_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "EXECUTE SUA_KH @nguoiid,@hoten,@diachi,@dienthoai,@ngaysinh,@cccd,@gioitinnh,@result output";
-            int result = them_sua_KH(cmd);
-            if (result == 0)
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "EXECUTE SUA_KH @nguoiid,@hoten,@diachi,@dienthoai,@ngaysinh,@cccd,@gioitinnh,@result output";
+                int result = them_sua_KH(cmd);
+                if (result == 0)
+                    MessageBox.Show("Sửa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
+                Form_KhachHang_Load(sender, e);
+            }
+            catch (Exception a)
+            {
                 MessageBox.Show("Sửa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
-                MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
-            Form_KhachHang_Load(sender, e);
-        }
+            }
+}
 
         private void btn_xoaKH_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "EXECUTE XOA_NV @nguoiid,@result output";
-            SqlParameter maNVParam = new SqlParameter("@nguoiid", txt_makh.Text);
-            maNVParam.SqlDbType = SqlDbType.Char;
-            maNVParam.Size = 6;
-            SqlParameter resultParam = new SqlParameter("@result", 0);
-            resultParam.SqlDbType = SqlDbType.Int;
-            resultParam.Direction = ParameterDirection.Output;
-            cmd.Parameters.Add(resultParam);
-            cmd.Parameters.Add(maNVParam);
-            db.ExecuteCMD(cmd);
-            int result = (int)cmd.Parameters["@result"].Value;
-            if (result == 0)
+            try
+            {
+                int result = ga.delete(ga.KH, txt_makh.Text);
+                if (result == 0)
+                    MessageBox.Show("Xóa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                Form_KhachHang_Load(sender, e);
+            }
+            catch (Exception a)
+            {
                 MessageBox.Show("Xóa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
-                MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
-            Form_KhachHang_Load(sender, e);
+            }
         }
         private void txt_sdt_Leave(object sender, EventArgs e)
         {
