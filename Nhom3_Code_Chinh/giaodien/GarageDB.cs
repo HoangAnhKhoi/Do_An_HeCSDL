@@ -22,6 +22,7 @@ namespace giaodien
         public string KH = "KH";
         public string PT = "PHIEUTHU";
         public string NHANVIEN = "NV";
+        public string NHAPKHO = "NHAPKHO";
         public int delete(string nameTable, string id)
         {
             SqlCommand cmd = new SqlCommand();
@@ -37,9 +38,24 @@ namespace giaodien
             db.ExecuteCMD(cmd);
             return (int)cmd.Parameters["@result"].Value;
         }
+        public int delete15(string nameTable, string id)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "EXECUTE XOA_" + nameTable + " @nguoiid,@result output";
+            SqlParameter maNVParam = new SqlParameter("@nguoiid", id);
+            maNVParam.SqlDbType = SqlDbType.Char;
+            maNVParam.Size = 15;
+            SqlParameter resultParam = new SqlParameter("@result", 0);
+            resultParam.SqlDbType = SqlDbType.Int;
+            resultParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(resultParam);
+            cmd.Parameters.Add(maNVParam);
+            db.ExecuteCMD(cmd);
+            return (int)cmd.Parameters["@result"].Value;
+        }
         public string LayMaSo(string name)
         {
-            string[] arrListStr = DateTime.Now.ToString().Split(' ');
+            string[] arrListStr = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss").Split(' ');
             string[] dmy = arrListStr[0].Split('/');
             string[] hms = arrListStr[1].Split(':');
             string result = "";

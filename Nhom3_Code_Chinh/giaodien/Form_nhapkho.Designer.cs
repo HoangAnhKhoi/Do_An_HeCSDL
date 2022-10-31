@@ -97,6 +97,7 @@
             this.Column4 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btn_suaNKho = new Guna.UI.WinForms.GunaButton();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data_ncc)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -705,6 +706,7 @@
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.btn_suaNKho);
             this.groupBox3.Controls.Add(this.lb_maNKho);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.cb_mancc);
@@ -794,7 +796,7 @@
             this.btn_xoaNKho.ForeColor = System.Drawing.Color.LightGray;
             this.btn_xoaNKho.Image = null;
             this.btn_xoaNKho.ImageSize = new System.Drawing.Size(20, 20);
-            this.btn_xoaNKho.Location = new System.Drawing.Point(607, 217);
+            this.btn_xoaNKho.Location = new System.Drawing.Point(607, 148);
             this.btn_xoaNKho.Margin = new System.Windows.Forms.Padding(4);
             this.btn_xoaNKho.Name = "btn_xoaNKho";
             this.btn_xoaNKho.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
@@ -823,7 +825,7 @@
             this.btn_themNKho.ForeColor = System.Drawing.Color.LightGray;
             this.btn_themNKho.Image = null;
             this.btn_themNKho.ImageSize = new System.Drawing.Size(20, 20);
-            this.btn_themNKho.Location = new System.Drawing.Point(607, 38);
+            this.btn_themNKho.Location = new System.Drawing.Point(607, 56);
             this.btn_themNKho.Margin = new System.Windows.Forms.Padding(4);
             this.btn_themNKho.Name = "btn_themNKho";
             this.btn_themNKho.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
@@ -1045,6 +1047,35 @@
             this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // btn_suaNKho
+            // 
+            this.btn_suaNKho.AnimationHoverSpeed = 0.07F;
+            this.btn_suaNKho.AnimationSpeed = 0.03F;
+            this.btn_suaNKho.BackColor = System.Drawing.Color.Transparent;
+            this.btn_suaNKho.BaseColor = System.Drawing.Color.Transparent;
+            this.btn_suaNKho.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_suaNKho.BorderSize = 2;
+            this.btn_suaNKho.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btn_suaNKho.FocusedColor = System.Drawing.Color.Empty;
+            this.btn_suaNKho.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_suaNKho.ForeColor = System.Drawing.Color.LightGray;
+            this.btn_suaNKho.Image = null;
+            this.btn_suaNKho.ImageSize = new System.Drawing.Size(20, 20);
+            this.btn_suaNKho.Location = new System.Drawing.Point(607, 232);
+            this.btn_suaNKho.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_suaNKho.Name = "btn_suaNKho";
+            this.btn_suaNKho.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.btn_suaNKho.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btn_suaNKho.OnHoverForeColor = System.Drawing.Color.White;
+            this.btn_suaNKho.OnHoverImage = null;
+            this.btn_suaNKho.OnPressedColor = System.Drawing.Color.Black;
+            this.btn_suaNKho.Radius = 20;
+            this.btn_suaNKho.Size = new System.Drawing.Size(381, 68);
+            this.btn_suaNKho.TabIndex = 71;
+            this.btn_suaNKho.Text = "Sửa";
+            this.btn_suaNKho.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btn_suaNKho.Click += new System.EventHandler(this.btn_suaNKho_Click);
+            // 
             // Form_nhapkho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1142,5 +1173,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn Column4;
         private System.Windows.Forms.DataGridViewButtonColumn Column5;
         private System.Windows.Forms.DataGridViewButtonColumn Column6;
+        private Guna.UI.WinForms.GunaButton btn_suaNKho;
     }
 }

@@ -565,16 +565,15 @@ AS
 		END CATCH
 GO
 -----Xóa
-ALTER PROC XOA_NHAPKHO
-@ngaydautien date,
-@ngaycuoicung date,
+CREATE PROC XOA_NHAPKHO
+@mankho CHAR(15),
 @result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
 			DELETE 
 			FROM NHAPKHO
-			WHERE NgayNhap>= @ngaydautien AND NgayNhap<=@ngaycuoicung
+			WHERE MaNKho=@mankho
 			set @result=1
 			COMMIT TRAN
 		END TRY 

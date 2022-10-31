@@ -195,6 +195,19 @@ namespace giaodien
 
         private void btn_xoaNKho_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int result = ga.delete15(ga.NHAPKHO, lb_maNKho.Text);
+                if (result == 0)
+                    MessageBox.Show("Xóa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                Form_nhankho_Load(sender, e);
+            }
+            catch (Exception a)
+            {
+                MessageBox.Show("Xóa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private int them_sua_VL(SqlCommand cmd)
         {
@@ -332,6 +345,11 @@ namespace giaodien
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btn_suaNKho_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
