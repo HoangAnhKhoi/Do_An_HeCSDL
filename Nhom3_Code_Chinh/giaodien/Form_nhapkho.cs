@@ -311,5 +311,27 @@ namespace giaodien
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void data_NKho_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row = data_NKho.Rows[e.RowIndex];
+                if (row != null)
+                {
+                    lb_maNKho.Text = row.Cells[0].Value.ToString();
+                    cb_mavl.Text = row.Cells[1].Value.ToString();
+                    cb_mancc.Text = row.Cells[2].Value.ToString();
+                    txt_soluong.Text = row.Cells[3].Value.ToString();
+                    txt_giatri.Text= row.Cells[4].Value.ToString();
+                    cb_manv.Text= row.Cells[6].Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
