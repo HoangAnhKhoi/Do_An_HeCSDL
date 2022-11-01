@@ -149,7 +149,6 @@ namespace giaodien
         }
         private int them_sua_NKho(SqlCommand cmd)
         {
-            lb_maNKho.Text = ga.LayMaSo("N");
             SqlParameter maNKhoParam = new SqlParameter("@MaNKho", lb_maNKho.Text);
             maNKhoParam.SqlDbType = SqlDbType.Char;
             maNKhoParam.Size = 15;
@@ -181,16 +180,24 @@ namespace giaodien
         }
         private void btn_themNKho_Click(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandText = "EXECUTE THEM_NHAPKHO @MaNKho,@MaVL,@MaNhaCC,@SoLuong,@GiaTri,@MaNV,@result output";
-            int result = them_sua_NKho(cmd);
-            if (result == 0)
-                MessageBox.Show("Thêm không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
+            try
             {
-                MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
+                SqlCommand cmd = new SqlCommand();
+                lb_maNKho.Text = ga.LayMaSo("N");
+                cmd.CommandText = "EXECUTE THEM_NHAPKHO @MaNKho,@MaVL,@MaNhaCC,@SoLuong,@GiaTri,@MaNV,@result output";
+                int result = them_sua_NKho(cmd);
+                if (result == 0)
+                    MessageBox.Show("Thêm không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
+                }
+                Form_nhankho_Load(sender, e);
             }
-            Form_nhankho_Load(sender, e);
+            catch (Exception a)
+            {
+                MessageBox.Show("Thêm không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btn_xoaNKho_Click(object sender, EventArgs e)
@@ -349,7 +356,23 @@ namespace giaodien
 
         private void btn_suaNKho_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "EXECUTE SUA_NHAPKHO @MaNKho,@MaVL,@MaNhaCC,@SoLuong,@GiaTri,@MaNV,@result output";
+                int result = them_sua_NKho(cmd);
+                if (result == 0)
+                    MessageBox.Show("Sửa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
+                }
+                Form_nhankho_Load(sender, e);
+            }
+            catch (Exception a)
+            {
+                MessageBox.Show("Sửa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

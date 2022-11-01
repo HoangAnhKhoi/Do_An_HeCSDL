@@ -564,6 +564,29 @@ AS
 		set @result=0
 		END CATCH
 GO
+-----Sửa
+CREATE PROC SUA_NHAPKHO
+@MaNKho CHAR(15),
+@MaVL CHAR(6),
+@MaNhaCC CHAR(6),
+@SoLuong INT,
+@GiaTri DECIMAL,
+@MaNV CHAR(6),
+@result int output 
+AS
+	BEGIN TRAN
+		BEGIN TRY
+			UPDATE NHAPKHO
+			SET MaVL=@MaVL,MaNhaCC=@MaNhaCC,SoLuong=@SoLuong,GiaTri=@GiaTri,MaNV=@MaNV
+			WHERE MaNKho=@MaNKho
+			set @result=1
+			COMMIT TRAN
+		END TRY 
+		BEGIN CATCH
+		ROLLBACK TRAN
+		set @result=0
+		END CATCH
+GO
 -----Xóa
 CREATE PROC XOA_NHAPKHO
 @mankho CHAR(15),

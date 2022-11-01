@@ -72,6 +72,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_suaNKho = new Guna.UI.WinForms.GunaButton();
             this.lb_maNKho = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.cb_mancc = new System.Windows.Forms.ComboBox();
@@ -97,7 +98,6 @@
             this.Column4 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btn_suaNKho = new Guna.UI.WinForms.GunaButton();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data_ncc)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -686,7 +686,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1057, 589);
+            this.tabControl1.Size = new System.Drawing.Size(1057, 592);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage3
@@ -699,7 +699,7 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage3.Size = new System.Drawing.Size(1049, 558);
+            this.tabPage3.Size = new System.Drawing.Size(1049, 561);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Nhập kho";
             // 
@@ -733,6 +733,35 @@
             this.groupBox3.TabIndex = 39;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin nhập kho";
+            // 
+            // btn_suaNKho
+            // 
+            this.btn_suaNKho.AnimationHoverSpeed = 0.07F;
+            this.btn_suaNKho.AnimationSpeed = 0.03F;
+            this.btn_suaNKho.BackColor = System.Drawing.Color.Transparent;
+            this.btn_suaNKho.BaseColor = System.Drawing.Color.Transparent;
+            this.btn_suaNKho.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_suaNKho.BorderSize = 2;
+            this.btn_suaNKho.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btn_suaNKho.FocusedColor = System.Drawing.Color.Empty;
+            this.btn_suaNKho.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_suaNKho.ForeColor = System.Drawing.Color.LightGray;
+            this.btn_suaNKho.Image = null;
+            this.btn_suaNKho.ImageSize = new System.Drawing.Size(20, 20);
+            this.btn_suaNKho.Location = new System.Drawing.Point(607, 232);
+            this.btn_suaNKho.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_suaNKho.Name = "btn_suaNKho";
+            this.btn_suaNKho.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.btn_suaNKho.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btn_suaNKho.OnHoverForeColor = System.Drawing.Color.White;
+            this.btn_suaNKho.OnHoverImage = null;
+            this.btn_suaNKho.OnPressedColor = System.Drawing.Color.Black;
+            this.btn_suaNKho.Radius = 20;
+            this.btn_suaNKho.Size = new System.Drawing.Size(381, 68);
+            this.btn_suaNKho.TabIndex = 71;
+            this.btn_suaNKho.Text = "Sửa";
+            this.btn_suaNKho.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btn_suaNKho.Click += new System.EventHandler(this.btn_suaNKho_Click);
             // 
             // lb_maNKho
             // 
@@ -975,6 +1004,7 @@
             // 
             this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column7.DataPropertyName = "MaNKho";
+            this.Column7.FillWeight = 93.42389F;
             this.Column7.HeaderText = "Mã Nhập Kho";
             this.Column7.MinimumWidth = 6;
             this.Column7.Name = "Column7";
@@ -985,7 +1015,7 @@
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column1.DataPropertyName = "TenVL";
-            this.Column1.FillWeight = 70F;
+            this.Column1.FillWeight = 70.76876F;
             this.Column1.HeaderText = "Vật liệu";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
@@ -996,7 +1026,7 @@
             // 
             this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column2.DataPropertyName = "TenNhaCC";
-            this.Column2.FillWeight = 70F;
+            this.Column2.FillWeight = 70.76876F;
             this.Column2.HeaderText = "Nhà cung cấp";
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
@@ -1007,7 +1037,7 @@
             // 
             this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column3.DataPropertyName = "SoLuong";
-            this.Column3.FillWeight = 70F;
+            this.Column3.FillWeight = 70.76876F;
             this.Column3.HeaderText = "Số lượng";
             this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
@@ -1018,7 +1048,7 @@
             // 
             this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column4.DataPropertyName = "GiaTri";
-            this.Column4.FillWeight = 134.4052F;
+            this.Column4.FillWeight = 135.8813F;
             this.Column4.HeaderText = "Giá trị";
             this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
@@ -1029,7 +1059,7 @@
             // 
             this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column5.DataPropertyName = "NgayNhap";
-            this.Column5.FillWeight = 134.4052F;
+            this.Column5.FillWeight = 135.8813F;
             this.Column5.HeaderText = "Ngày nhập";
             this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
@@ -1040,41 +1070,12 @@
             // 
             this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column6.DataPropertyName = "MaNV";
-            this.Column6.FillWeight = 120F;
+            this.Column6.FillWeight = 121.3179F;
             this.Column6.HeaderText = "Mã nhân viên";
             this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
             this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // btn_suaNKho
-            // 
-            this.btn_suaNKho.AnimationHoverSpeed = 0.07F;
-            this.btn_suaNKho.AnimationSpeed = 0.03F;
-            this.btn_suaNKho.BackColor = System.Drawing.Color.Transparent;
-            this.btn_suaNKho.BaseColor = System.Drawing.Color.Transparent;
-            this.btn_suaNKho.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_suaNKho.BorderSize = 2;
-            this.btn_suaNKho.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btn_suaNKho.FocusedColor = System.Drawing.Color.Empty;
-            this.btn_suaNKho.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_suaNKho.ForeColor = System.Drawing.Color.LightGray;
-            this.btn_suaNKho.Image = null;
-            this.btn_suaNKho.ImageSize = new System.Drawing.Size(20, 20);
-            this.btn_suaNKho.Location = new System.Drawing.Point(607, 232);
-            this.btn_suaNKho.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_suaNKho.Name = "btn_suaNKho";
-            this.btn_suaNKho.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.btn_suaNKho.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btn_suaNKho.OnHoverForeColor = System.Drawing.Color.White;
-            this.btn_suaNKho.OnHoverImage = null;
-            this.btn_suaNKho.OnPressedColor = System.Drawing.Color.Black;
-            this.btn_suaNKho.Radius = 20;
-            this.btn_suaNKho.Size = new System.Drawing.Size(381, 68);
-            this.btn_suaNKho.TabIndex = 71;
-            this.btn_suaNKho.Text = "Sửa";
-            this.btn_suaNKho.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btn_suaNKho.Click += new System.EventHandler(this.btn_suaNKho_Click);
             // 
             // Form_nhapkho
             // 
@@ -1166,6 +1167,7 @@
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn2;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn3;
+        private Guna.UI.WinForms.GunaButton btn_suaNKho;
         private System.Windows.Forms.DataGridViewButtonColumn Column7;
         private System.Windows.Forms.DataGridViewButtonColumn Column1;
         private System.Windows.Forms.DataGridViewButtonColumn Column2;
@@ -1173,6 +1175,5 @@
         private System.Windows.Forms.DataGridViewButtonColumn Column4;
         private System.Windows.Forms.DataGridViewButtonColumn Column5;
         private System.Windows.Forms.DataGridViewButtonColumn Column6;
-        private Guna.UI.WinForms.GunaButton btn_suaNKho;
     }
 }
