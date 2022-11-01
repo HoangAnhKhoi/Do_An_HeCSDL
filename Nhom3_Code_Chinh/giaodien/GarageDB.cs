@@ -55,15 +55,7 @@ namespace giaodien
         }
         public string LayMaSo(string name)
         {
-            string[] arrListStr = DateTime.Now.ToString("MM/dd/yyyy HH:mm:ss").Split(' ');
-            string[] dmy = arrListStr[0].Split('/');
-            string[] hms = arrListStr[1].Split(':');
-            string result = "";
-            foreach (string i in dmy)
-                result = result + i;
-            foreach (string i in hms)
-                result = result + i;
-            return name + result;
+            return name + DateTime.Now.ToString("HHmmssddMMyyyy");
         }
         public GarageDB()
         {

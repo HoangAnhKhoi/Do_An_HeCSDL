@@ -138,14 +138,6 @@ BEGIN
 
 	DELETE HOPDONG WHERE SoHD=@SoHD
 END
-ELSE IF(@TongTien<@TriGiaHD)----khi giá trị các hóa đơn bé hơn thì thêm vào hiện thông báo
-BEGIN
-	PRINT('Thêm Thành Công');
-END
-ELSE----khi giá trị các hóa đơn lớn hơn thì xóa thao tác thêm
-BEGIN
-	RollBack;
-END
 
 GO
 
