@@ -20,15 +20,12 @@ namespace giaodien
 
         private void custom()
         {
-            pnlNhanVien.Visible = false;
+      
             pnlHopDong.Visible = false;
         }
         private void hidesubmenu()
         {
-            if(pnlNhanVien.Visible == true)
-            {
-                pnlNhanVien.Visible = false;
-            }
+            
             if (pnlHopDong.Visible == true)
             {
                 pnlHopDong.Visible = false;
@@ -69,7 +66,7 @@ namespace giaodien
         {
             pnlstats.Height = btnNhanVien.Height;
             pnlstats.Top = btnNhanVien.Top;
-            showsubmenu(pnlNhanVien);
+            openchildform(new Form_NhanVien());
         }
 
         private void btnCongViec_Click(object sender, EventArgs e)
@@ -112,11 +109,6 @@ namespace giaodien
 
         }
 
-        private void btnChinhSua_Click(object sender, EventArgs e)
-        {
-            openchildform(new Form_NhanVien());
-            hidesubmenu();
-        }
 
         private void btnTinhLuong_Click(object sender, EventArgs e)
         {
