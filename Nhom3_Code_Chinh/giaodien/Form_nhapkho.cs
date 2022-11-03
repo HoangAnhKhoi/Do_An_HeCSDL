@@ -125,7 +125,7 @@ namespace giaodien
                     MessageBox.Show("Sửa thành công", "Thông báo", MessageBoxButtons.OK);
                 Form_nhankho_Load(sender, e);
             }
-            catch (Exception a)
+            catch (Exception ex)
             {
                 MessageBox.Show("Sửa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

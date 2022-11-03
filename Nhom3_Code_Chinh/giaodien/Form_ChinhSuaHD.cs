@@ -10,15 +10,12 @@ namespace giaodien
     {
         DataBase db = new DataBase();
         GarageDB ga = new GarageDB();
+        bool save;
         private System.Data.DataTable tb_cv = new System.Data.DataTable();
         private System.Data.DataTable CV = new System.Data.DataTable();
         public Form_ChinhSuaHD()
         {
             InitializeComponent();
-        }
-
-        private void Form_ChinhSuaHD_Load(object sender, EventArgs e)
-        {
             DataColumn column3 = new DataColumn("MaCV");
             column3.DataType = typeof(string);
             tb_cv.Columns.Add(column3);
@@ -31,10 +28,14 @@ namespace giaodien
             DataColumn column2 = new DataColumn("TenTho");
             column2.DataType = typeof(string);
             tb_cv.Columns.Add(column2);
+            tabControl1.Controls.Remove(tab_chinhsua);
+        }
+
+        private void Form_ChinhSuaHD_Load(object sender, EventArgs e)
+        {
             string query = "SELECT * FROM  XUAT_HDONG()";
             DataTable table_hd = db.Execute(query);
             dtgHopDong.DataSource = table_hd;
-            tabControl1.Controls.Remove(tab_chinhsua);
             string query1 = "SELECT * FROM  XUAT_KH()";
             DataTable table_kh = db.Execute(query1);
             cb_makh.DataSource = null;
@@ -66,11 +67,8 @@ namespace giaodien
         {
 
         }
-
         private void btn_themhd_Click(object sender, EventArgs e)
         {
-            tabControl1.Controls.Remove(tab_hd);
-            tabControl1.Controls.Add(tab_chinhsua);
             lb_sohd.Text = ga.LayMaSo("H");
             lb_kh.Text = cb_makh.Text;
             lb_ngayhopdong.Text = DateTime.Now.ToString("dd/MM/yyyy");
@@ -91,8 +89,23 @@ namespace giaodien
             cb_congviec.DataSource = table_cviec;
             cb_congviec.DisplayMember = "NoiDungCV";
             cb_congviec.ValueMember = "MaCViec";
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "EXECUTE THEM_HDONG @SoHD,@KH_NguoiID,@SoXe,@NgayGiaoDuKien,@result output";
+            int result = them_sua_HD(cmd);
+            if (result == 0)
+                MessageBox.Show("Thêm không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
+                tabControl1.TabPages.Add(tab_chinhsua);
+                tabControl1.TabPages.Remove(tab_hd);
+            }
+            Form_ChinhSuaHD_Load(sender, e);
         }
+        private void btn_xemcthd_Click(object sender, EventArgs e)
+        {
 
+        }
         private void btn_themcvhd_Click(object sender, EventArgs e)
         {
             bool a = true;
@@ -112,12 +125,25 @@ namespace giaodien
                 MessageBox.Show("Công việc đã có trong hợp đồng", "Thông báo", MessageBoxButtons.OK);
             else
             {
-                DataRow row = tb_cv.NewRow();
-                row["MaCV"] = macv;
-                row["TenCV"] = tencv;
-                row["MaTho"] = matho;
-                row["TenTho"] = tentho;
-                tb_cv.Rows.Add(row);
+                SqlCommand cmd = new SqlCommand();
+                int result = them_ChiTietHD(macv, matho);
+                if (result == 2)
+                {
+                    MessageBox.Show("Vật liệu của công việc không sẵn sàng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else if (result == 0)
+                {
+                    MessageBox.Show("Thêm không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    DataRow row = tb_cv.NewRow();
+                    row["MaCV"] = macv;
+                    row["TenCV"] = tencv;
+                    row["MaTho"] = matho;
+                    row["TenTho"] = tentho;
+                    tb_cv.Rows.Add(row);
+                }
             }
             FillDataCV(tb_cv);
         }
@@ -148,50 +174,54 @@ namespace giaodien
         }
         private int them_sua_HD(SqlCommand cmd)
         {
-            SqlParameter maNVParam = new SqlParameter("@nguoiid", txt_manv.Text);
-            maNVParam.SqlDbType = SqlDbType.Char;
-            maNVParam.Size = 6;
-            SqlParameter hoTenParam = new SqlParameter("@hoten", txt_tennv.Text);
-            hoTenParam.SqlDbType = SqlDbType.NVarChar;
-            hoTenParam.Size = 30;
-            SqlParameter diaChiParam = new SqlParameter("@diachi", txt_dchinv.Text);
-            diaChiParam.SqlDbType = SqlDbType.NVarChar;
-            diaChiParam.Size = 30;
-            SqlParameter sdtParam = new SqlParameter("@dienthoai", txt_sdtnv.Text);
-            sdtParam.SqlDbType = SqlDbType.Char;
-            sdtParam.Size = 11;
-            string ngaySinh = date_ngaysinh.Value.ToString();
-            SqlParameter ngaySinhParam = new SqlParameter("@ngaysinh", ngaySinh);
-            ngaySinhParam.SqlDbType = SqlDbType.Date;
-            SqlParameter cccdParam = new SqlParameter("@cccd", txt_cccdnv.Text);
-            cccdParam.SqlDbType = SqlDbType.Char;
-            cccdParam.Size = 11;
-            SqlParameter gTinhParam = new SqlParameter("@gioitinnh", gTinh);
-            gTinhParam.SqlDbType = SqlDbType.Bit;
-            SqlParameter maChucVuParam = new SqlParameter("@macv", cb_chucvu.SelectedValue.ToString());
-            maChucVuParam.SqlDbType = SqlDbType.Char;
-            maChucVuParam.Size = 6;
-            SqlParameter luongParam = new SqlParameter("@luong", txt_luong.Text);
-            luongParam.SqlDbType = SqlDbType.Decimal;
+            SqlParameter soHDParam = new SqlParameter("@SoHD", lb_sohd.Text);
+            soHDParam.SqlDbType = SqlDbType.Char;
+            soHDParam.Size = 15;
+            SqlParameter idKHParam = new SqlParameter("@KH_NguoiID", lb_kh.Text);
+            idKHParam.SqlDbType = SqlDbType.Char;
+            idKHParam.Size = 6;
+            SqlParameter soxeParam = new SqlParameter("@SoXe", lb_soxehd.Text);
+            soxeParam.SqlDbType = SqlDbType.Char;
+            soxeParam.Size = 10;
+            SqlParameter ngaygdkParam = new SqlParameter("@NgayGiaoDuKien", date_ngaygiaodukien.Text);
+            ngaygdkParam.SqlDbType = SqlDbType.Date;
             SqlParameter resultParam = new SqlParameter("@result", 0);
             resultParam.SqlDbType = SqlDbType.Int;
             resultParam.Direction = ParameterDirection.Output;
-            cmd.Parameters.Add(luongParam);
-            cmd.Parameters.Add(maChucVuParam);
+            cmd.Parameters.Add(soHDParam);
+            cmd.Parameters.Add(idKHParam);
+            cmd.Parameters.Add(soxeParam);
+            cmd.Parameters.Add(ngaygdkParam);
+            cmd.Parameters.Add(resultParam);
+            db.ExecuteCMD(cmd);
+            return (int)cmd.Parameters["@result"].Value;
+        }
+        private int them_ChiTietHD(string macv, string manv)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "EXECUTE THEM_CHITIET_HD @SoHD,@MaCV,@MaNV,@result output";
+            SqlParameter soHDParam = new SqlParameter("@SoHD", lb_sohd.Text);
+            soHDParam.SqlDbType = SqlDbType.Char;
+            soHDParam.Size = 15;
+            SqlParameter maCVParam = new SqlParameter("@MaCV", macv);
+            maCVParam.SqlDbType = SqlDbType.Char;
+            maCVParam.Size = 6;
+            SqlParameter maNVParam = new SqlParameter("@MaNV", manv);
+            maNVParam.SqlDbType = SqlDbType.Char;
+            maNVParam.Size = 6;
+            SqlParameter resultParam = new SqlParameter("@result", 0);
+            resultParam.SqlDbType = SqlDbType.Int;
+            resultParam.Direction = ParameterDirection.Output;
+            cmd.Parameters.Add(soHDParam);
+            cmd.Parameters.Add(maCVParam);
             cmd.Parameters.Add(maNVParam);
-            cmd.Parameters.Add(hoTenParam);
-            cmd.Parameters.Add(diaChiParam);
-            cmd.Parameters.Add(sdtParam);
-            cmd.Parameters.Add(ngaySinhParam);
-            cmd.Parameters.Add(cccdParam);
-            cmd.Parameters.Add(gTinhParam);
             cmd.Parameters.Add(resultParam);
             db.ExecuteCMD(cmd);
             return (int)cmd.Parameters["@result"].Value;
         }
         private void btn_luuhd_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
