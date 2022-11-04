@@ -145,7 +145,14 @@ namespace giaodien
                     tb_cv.Rows.Add(row);
                 }
             }
+
             FillDataCV(tb_cv);
+        }
+        private void update_trigiahd()
+        {
+            string query = " SELECT FROM TIMKIEM_HDONG WHERE SoHD='" + lb_sohd.Text + "'";
+            DataTable table_hd = db.Execute(query);
+            lb_gthopdong.Text = table_hd.Rows[0][4].ToString();
         }
         private void FillDataCV(System.Data.DataTable list)
         {
