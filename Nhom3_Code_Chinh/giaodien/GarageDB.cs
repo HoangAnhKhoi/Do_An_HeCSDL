@@ -13,7 +13,7 @@ namespace giaodien
         DataBase db;
         public string CT = "CHITIET_HD";
         public string DN = "DANGNHAP";
-        public string HD = "HOPDONG";
+        public string HD = "HDONG";
         public string THO = "THO";
         public string NHOM = "NHOM";
         public string CV = "CV";

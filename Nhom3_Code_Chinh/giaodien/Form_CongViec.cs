@@ -87,10 +87,6 @@ namespace giaodien
                 txt_noidungcv.Text = "";
             }
         }
-
-        private void txt_tienhh_Leave(object sender, EventArgs e)
-        {
-        }
         private int them_sua_CV(SqlCommand cmd)
         {
             cmd.CommandText = "EXECUTE SUA_CViec @macv,@noidungcv,@tietcong,@vatlieu,@result output";
