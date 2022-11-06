@@ -35,7 +35,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.check_show = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
             this.guna2Elipse2 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
@@ -44,6 +43,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.rbn_thungan = new System.Windows.Forms.RadioButton();
             this.rbn_quanly = new System.Windows.Forms.RadioButton();
+            this.button2 = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // label2
@@ -112,23 +112,6 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "To Register New Account   →";
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(237)))), ((int)(((byte)(207)))));
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(198)))), ((int)(((byte)(182)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(172)))), ((int)(((byte)(163)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(235, 334);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "LOGIN";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(89)))), ((int)(((byte)(41)))), ((int)(((byte)(41)))));
@@ -154,7 +137,6 @@
             // guna2Elipse2
             // 
             this.guna2Elipse2.BorderRadius = 15;
-            this.guna2Elipse2.TargetControl = this.button2;
             // 
             // txt_nameacc
             // 
@@ -224,6 +206,26 @@
             this.rbn_quanly.Text = "Quản lý";
             this.rbn_quanly.UseVisualStyleBackColor = false;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.Transparent;
+            this.button2.BorderColor = System.Drawing.Color.Orange;
+            this.button2.BorderRadius = 10;
+            this.button2.BorderThickness = 1;
+            this.button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(65)))), ((int)(((byte)(65)))));
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.Yellow;
+            this.button2.Location = new System.Drawing.Point(202, 325);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(125, 35);
+            this.button2.TabIndex = 21;
+            this.button2.Text = "Login";
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AcceptButton = this.button2;
@@ -232,11 +234,11 @@
             this.BackgroundImage = global::giaodien.Properties.Resources.Picture11;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(452, 437);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.rbn_quanly);
             this.Controls.Add(this.rbn_thungan);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txt_pass);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.check_show);
@@ -262,7 +264,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox check_show;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse2;
@@ -271,6 +272,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton rbn_quanly;
         private System.Windows.Forms.RadioButton rbn_thungan;
+        private Guna.UI2.WinForms.Guna2Button button2;
     }
 }
 

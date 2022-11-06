@@ -19,38 +19,34 @@ namespace giaodien
 
         private void HoTen_txt_Leave(object sender, EventArgs e)
         {
-            if (HoTen_txt.Text == "")
-            {
-                HoTen_txt.Text = "Họ tên";
-                HoTen_txt.ForeColor = Color.Silver;
-            }
+          
         }
 
         private void HoTen_txt_Enter(object sender, EventArgs e)
         {
-            if (HoTen_txt.Text == "Họ tên")
-            {
-                HoTen_txt.Text = "";
-                HoTen_txt.ForeColor = Color.Black;
-            }
+            //if (HoTen_txt.Text == "Họ tên")
+            //{
+            //    HoTen_txt.Text = "";
+            //    HoTen_txt.ForeColor = Color.Black;
+            //}
         }
 
         private void ChucVu_txt_Enter(object sender, EventArgs e)
         {
-            if (ChucVu_txt.Text == "Chức vụ")
-            {
-                ChucVu_txt.Text = "";
-                ChucVu_txt.ForeColor = Color.Black;
-            }
+            //if (ChucVu_txt.Text == "Chức vụ")
+            //{
+            //    ChucVu_txt.Text = "";
+            //    ChucVu_txt.ForeColor = Color.Black;
+            //}
         }
 
         private void ChucVu_txt_Leave(object sender, EventArgs e)
         {
-            if (ChucVu_txt.Text == "")
-            {
-                ChucVu_txt.Text = "Chức vụ";
-                ChucVu_txt.ForeColor = Color.Silver;
-            }
+            //if (ChucVu_txt.Text == "")
+            //{
+            //    ChucVu_txt.Text = "Chức vụ";
+            //    ChucVu_txt.ForeColor = Color.Silver;
+            //}
         }
 
         private void ĐNhap_txt_Enter(object sender, EventArgs e)
@@ -131,41 +127,41 @@ namespace giaodien
 
         private void SingUp_btn_Click(object sender, EventArgs e)
         {
-            if (HoTen_txt.Text == "Họ tên" || ChucVu_txt.Text == "Chức vụ" || ĐNhap_txt.Text == "Tên đăng nhập" || MKhau_txt.Text == "Mật khẩu" || MaQL_txt.Text == "Mã quản lý")
-            {
-                MessageBox.Show("Hãy nhập đủ thông tin", "Thông báo", MessageBoxButtons.OK);
-            }
-            else
-            {
-                if (MaQL_txt.Text != "123456")
-                    MessageBox.Show("Mã quản lý không đúng", "Thông báo", MessageBoxButtons.OK);
-                else
-                {
-                    DataBase db = new DataBase();
-                    string str = "select * from DangNhap where acc='" + ĐNhap_txt.Text + "'";
-                    DataTable tb = db.Execute(str);
-                    if (tb.Rows.Count != 0)
-                        MessageBox.Show("Tên đăng nhập này đã tồn tại", "Thông báo", MessageBoxButtons.OK);
-                    else
-                    {
-                        if (String.Compare(Mkhau2_txt.Text.ToString(), MKhau_txt.Text.ToString(), false) == 0)
-                        {
-                            MessageBox.Show("Tạo tài khoản thành công", "Thông báo", MessageBoxButtons.OK);
-                            GarageDB gr = new GarageDB();
-                            string ten = db.ChuanTen(HoTen_txt.Text);
-                            string chucvu = db.ChuanTen(ChucVu_txt.Text);
-                            gr.insertAcc(ĐNhap_txt.Text, MKhau_txt.Text, ten, chucvu);
-                            this.Hide();
-                            Form1 a = new Form1();
-                            a.ShowDialog();
-                        }
-                        else
-                            MessageBox.Show("Mật khẩu không giống nhau", "Thông báo", MessageBoxButtons.OK);
-                    }
+            //if (HoTen_txt.Text == "Họ tên" || ChucVu_txt.Text == "Chức vụ" || ĐNhap_txt.Text == "Tên đăng nhập" || MKhau_txt.Text == "Mật khẩu" || MaQL_txt.Text == "Mã quản lý")
+            ////{
+            ////    MessageBox.Show("Hãy nhập đủ thông tin", "Thông báo", MessageBoxButtons.OK);
+            ////}
+            //else
+            //{
+            //    if (MaQL_txt.Text != "123456")
+            //        MessageBox.Show("Mã quản lý không đúng", "Thông báo", MessageBoxButtons.OK);
+            //    else
+            //    {
+            //        DataBase db = new DataBase();
+            //        string str = "select * from DangNhap where acc='" + ĐNhap_txt.Text + "'";
+            //        DataTable tb = db.Execute(str);
+            //        if (tb.Rows.Count != 0)
+            //            MessageBox.Show("Tên đăng nhập này đã tồn tại", "Thông báo", MessageBoxButtons.OK);
+            //        else
+            //        {
+            //            if (String.Compare(Mkhau2_txt.Text.ToString(), MKhau_txt.Text.ToString(), false) == 0)
+            //            {
+            //                MessageBox.Show("Tạo tài khoản thành công", "Thông báo", MessageBoxButtons.OK);
+            //                GarageDB gr = new GarageDB();
+            //                //string ten = db.ChuanTen(HoTen_txt.Text);
+            //                //string chucvu = db.ChuanTen(ChucVu_txt.Text);
+            //            //    gr.insertAcc(ĐNhap_txt.Text, MKhau_txt.Text, ten, chucvu);
+            //                this.Hide();
+            //                Form1 a = new Form1();
+            //                a.ShowDialog();
+            //            }
+            //            else
+            //                MessageBox.Show("Mật khẩu không giống nhau", "Thông báo", MessageBoxButtons.OK);
+            //        }
 
 
-                }
-            }
+            //    }
+            //}
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -173,6 +169,21 @@ namespace giaodien
             this.Hide();
             Form1 a = new Form1();
             a.ShowDialog();
+        }
+
+        private void ĐNhap_txt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Sign_up_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

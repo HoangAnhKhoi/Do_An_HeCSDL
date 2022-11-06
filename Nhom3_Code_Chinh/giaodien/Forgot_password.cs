@@ -49,20 +49,20 @@ namespace giaodien
 
         private void txt_FHoTen_Enter(object sender, EventArgs e)
         {
-            if (txt_FHoTen.Text == "Họ và tên")
-            {
-                txt_FHoTen.Text = "";
-                txt_FHoTen.ForeColor = Color.White;
-            }
+            //if (txt_FHoTen.Text == "Họ và tên")
+            //{
+            //    txt_FHoTen.Text = "";
+            //    txt_FHoTen.ForeColor = Color.White;
+            //}
         }
 
         private void txt_FHoTen_Leave(object sender, EventArgs e)
         {
-            if (txt_FHoTen.Text == "")
-            {
-                txt_FHoTen.Text = "Họ và tên";
-                txt_FHoTen.ForeColor = Color.Silver;
-            }
+            //if (txt_FHoTen.Text == "")
+            //{
+            //    txt_FHoTen.Text = "Họ và tên";
+            //    txt_FHoTen.ForeColor = Color.Silver;
+            //}
         }
 
         private void txt_FMaQL_Enter(object sender, EventArgs e)
@@ -144,38 +144,38 @@ namespace giaodien
 
         private void btn_search_Click(object sender, EventArgs e)
         {
-            if (txt_FMaQL.Text == "Mã quản lý" || txt_FHoTen.Text == "Họ và tên" || txt_FAcc.Text == "Tên tài khoản")
-                MessageBox.Show("Hãy nhập đủ thông tin", "Thông báo", MessageBoxButtons.OK);
-            else
-            {
-                if (txt_FMaQL.Text != "123456")
-                    MessageBox.Show("Mã quản lý không đúng", "Thông báo", MessageBoxButtons.OK);
-                else
-                {
-                    DataBase db = new DataBase();
-                    GarageDB gr = new GarageDB();
-                    string str = "select * from DANGNHAP where acc='" + txt_FAcc.Text + "'";
-                    DataTable tb = db.Execute(str);
-                    if (tb.Rows.Count == 1)
-                    {
-                        string str1 = "HoTen='" + txt_FHoTen.Text +"' and acc='" + txt_FAcc.Text + "'";
-                        if (gr.LayBangDK(str1,gr.DN).Rows.Count==1)
-                        {
-                            txt_FMKhau.Show();
-                            txt_FMKhau2.Show();
-                            txt_FAcc.Hide();
-                            txt_FHoTen.Hide();
-                            txt_FMaQL.Hide();
-                            btn_accept.Show();
-                            btn_search.Hide();
-                        }
-                        else
-                            MessageBox.Show("Họ tên của tên đăng nhập không đúng", "Thông báo", MessageBoxButtons.OK);
-                    }
-                    else
-                        MessageBox.Show("Tên đăng nhập không tồn tại", "Thông báo", MessageBoxButtons.OK);
-                }
-            }
+            //if (txt_FMaQL.Text == "Mã quản lý" || txt_FHoTen.Text == "Họ và tên" || txt_FAcc.Text == "Tên tài khoản")
+            //    MessageBox.Show("Hãy nhập đủ thông tin", "Thông báo", MessageBoxButtons.OK);
+            //else
+            //{
+            //    if (txt_FMaQL.Text != "123456")
+            //        MessageBox.Show("Mã quản lý không đúng", "Thông báo", MessageBoxButtons.OK);
+            //    else
+            //    {
+            //        DataBase db = new DataBase();
+            //        GarageDB gr = new GarageDB();
+            //        string str = "select * from DANGNHAP where acc='" + txt_FAcc.Text + "'";
+            //        DataTable tb = db.Execute(str);
+            //        if (tb.Rows.Count == 1)
+            //        {
+            //            string str1 = "HoTen='" + txt_FHoTen.Text +"' and acc='" + txt_FAcc.Text + "'";
+            //            if (gr.LayBangDK(str1,gr.DN).Rows.Count==1)
+            //            {
+            //                txt_FMKhau.Show();
+            //                txt_FMKhau2.Show();
+            //                txt_FAcc.Hide();
+            //                txt_FHoTen.Hide();
+            //                txt_FMaQL.Hide();
+            //                btn_accept.Show();
+            //                btn_search.Hide();
+            //            }
+            //            else
+            //                MessageBox.Show("Họ tên của tên đăng nhập không đúng", "Thông báo", MessageBoxButtons.OK);
+            //        }
+            //        else
+            //            MessageBox.Show("Tên đăng nhập không tồn tại", "Thông báo", MessageBoxButtons.OK);
+            //    }
+            //}
         }
 
         private void label5_Click(object sender, EventArgs e)
