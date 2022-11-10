@@ -10,9 +10,6 @@ CREATE FUNCTION XUAT_NV_CHUCVU(@machucvu CHAR(6)) RETURNS table
 as
 	RETURN (SELECT * FROM VIEW_NV WHERE NV_NguoiID in (SELECT NV_NguoiID FROM NHANVIEN WHERE MaCV=@machucvu))
 -----thêm
-DECLARE @result as int
-EXECUTE SUA_NV '5','Nguyen C','wqdqw',012313515,'10/7/2022',0212351,1,1,123123132,@result output
-SELECT @result
 CREATE proc THEM_NV
 @nguoiid CHAR(6),
 @hoten nvarchar(30),
@@ -140,7 +137,7 @@ AS
 
 GO
 ----- Xóa
-ALTER PROC XOA_KH
+CREATE PROC XOA_KH
 @nguoiid CHAR(6),
 @result int output 
 AS
@@ -245,7 +242,7 @@ AS
 		set @result=0
 		END CATCH
 ----- SỬA
-ALTER PROC SUA_NCC
+CREATE PROC SUA_NCC
 @manhacc CHAR(6),
 @tennhacc nvarchar(30),
 @dienthoai CHAR(11),
@@ -283,7 +280,7 @@ AS
 		END CATCH
 GO
 ---Thêm, xóa, sửa, xuất bảng CONGVIEC
-ALTER FUNCTION XUAT_CVIEC() RETURNS table
+CREATE FUNCTION XUAT_CVIEC() RETURNS table
 as
 RETURN (SELECT * FROM VIEW_CVIEC)
 
