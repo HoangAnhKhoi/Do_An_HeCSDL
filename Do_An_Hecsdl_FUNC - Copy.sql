@@ -417,6 +417,19 @@ AS
 		BEGIN TRY
 			INSERT INTO USERS
 			VALUES(@Username,@Pass,@Chucvu)
+			DECLARE @t NVARCHAR(100)
+			SET @t = N'CREATE LOGIN ' + QUOTENAME(@Username) + ' WITH PASSWORD = ''' + @Pass +''''
+			EXEC(@t)
+			SET @t = N'CREATE USER' + QUOTENAME(@Username) + 'FOR LOGIN' + QUOTENAME(@Username)
+			EXEC(@t)
+			IF(@Chucvu='Quản lý')
+			BEGIN
+				EXEC sp_addrolemember 'Managers', @Username 
+			END
+			ELSE 
+			BEGIN
+				EXEC sp_addrolemember 'Members', @Username 
+			END
 			set @result=1
 			COMMIT TRAN
 		END TRY 
@@ -438,13 +451,15 @@ AS
 			SET Username=@Username, Pass=@Pass, Chucvu=@Chucvu
 			WHERE Username=@Username
 			set @result=1
+			DECLARE @t NVARCHAR(100)
+			SET @t = N'ALTER LOGIN ' + QUOTENAME(@Username) + ' WITH PASSWORD = ''' + @Pass +''''
+			EXEC(@t)
 			COMMIT TRAN
 		END TRY 
 		BEGIN CATCH
 		ROLLBACK TRAN
 		set @result=0
 		END CATCH
-
 GO
 -----Xác minh
 CREATE FUNCTION XACMINH_USERS(@username CHAR(20), @pass CHAR(20),@chucvu NVARCHAR(30)) RETURNS int

@@ -24,6 +24,8 @@ namespace giaodien
         {
             try
             {
+                Form1 a = new Form1();
+                txt_tennv.Text = a.a();
                 Form1 formDangNhap = new Form1();
                 string query = "SELECT * FROM  XUAT_NV()";
                 DataTable table_nv = db.Execute(query);
