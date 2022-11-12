@@ -59,14 +59,14 @@ namespace giaodien
         }
         private void button2_Click(object sender, EventArgs e)
         {
-            DataBase db = new DataBase();
+            DataBase db = new DataBase("sa","01677448545");
             string query = "SELECT dbo.XACMINH_USERS('"+txt_nameacc.Text+"','"+txt_pass.Text+"',N'"+ ChucVu() + "')";
             DataTable b = db.Execute(query);
             int result = int.Parse(b.Rows[0][0].ToString());
             if (result == 0)
             {
                 this.Hide();
-                Form_Chinh form3 = new Form_Chinh();
+                Form_Chinh form3 = new Form_Chinh(txt_nameacc.Text, txt_pass.Text);
                 form3.ShowDialog();
                 this.Close();
             }

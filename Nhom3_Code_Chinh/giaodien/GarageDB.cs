@@ -57,10 +57,6 @@ namespace giaodien
         {
             return name + DateTime.Now.ToString("HHmmssddMMyyyy");
         }
-        public GarageDB()
-        {
-            db = new DataBase();
-        }
         public DataTable LayBang(string Name_Table)
         {
             string strSV = " select * from dbo."+Name_Table;

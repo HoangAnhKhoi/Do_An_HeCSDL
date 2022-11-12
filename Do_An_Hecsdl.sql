@@ -7,8 +7,8 @@ GO
 ----------------------------------------------
 CREATE TABLE USERS
 (
-	Username CHAR(20) CONSTRAINT PK_USERS PRIMARY KEY,
-	Pass CHAR(20) NOT NULL,
+	Username VARCHAR(20) CONSTRAINT PK_USERS PRIMARY KEY,
+	Pass VARCHAR(20) NOT NULL,
 	ChucVu NVARCHAR(30) NOT NULL,
 )
 go

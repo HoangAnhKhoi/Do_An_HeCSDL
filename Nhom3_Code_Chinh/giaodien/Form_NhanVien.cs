@@ -13,19 +13,24 @@ namespace giaodien
 {
     public partial class Form_NhanVien : Form
     {
-        DataBase db = new DataBase();
         GarageDB ga = new GarageDB();
+        string user;
+        string pass;
+        DataBase db;
         public Form_NhanVien()
         {
             InitializeComponent();
         }
-
+        public Form_NhanVien(string user, string pass) :this()
+        {
+            this.user = user;
+            this.pass = pass;
+            this.db = new DataBase(user, pass);
+        }
         private void Form_NhanVien_Load(object sender, EventArgs e)
         {
             try
             {
-                Form1 a = new Form1();
-                txt_tennv.Text = a.a();
                 Form1 formDangNhap = new Form1();
                 string query = "SELECT * FROM  XUAT_NV()";
                 DataTable table_nv = db.Execute(query);

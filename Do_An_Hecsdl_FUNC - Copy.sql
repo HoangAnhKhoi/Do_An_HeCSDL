@@ -407,9 +407,9 @@ AS
 go
 ---Thêm xóa sửa bảng USERS
 -----Thêm
-CREATE PROC THEM_USER
-@Username CHAR(20),
-@Pass CHAR(20),
+ALTER PROC THEM_USER
+@Username VARCHAR(20),
+@Pass VARCHAR(20),
 @Chucvu NVARCHAR(30),
 @result int output 
 AS
@@ -422,7 +422,7 @@ AS
 			EXEC(@t)
 			SET @t = N'CREATE USER' + QUOTENAME(@Username) + 'FOR LOGIN' + QUOTENAME(@Username)
 			EXEC(@t)
-			IF(@Chucvu='Quản lý')
+			IF(@Chucvu=N'Quản lý')
 			BEGIN
 				EXEC sp_addrolemember 'Managers', @Username 
 			END
@@ -440,8 +440,8 @@ AS
 GO
 -----Sửa
 CREATE PROC SUA_USERS
-@Username CHAR(20),
-@Pass CHAR(20),
+@Username NCHAR(20),
+@Pass NCHAR(20),
 @Chucvu NVARCHAR(30),
 @result int output 
 AS
@@ -462,7 +462,7 @@ AS
 		END CATCH
 GO
 -----Xác minh
-CREATE FUNCTION XACMINH_USERS(@username CHAR(20), @pass CHAR(20),@chucvu NVARCHAR(30)) RETURNS int
+CREATE FUNCTION XACMINH_USERS(@username NCHAR(20), @pass NCHAR(20),@chucvu NVARCHAR(30)) RETURNS int
 AS
 	BEGIN
 		DECLARE @result int

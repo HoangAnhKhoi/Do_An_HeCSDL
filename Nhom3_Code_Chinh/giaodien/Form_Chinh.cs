@@ -12,12 +12,18 @@ namespace giaodien
 {
     public partial class Form_Chinh : Form
     {
+        string user;
+        string pass;
         public Form_Chinh()
         {
             InitializeComponent();
             custom();
         }
-
+        public Form_Chinh(string user, string pass) :this()
+        {
+            this.user = user;
+            this.pass = pass;
+        }
         private void custom()
         {
       
@@ -66,21 +72,21 @@ namespace giaodien
         {
             pnlstats.Height = btnNhanVien.Height;
             pnlstats.Top = btnNhanVien.Top;
-            openchildform(new Form_NhanVien());
+            openchildform(new Form_NhanVien(user,pass));
         }
 
         private void btnCongViec_Click(object sender, EventArgs e)
         {
             pnlstats.Height = btnCongViec.Height;
             pnlstats.Top = btnCongViec.Top;
-            openchildform(new Form_CongViec());
+            openchildform(new Form_CongViec(user, pass));
         }
 
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
             pnlstats.Height = btnKhachHang.Height;
             pnlstats.Top = btnKhachHang.Top;
-            openchildform(new Form_KhachHang());
+            openchildform(new Form_KhachHang(user, pass));
 
         }
 
@@ -95,13 +101,13 @@ namespace giaodien
         {
             pnlstats.Height = btnPhieuThu.Height;
             pnlstats.Top = btnPhieuThu.Top;
-            openchildform(new Form_PhieuThu());
+            openchildform(new Form_PhieuThu(user, pass));
         }
         private void btnDoanhSo_Click(object sender, EventArgs e)
         {
             pnlstats.Height = btnDoanhSo.Height;
             pnlstats.Top = btnDoanhSo.Top;
-            openchildform(new Form_DoanhThuMotThang());
+            openchildform(new Form_DoanhThuMotThang(user, pass));
         }
 
         private void Form_Chinh_Load(object sender, EventArgs e)
@@ -112,13 +118,13 @@ namespace giaodien
 
         private void btnTinhLuong_Click(object sender, EventArgs e)
         {
-            openchildform(new Form_TinhLuong());
+            openchildform(new Form_TinhLuong(user, pass));
             hidesubmenu();
         }
 
         private void btnChinhSuaHD_Click(object sender, EventArgs e)
         {
-            openchildform(new Form_ChinhSuaHD());
+            openchildform(new Form_ChinhSuaHD(user, pass));
         }
 
         private void btnXemHD_Click(object sender, EventArgs e)
@@ -129,7 +135,7 @@ namespace giaodien
         {
             pnlstats.Height = btnNhapKho.Height;
             pnlstats.Top = btnNhapKho.Top;
-            openchildform(new Form_nhapkho());
+            openchildform(new Form_nhapkho(user, pass));
         }
 
 

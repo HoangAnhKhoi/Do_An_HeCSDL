@@ -13,10 +13,19 @@ namespace giaodien
     public partial class Form_DoanhThuMotThang : Form
     {
         private GarageDB gr = new GarageDB();
-        private DataBase db = new DataBase();
+        GarageDB ga = new GarageDB();
+        string user;
+        string pass;
+        DataBase db;
         public Form_DoanhThuMotThang()
         {
             InitializeComponent();
+        }
+        public Form_DoanhThuMotThang(string user, string pass) : this()
+        {
+            this.user = user;
+            this.pass = pass;
+            this.db = new DataBase(user, pass);
         }
 
         private void btn_tinhDthu_Click(object sender, EventArgs e)

@@ -14,13 +14,20 @@ namespace giaodien
 {
     public partial class Form_PhieuThu : Form
     {
-        private GarageDB gr = new GarageDB();
-        private DataBase db = new DataBase();
+        GarageDB gr = new GarageDB();
+        string user;
+        string pass;
+        DataBase db;
         public Form_PhieuThu()
         {
             InitializeComponent();
         }
-
+        public Form_PhieuThu(string user, string pass) : this()
+        {
+            this.user = user;
+            this.pass = pass;
+            this.db = new DataBase(user, pass);
+        }
         private void btn_timpt_Click(object sender, EventArgs e)
         {
             string sohd = txt_mahd.Text;

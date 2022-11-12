@@ -8,8 +8,16 @@ namespace giaodien
 {
     public partial class Form_ChinhSuaHD : Form
     {
-        DataBase db = new DataBase();
         GarageDB ga = new GarageDB();
+        string user;
+        string pass;
+        DataBase db;
+        public Form_ChinhSuaHD(string user, string pass) : this()
+        {
+            this.user = user;
+            this.pass = pass;
+            this.db = new DataBase(user, pass);
+        }
         bool save=false;
         private System.Data.DataTable tb_cv = new System.Data.DataTable();
         private System.Data.DataTable CV = new System.Data.DataTable();

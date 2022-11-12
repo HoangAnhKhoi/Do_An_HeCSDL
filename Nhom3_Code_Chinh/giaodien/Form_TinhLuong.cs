@@ -13,7 +13,15 @@ namespace giaodien
     public partial class Form_TinhLuong : Form
     {
         private DataTable tb_nv = new DataTable();
-        private DataBase db = new DataBase();
+        string user;
+        string pass;
+        DataBase db;
+        public Form_TinhLuong(string user, string pass) : this()
+        {
+            this.user = user;
+            this.pass = pass;
+            this.db = new DataBase(user, pass);
+        }
         private GarageDB gr = new GarageDB();
         public Form_TinhLuong()
         {

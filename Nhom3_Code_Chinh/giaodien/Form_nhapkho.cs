@@ -13,11 +13,19 @@ namespace giaodien
 {
     public partial class Form_nhapkho : Form
     {
-        DataBase db = new DataBase();
         GarageDB ga = new GarageDB();
+        string user;
+        string pass;
+        DataBase db;
         public Form_nhapkho()
         {
             InitializeComponent();
+        }
+        public Form_nhapkho(string user, string pass) : this()
+        {
+            this.user = user;
+            this.pass = pass;
+            this.db = new DataBase(user, pass);
         }
         private void Form_nhankho_Load(object sender, System.EventArgs e)
         {

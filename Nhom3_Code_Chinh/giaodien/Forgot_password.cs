@@ -12,9 +12,19 @@ namespace giaodien
 {
     public partial class Forgot_password : Form
     {
+        GarageDB ga = new GarageDB();
+        string user;
+        string pass;
+        DataBase db;
         public Forgot_password()
         {
             InitializeComponent();
+        }
+        public Forgot_password(string user, string pass) : this()
+        {
+            this.user = user;
+            this.pass = pass;
+            this.db = new DataBase(user, pass);
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -130,7 +140,6 @@ namespace giaodien
         {
             if (String.Compare(txt_FMKhau.Text, txt_FMKhau2.Text, false) == 0)
             {
-                DataBase db = new DataBase();
                 string str = "Update DANGNHAP set pass='" + txt_FMKhau.Text + "' where acc='" + txt_FAcc.Text + "'";
                 db.ExecuteNonQuery(str);
                 MessageBox.Show("Đổi mật khẩu thành công", "Thông báo", MessageBoxButtons.OK);

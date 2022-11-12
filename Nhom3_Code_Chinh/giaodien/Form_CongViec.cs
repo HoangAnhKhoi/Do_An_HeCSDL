@@ -13,11 +13,19 @@ namespace giaodien
 {
     public partial class Form_CongViec : Form
     {
-        DataBase db = new DataBase();
         GarageDB ga = new GarageDB();
+        string user;
+        string pass;
+        DataBase db;
         public Form_CongViec()
         {
             InitializeComponent();
+        }
+        public Form_CongViec(string user, string pass) : this()
+        {
+            this.user = user;
+            this.pass = pass;
+            this.db = new DataBase(user, pass);
         }
 
         private void Form_CongViec_Load(object sender, EventArgs e)

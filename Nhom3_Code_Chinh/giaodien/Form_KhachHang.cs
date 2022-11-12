@@ -13,11 +13,19 @@ namespace giaodien
 {
     public partial class Form_KhachHang : Form
     {
-        DataBase db = new DataBase();
         GarageDB ga = new GarageDB();
+        string user;
+        string pass;
+        DataBase db;
         public Form_KhachHang()
         {
             InitializeComponent();
+        }
+        public Form_KhachHang(string user, string pass) : this()
+        {
+            this.user = user;
+            this.pass = pass;
+            this.db = new DataBase(user, pass);
         }
 
         private void gunaGroupBox1_Click(object sender, EventArgs e)
