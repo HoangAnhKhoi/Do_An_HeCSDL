@@ -438,10 +438,11 @@ AS
 		set @result=0
 		END CATCH
 GO
+ALTER LOGIN thang with password ='2'
 -----Sửa
 CREATE PROC SUA_USERS
-@Username NCHAR(20),
-@Pass NCHAR(20),
+@Username VARCHAR(20),
+@Pass VARCHAR(20),
 @Chucvu NVARCHAR(30),
 @result int output 
 AS
@@ -450,10 +451,10 @@ AS
 			UPDATE USERS
 			SET Username=@Username, Pass=@Pass, Chucvu=@Chucvu
 			WHERE Username=@Username
-			set @result=1
 			DECLARE @t NVARCHAR(100)
 			SET @t = N'ALTER LOGIN ' + QUOTENAME(@Username) + ' WITH PASSWORD = ''' + @Pass +''''
 			EXEC(@t)
+			set @result=1
 			COMMIT TRAN
 		END TRY 
 		BEGIN CATCH
