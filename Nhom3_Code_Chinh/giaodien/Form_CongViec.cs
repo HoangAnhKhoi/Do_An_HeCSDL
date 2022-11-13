@@ -36,7 +36,7 @@ namespace giaodien
                 string query = "SELECT * FROM  XUAT_CVIEC()";
                 DataTable table_cv = db.Execute(query);
                 data_cv.DataSource = table_cv;
-                string query1 = "SELECT * FROM  XUAT_VL()";
+                string query1 = "EXEC XUAT_VL";
                 DataTable table_chuVu = db.Execute(query1);
                 cb_vlieu.DataSource = null;
                 cb_vlieu.Items.Clear();

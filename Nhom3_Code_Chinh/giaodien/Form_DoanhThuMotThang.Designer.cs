@@ -63,7 +63,7 @@
             this.btn_xuatDL.Image = null;
             this.btn_xuatDL.ImageSize = new System.Drawing.Size(20, 20);
             this.btn_xuatDL.Location = new System.Drawing.Point(776, 85);
-            this.btn_xuatDL.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_xuatDL.Margin = new System.Windows.Forms.Padding(4);
             this.btn_xuatDL.Name = "btn_xuatDL";
             this.btn_xuatDL.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btn_xuatDL.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -92,7 +92,7 @@
             this.btn_tinhDthu.Image = null;
             this.btn_tinhDthu.ImageSize = new System.Drawing.Size(20, 20);
             this.btn_tinhDthu.Location = new System.Drawing.Point(776, 15);
-            this.btn_tinhDthu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_tinhDthu.Margin = new System.Windows.Forms.Padding(4);
             this.btn_tinhDthu.Name = "btn_tinhDthu";
             this.btn_tinhDthu.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btn_tinhDthu.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -118,7 +118,7 @@
             this.gunaGroupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gunaGroupBox1.LineColor = System.Drawing.Color.Gainsboro;
             this.gunaGroupBox1.Location = new System.Drawing.Point(16, 15);
-            this.gunaGroupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gunaGroupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.gunaGroupBox1.Name = "gunaGroupBox1";
             this.gunaGroupBox1.Size = new System.Drawing.Size(695, 133);
             this.gunaGroupBox1.TabIndex = 16;
@@ -141,7 +141,7 @@
             // 
             this.date_to.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.date_to.Location = new System.Drawing.Point(425, 70);
-            this.date_to.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.date_to.Margin = new System.Windows.Forms.Padding(4);
             this.date_to.Name = "date_to";
             this.date_to.Size = new System.Drawing.Size(171, 34);
             this.date_to.TabIndex = 9;
@@ -150,7 +150,7 @@
             // 
             this.date_from.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.date_from.Location = new System.Drawing.Point(88, 70);
-            this.date_from.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.date_from.Margin = new System.Windows.Forms.Padding(4);
             this.date_from.Name = "date_from";
             this.date_from.Size = new System.Drawing.Size(171, 34);
             this.date_from.TabIndex = 8;
@@ -177,7 +177,7 @@
             this.txt_tongtien.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txt_tongtien.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txt_tongtien.Location = new System.Drawing.Point(744, 529);
-            this.txt_tongtien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_tongtien.Margin = new System.Windows.Forms.Padding(4);
             this.txt_tongtien.Name = "txt_tongtien";
             this.txt_tongtien.PasswordChar = '\0';
             this.txt_tongtien.SelectedText = "";
@@ -199,7 +199,7 @@
             this.btn_xoadl.Image = null;
             this.btn_xoadl.ImageSize = new System.Drawing.Size(20, 20);
             this.btn_xoadl.Location = new System.Drawing.Point(16, 517);
-            this.btn_xoadl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_xoadl.Margin = new System.Windows.Forms.Padding(4);
             this.btn_xoadl.Name = "btn_xoadl";
             this.btn_xoadl.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btn_xoadl.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -215,6 +215,7 @@
             // 
             // data_DoanhThu
             // 
+            this.data_DoanhThu.AllowUserToAddRows = false;
             this.data_DoanhThu.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -231,7 +232,7 @@
             this.dataGridViewButtonColumn3,
             this.Column4});
             this.data_DoanhThu.Location = new System.Drawing.Point(16, 167);
-            this.data_DoanhThu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.data_DoanhThu.Margin = new System.Windows.Forms.Padding(4);
             this.data_DoanhThu.Name = "data_DoanhThu";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
@@ -249,6 +250,7 @@
             // dataGridViewButtonColumn1
             // 
             this.dataGridViewButtonColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewButtonColumn1.DataPropertyName = "sohd";
             this.dataGridViewButtonColumn1.HeaderText = "Mã hợp đồng";
             this.dataGridViewButtonColumn1.MinimumWidth = 6;
             this.dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
@@ -258,6 +260,7 @@
             // dataGridViewButtonColumn2
             // 
             this.dataGridViewButtonColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewButtonColumn2.DataPropertyName = "ngayHD";
             this.dataGridViewButtonColumn2.HeaderText = "Ngày tạo hợp đồng";
             this.dataGridViewButtonColumn2.MinimumWidth = 6;
             this.dataGridViewButtonColumn2.Name = "dataGridViewButtonColumn2";
@@ -267,6 +270,7 @@
             // dataGridViewButtonColumn3
             // 
             this.dataGridViewButtonColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewButtonColumn3.DataPropertyName = "ngaynghiemthu";
             this.dataGridViewButtonColumn3.HeaderText = "Ngày hoàn thành";
             this.dataGridViewButtonColumn3.MinimumWidth = 6;
             this.dataGridViewButtonColumn3.Name = "dataGridViewButtonColumn3";
@@ -276,6 +280,7 @@
             // Column4
             // 
             this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column4.DataPropertyName = "giatriHD";
             this.Column4.HeaderText = "Số tiền thu";
             this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
@@ -296,7 +301,7 @@
             this.Controls.Add(this.btn_tinhDthu);
             this.Controls.Add(this.gunaGroupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form_DoanhThuMotThang";
             this.Text = "Form_DoanhThuMotThang";
             this.Load += new System.EventHandler(this.Form_DoanhThuMotThang_Load);

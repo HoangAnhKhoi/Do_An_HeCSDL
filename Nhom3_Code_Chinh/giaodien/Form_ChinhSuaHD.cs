@@ -44,7 +44,7 @@ namespace giaodien
             string query = "SELECT * FROM  XUAT_HDONG()";
             DataTable table_hd = db.Execute(query);
             dtgHopDong.DataSource = table_hd;
-            string query1 = "SELECT * FROM  XUAT_KH()";
+            string query1 = "EXEC XUAT_KH";
             DataTable table_kh = db.Execute(query1);
             cb_makh.DataSource = null;
             cb_makh.Items.Clear();

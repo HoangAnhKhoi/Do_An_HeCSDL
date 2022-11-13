@@ -32,10 +32,10 @@ namespace giaodien
             try
             {
                 Form1 formDangNhap = new Form1();
-                string query = "SELECT * FROM  XUAT_NV()";
+                string query = "EXEC XUAT_NV";
                 DataTable table_nv = db.Execute(query);
                 data_nv.DataSource = table_nv;
-                string query1 = "SELECT * FROM  XUAT_CHUCVU()";
+                string query1 = "EXEC XUAT_CHUCVU";
                 DataTable table_chuVu = db.Execute(query1);
                 cb_chucvu.DataSource = null;
                 cb_chucvu.Items.Clear();

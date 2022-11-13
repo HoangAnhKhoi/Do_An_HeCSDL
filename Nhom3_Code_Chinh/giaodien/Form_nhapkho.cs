@@ -31,31 +31,31 @@ namespace giaodien
         {
             try
             {
-                string query = "SELECT * FROM  XUAT_NCC()";
+                string query = "EXEC XUAT_NCC";
                 DataTable table_ncc = db.Execute(query);
                 data_ncc.DataSource = table_ncc;
-                string query1 = "SELECT * FROM  XUAT_NCC()";
+                string query1 = "EXEC XUAT_NCC";
                 DataTable table_cb_ncchuVu = db.Execute(query1);
                 cb_mancc.DataSource = null;
                 cb_mancc.Items.Clear();
                 cb_mancc.DataSource = table_cb_ncchuVu;
                 cb_mancc.DisplayMember = "TenNhaCC";
                 cb_mancc.ValueMember = "MaNhaCC";
-                string query2 = "SELECT * FROM  XUAT_VL()";
+                string query2 = "EXEC XUAT_VL";
                 DataTable table_cb_vl = db.Execute(query2);
                 cb_mavl.DataSource = null;
                 cb_mavl.Items.Clear();
                 cb_mavl.DataSource = table_cb_vl;
                 cb_mavl.DisplayMember = "TenVL";
                 cb_mavl.ValueMember = "MaVL";
-                string query3 = "SELECT * FROM  XUAT_NV()";
+                string query3 = "EXEC XUAT_NV";
                 DataTable table_cb_manv = db.Execute(query3);
                 cb_manv.DataSource = null;
                 cb_manv.Items.Clear();
                 cb_manv.DataSource = table_cb_manv;
                 cb_manv.DisplayMember = "NV_NguoiID";
                 cb_manv.ValueMember = "NV_NguoiID";
-                string query4 = "SELECT * FROM  XUAT_VL()";
+                string query4 = "EXEC XUAT_VL";
                 DataTable table_vl = db.Execute(query4);
                 data_vl.DataSource = table_vl;
                 string query5 = "SELECT * FROM  XUAT_NHAPKHO()";

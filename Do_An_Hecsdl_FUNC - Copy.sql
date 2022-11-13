@@ -2,9 +2,9 @@
 GO
 ---Thêm, xóa, sửa, xuất bảng NHÂN VIÊN
 -----Xuât thông tin
-CREATE FUNCTION XUAT_NV() RETURNS table
+CREATE PROC XUAT_NV
 as
-RETURN (SELECT * FROM VIEW_NV)
+	SELECT * FROM VIEW_NV
 -----Lấy các nhân viên cùng một chức vụ
 CREATE FUNCTION XUAT_NV_CHUCVU(@machucvu CHAR(6)) RETURNS table
 as
@@ -82,9 +82,9 @@ as
 GO
 ---Thêm, xóa, sửa, xuất bảng KHÁCH HÀNG
 -----XUẤT
-CREATE FUNCTION XUAT_KH() RETURNS table
+CREATE PROC XUAT_KH
 as
-RETURN (SELECT * FROM VIEW_KH)
+	SELECT * FROM VIEW_KH
 
 GO
 -----THÊM
@@ -155,9 +155,9 @@ AS
 		END CATCH
 GO
 ---Thêm, xóa, sửa, xuất bảng VẬT LIỆU
-CREATE FUNCTION XUAT_VL() RETURNS table
+CREATE PROC XUAT_VL
 as
-RETURN (SELECT * FROM VATLIEU)
+	SELECT * FROM VATLIEU
 
 GO
 -----THÊM
@@ -220,9 +220,9 @@ AS
 GO
 ---Thêm, xóa, sửa, xuất bảng NHÀ CUNG CẤP
 -----XUẤT
-CREATE FUNCTION XUAT_NCC() RETURNS table
+CREATE PROC XUAT_NCC
 as
-RETURN (SELECT * FROM NHACUNGCAP)
+	SELECT * FROM NHACUNGCAP
 -----THÊM
 CREATE PROC THEM_NCC
 @manhacc CHAR(6),
@@ -346,9 +346,9 @@ AS
 GO
 ---Thêm xóa sửa xuất bảng chức vụ
 -----Xuất chuc vu
-CREATE FUNCTION XUAT_CHUCVU() RETURNS table
+CREATE PROC XUAT_CHUCVU
 as
-RETURN (SELECT * FROM CHUCVU)
+	SELECT * FROM CHUCVU
 GO
 -----Them chuc vu
 CREATE proc THEM_CHUCVU
@@ -387,7 +387,7 @@ AS
 GO
 ---exec XOA_CHUCVU '1'
 ----Sua chuc vu
-create proc SUA_CHUCVU
+CREATE proc SUA_CHUCVU
 @macv char(6),
 @tencv nvarchar(20),
 @result int output 
@@ -407,7 +407,7 @@ AS
 go
 ---Thêm xóa sửa bảng USERS
 -----Thêm
-ALTER PROC THEM_USER
+CREATE PROC THEM_USER
 @Username VARCHAR(20),
 @Pass VARCHAR(20),
 @Chucvu NVARCHAR(30),
@@ -438,7 +438,6 @@ AS
 		set @result=0
 		END CATCH
 GO
-ALTER LOGIN thang with password ='2'
 -----Sửa
 CREATE PROC SUA_USERS
 @Username VARCHAR(20),
@@ -546,7 +545,6 @@ as
 RETURN (SELECT * FROM CHITIET_HD WHERE SoHD=@SoHD)
 GO
 -----Thêm
-INSERT INTO CHITIET_HD VALUES('H10245604112022','V03',1231,'12')
 CREATE PROC THEM_CHITIET_HD
 @SoHD CHAR(15),
 @MaCV CHAR(6),
@@ -661,6 +659,17 @@ AS
 		return @doanhthu 
 	END
 GO 
+EXEC XUAT_KH
+CREATE FUNCTION XUAT_DOANHTHU(@ngaydautien date,@ngaycuoicung date) 
+RETURNS 
+@doanhthu table(sohd CHAR(15),ngayHD date,ngaynghiemthu date,giatriHD int)
+AS
+	BEGIN
+		INSERT @doanhthu SELECT SoHD,NgayHD,NgayNghiemThu,TriGiaHD 
+		FROM HOPDONG_BACKUP 
+		WHERE NgayNghiemThu>=@ngaydautien AND NgayNghiemThu<=@ngaycuoicung
+		return
+	END
 ---Xóa doanh thu 
 CREATE PROC XOA_DOANHTHU
 @ngaydautien date,
@@ -669,4 +678,17 @@ AS
 	DELETE 
 	FROM HOPDONG_BACKUP
 	WHERE NgayNghiemThu>= @ngaydautien AND NgayNghiemThu<=@ngaycuoicung
-
+-----Chỉnh sửa hóa đơn
+---Tìm hóa đơn theo mã Hợp đồng 
+CREATE FUNCTION XUAT_HOADON(@soHD CHAR(15)) RETURNS TABLE
+AS
+	RETURN(SELECT * FROM HOADON WHERE MaHopDong=@soHD)
+---Xác định số tiền phải nộp
+CREATE FUNCTION TIEN_HOADON(@soHD CHAR(15)) RETURNS int
+AS
+	BEGIN
+		DECLARE @giatriHD int, @tiendathu int
+		SELECT @giatriHD=TriGiaHD FROM HOPDONG WHERE SoHD = @soHD
+		SELECT @tiendathu = SUM(SoTienThu) FROM HOADON WHERE MaHopDong=@soHD
+		RETURN @giatriHD - @tiendathu
+	END

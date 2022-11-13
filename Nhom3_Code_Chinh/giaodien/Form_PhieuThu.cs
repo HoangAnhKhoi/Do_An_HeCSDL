@@ -35,53 +35,14 @@ namespace giaodien
                 MessageBox.Show("Hãy điền sô hợp đồng", "Thông báo", MessageBoxButtons.OK);
             else
             {
-                string query1 = "SoHD=" + sohd;
-                DataTable tb1 = gr.LayBangDK(query1, gr.HD);
-                if (tb1.Rows.Count == 0)
-                    MessageBox.Show("Không tồn tại mã hợp đồng này", "Thông báo", MessageBoxButtons.OK);
-                else
-                {
-                    DataTable tb = gr.LayBangDK(query1, gr.PT);
-                    txt_tienthieu.Text = (int.Parse(tb1.Rows[0][4].ToString()) - FillDataPT(tb)).ToString();
-                }
+                string query = "SELECT * FROM XUAT_HOADON('" + txt_mahd.Text + "')";
+                DataTable tb = db.Execute(query);
+                data_phieuthu.DataSource = tb;
+                string query1 = "DECLARE @result int EXEC @result = TIEN_HOADON '" + txt_mahd.Text + "'select @result";
+                DataTable tb1 = db.Execute(query1);
+                txt_tienthieu.Text = tb1.Rows[0][0].ToString();
             }
         }
-        private int FillDataPT(DataTable list)
-        {
-            int tiendong = 0;
-            data_phieuthu.Rows.Clear();
-            for (int i = 0; i < list.Rows.Count; i++)
-            {
-                int index = data_phieuthu.Rows.Add();
-                data_phieuthu.Rows[i].Cells[0].Value = list.Rows[i][0].ToString();
-                data_phieuthu.Rows[i].Cells[1].Value = list.Rows[i][2].ToString();
-                data_phieuthu.Rows[i].Cells[2].Value = list.Rows[i][3].ToString();
-                data_phieuthu.Rows[i].Cells[3].Value = list.Rows[i][4].ToString();
-                data_phieuthu.Rows[i].Cells[4].Value = list.Rows[i][5].ToString();
-                data_phieuthu.Rows[i].Cells[5].Value = list.Rows[i][1].ToString();
-                tiendong=tiendong+ int.Parse(list.Rows[i][5].ToString());
-            }
-            return tiendong;
-        }
-        private void txt_mahd_Leave(object sender, EventArgs e)
-        {
-            string sohd = txt_mahd.Text;
-            bool a = true;
-            foreach (int i in sohd)
-            {
-                if (i < 48 || i > 57)
-                {
-                    a = false;
-                    break;
-                }
-            }
-            if (a == false)
-            {
-                MessageBox.Show("Mục này không có chữ", "Thông báo", MessageBoxButtons.OK);
-                txt_mahd.Text = "";
-            }
-        }
-
         private void data_phieuthu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -129,7 +90,7 @@ namespace giaodien
                                 MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
                             }
                             DataTable tb2 = gr.LayBangDK(query2, gr.PT);
-                            txt_tienthieu.Text = (int.Parse(tb1.Rows[0][4].ToString()) - FillDataPT(tb2)).ToString();
+                            txt_tienthieu.Text = "0";
                             if (int.Parse(txt_tienthieu.Text) == 0)
                             {
                                 string query4 = "update HOPDONG set NgayNgThu='" + DateTime.Now.ToString("dd-MM-yyyy") + "' where SoHD=" + mahd;
@@ -140,68 +101,6 @@ namespace giaodien
                     }
                 }    
             }
-        }
-
-        private void txt_sopt_Leave(object sender, EventArgs e)
-        {
-            string sopt = txt_sopt.Text;
-            bool a = true;
-            foreach (int i in sopt)
-            {
-                if (i < 48 || i > 57)
-                {
-                    a = false;
-                    break;
-                }
-            }
-            if (a == false)
-            {
-                MessageBox.Show("Mục này không có chữ", "Thông báo", MessageBoxButtons.OK);
-                txt_sopt.Text = "";
-            }
-        }
-
-        private void txt_tienthu_Leave(object sender, EventArgs e)
-        {
-            string tienthu = txt_tienthu.Text;
-            bool a = true;
-            foreach (int i in tienthu)
-            {
-                if (i < 48 || i > 57)
-                {
-                    a = false;
-                    break;
-                }
-            }
-            if (a == false)
-            {
-                MessageBox.Show("Mục này không có chữ", "Thông báo", MessageBoxButtons.OK);
-                txt_tienthu.Text = "";
-            }
-        }
-
-        private void txt_sopt_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void txt_sopt_Enter(object sender, EventArgs e)
-        {
-            DataTable tb = gr.LayBang(gr.PT);
-            int i = 1;
-            foreach (DataRow j in tb.Rows)
-            {
-                if (int.Parse(j["SoPT"].ToString()) == i)
-                {
-                    i++;
-                }
-                else
-                {
-                    txt_sopt.Text = i.ToString();
-                    break;
-                }
-            }
-            if(i==tb.Rows.Count+1)
-                txt_sopt.Text = (i).ToString();
         }
 
         private void btn_xuatpt_Click(object sender, EventArgs e)
@@ -293,10 +192,6 @@ namespace giaodien
             text.CharacterFormat.FontSize = 14;
             paragraph.Format.TextAlignment = TextAlignment.Auto;
             paragraph.Format.HorizontalAlignment = Spire.Doc.Documents.HorizontalAlignment.Right;
-        }
-
-        private void data_phieuthu_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
         }
     }
 }

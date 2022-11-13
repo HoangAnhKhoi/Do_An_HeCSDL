@@ -42,7 +42,7 @@ namespace giaodien
         {
             try
             {
-                string query = "SELECT * FROM  XUAT_KH()";
+                string query = "EXEC XUAT_KH";
                 DataTable table_kh = db.Execute(query);
                 data_kh.DataSource = table_kh;
             }

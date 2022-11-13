@@ -34,29 +34,15 @@ namespace giaodien
             {
                 string BD = date_from.Value.ToString("yyyy-MM-dd");
                 string KT = date_to.Value.ToString("yyyy-MM-dd");
-                string query1 = "NgayNgThu>='" + BD + "' and NgayNgThu<='" + KT + "'";
-                DataTable tb1 = gr.LayBangDK(query1, gr.HD);
-                txt_tongtien.Text =FillDataIntoGrid(tb1).ToString();
+                string query1 = "SELECT * FROM XUAT_DOANHTHU('" + BD + "','" + KT + "')";
+                DataTable tb1 = db.Execute(query1);
+                txt_tongtien.Text = "0";
+                data_DoanhThu.DataSource = tb1;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-        private int FillDataIntoGrid(DataTable list)
-        {
-            int doanhthu = 0;
-            data_DoanhThu.Rows.Clear();
-            for (int i = 0; i < list.Rows.Count; i++)
-            {
-                int index = data_DoanhThu.Rows.Add();
-                data_DoanhThu.Rows[i].Cells[0].Value = list.Rows[i][0].ToString();
-                data_DoanhThu.Rows[i].Cells[1].Value = list.Rows[i][1].ToString();
-                data_DoanhThu.Rows[i].Cells[2].Value = list.Rows[i][6].ToString();
-                data_DoanhThu.Rows[i].Cells[3].Value = list.Rows[i][4].ToString();
-                doanhthu = doanhthu + int.Parse(list.Rows[i][4].ToString());
-            }
-            return doanhthu;
         }
 
         private void Form_DoanhThuMotThang_Load(object sender, EventArgs e)
