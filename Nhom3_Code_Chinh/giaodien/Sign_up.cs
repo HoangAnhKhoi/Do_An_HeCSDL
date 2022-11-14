@@ -15,7 +15,7 @@ namespace giaodien
     {
 
         DataBase db = new DataBase("sa","01677448545");
-        GarageDB gr = new GarageDB();
+        GarageDB gr = new GarageDB("sa", "01677448545");
         public Sign_up()
         {
             InitializeComponent();

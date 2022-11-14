@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace giaodien
 {
     public partial class Form_PhieuThu : Form
     {
-        GarageDB gr = new GarageDB();
+        GarageDB gr;
         string user;
         string pass;
         DataBase db;
@@ -27,6 +28,7 @@ namespace giaodien
             this.user = user;
             this.pass = pass;
             this.db = new DataBase(user, pass);
+            this.gr = new GarageDB(user, pass);
         }
         private void btn_timpt_Click(object sender, EventArgs e)
         {
@@ -54,52 +56,43 @@ namespace giaodien
             string mahd = txt_mahd.Text;
             string tienthu = txt_tienthu.Text;
             string hoten = txt_hoten.Text;
-            if (sopt==""|| mahd==""||tienthu== ""||hoten=="")
-                MessageBox.Show("Hãy điền đủ thông tin", "Thông báo", MessageBoxButtons.OK);
-            else
+            try
             {
-                string query1 = "SoPT=" + sopt;
-                DataTable tb = gr.LayBangDK(query1, gr.PT);
-                if(tb.Rows.Count!=0)
-                    MessageBox.Show("Mã phiếu thu đã tồn tại", "Thông báo", MessageBoxButtons.OK);
+                string sophieuthu = gr.LayMaSo("P");
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandText = "EXECUTE THEM_HOADON @mahoadon,@mahdong,@hoten,@sotienthu,@result output";
+                SqlParameter maPTParam = new SqlParameter("@mahoadon", sophieuthu);
+                maPTParam.SqlDbType = SqlDbType.Char;
+                maPTParam.Size = 15;
+                SqlParameter mahdParam = new SqlParameter("@mahdong", mahd);
+                mahdParam.SqlDbType = SqlDbType.Char;
+                mahdParam.Size = 15;
+                SqlParameter hotenParam = new SqlParameter("@hoten", hoten);
+                hotenParam.SqlDbType = SqlDbType.NVarChar;
+                hotenParam.Size = 40;
+                SqlParameter tienthuParam = new SqlParameter("@sotienthu", tienthu);
+                tienthuParam.SqlDbType = SqlDbType.Int;
+                SqlParameter resultParam = new SqlParameter("@result", 0);
+                resultParam.SqlDbType = SqlDbType.Int;
+                resultParam.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(maPTParam);
+                cmd.Parameters.Add(mahdParam);
+                cmd.Parameters.Add(hotenParam);
+                cmd.Parameters.Add(tienthuParam);
+                cmd.Parameters.Add(resultParam);
+                db.ExecuteCMD(cmd);
+                int result = (int)cmd.Parameters["@result"].Value;
+                if (result == 2)
+                    MessageBox.Show("Số tiền đã vượt qua mức phải nộp", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else if (result == 0)
+                    MessageBox.Show("Thêm không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 else
-                {
-                    string query2 = "SoHD=" + mahd;
-                    DataTable tb1 = gr.LayBangDK(query2, gr.HD);
-                    if (tb1.Rows.Count == 0)
-                        MessageBox.Show("Không tồn tại mã hợp đồng này", "Thông báo", MessageBoxButtons.OK);
-                    else if (tb1.Rows[0][6].ToString() != "")
-                    {
-                        txt_hoten.Text = "";
-                        txt_mahd.Text = "";
-                        txt_sopt.Text = "";
-                        txt_tienthu.Text = "";
-                        MessageBox.Show("Hợp đồng này đã hoàn tất", "Thông báo", MessageBoxButtons.OK);
-                    }
-                    else
-                    {
-                        btn_timpt_Click(sender, e);
-                        if (int.Parse(txt_tienthu.Text) - (int.Parse(txt_tienthieu.Text)) > 0)
-                            MessageBox.Show("Số tiền thu lớn hơn số tiền còn thiếu", "Thông báo", MessageBoxButtons.OK);
-                        else
-                        {
-                            if (MessageBox.Show("Bạn chắc muốn tạo phiếu thu này?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                            {
-                                string query3 = "insert into PHIEUTHU values(" + sopt + ",'" + DateTime.Now.ToString("dd-MM-yyyy") + "'," + mahd + ",'" + tb1.Rows[0][2].ToString() + "','" + hoten + "'," + tienthu + ")";
-                                db.ExecuteNonQuery(query3);
-                                MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
-                            }
-                            DataTable tb2 = gr.LayBangDK(query2, gr.PT);
-                            txt_tienthieu.Text = "0";
-                            if (int.Parse(txt_tienthieu.Text) == 0)
-                            {
-                                string query4 = "update HOPDONG set NgayNgThu='" + DateTime.Now.ToString("dd-MM-yyyy") + "' where SoHD=" + mahd;
-                                db.ExecuteNonQuery(query4);
-                                MessageBox.Show("Hợp đồng đã được thanh toán hoàn tất", "Thông báo", MessageBoxButtons.OK);
-                            }
-                        }
-                    }
-                }    
+                    MessageBox.Show("Thêm thành công", "Thông báo", MessageBoxButtons.OK);
+                btn_timpt_Click(sender, e);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -115,10 +108,10 @@ namespace giaodien
                 else
                 {
                     string query1 = "SoHD=" + txt_mahd.Text;
-                    DataTable tb = gr.LayBangDK(query1, gr.HD);
+                    DataTable tb = new DataTable();
                     Spire.Doc.Document doc = new Document();
                     string query = "MaKH='" + tb.Rows[0][2].ToString() + "'";
-                    System.Data.DataTable KH = gr.LayBangDK(query, gr.KH);
+                    System.Data.DataTable KH = new DataTable();
                     Spire.Doc.Documents.Paragraph paragraph = doc.AddSection().AddParagraph();
                     Spire.Doc.Fields.TextRange text = paragraph.AppendText("Garage OWL");
                     text.CharacterFormat.Bold = true;

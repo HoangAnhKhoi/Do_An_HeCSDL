@@ -13,7 +13,7 @@ namespace giaodien
 {
     public partial class Form_KhachHang : Form
     {
-        GarageDB ga = new GarageDB();
+        GarageDB ga;
         string user;
         string pass;
         DataBase db;
@@ -26,6 +26,7 @@ namespace giaodien
             this.user = user;
             this.pass = pass;
             this.db = new DataBase(user, pass);
+            ga = new GarageDB(user,pass);
         }
 
         private void gunaGroupBox1_Click(object sender, EventArgs e)

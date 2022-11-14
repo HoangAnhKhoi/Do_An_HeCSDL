@@ -110,12 +110,6 @@
     <Compile Include="Form_PhieuThu.Designer.cs">
       <DependentUpon>Form_PhieuThu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_TinhLuong.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_TinhLuong.Designer.cs">
-      <DependentUpon>Form_TinhLuong.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form_XemHD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,9 +160,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_PhieuThu.resx">
       <DependentUpon>Form_PhieuThu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form_TinhLuong.resx">
-      <DependentUpon>Form_TinhLuong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_XemHD.resx">
       <DependentUpon>Form_XemHD.cs</DependentUpon>

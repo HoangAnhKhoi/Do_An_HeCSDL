@@ -114,14 +114,6 @@ namespace giaodien
         {
 
         }
-
-
-        private void btnTinhLuong_Click(object sender, EventArgs e)
-        {
-            openchildform(new Form_TinhLuong(user, pass));
-            hidesubmenu();
-        }
-
         private void btnChinhSuaHD_Click(object sender, EventArgs e)
         {
             openchildform(new Form_ChinhSuaHD(user, pass));

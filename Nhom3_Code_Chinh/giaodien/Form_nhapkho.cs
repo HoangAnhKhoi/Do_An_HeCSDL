@@ -13,7 +13,7 @@ namespace giaodien
 {
     public partial class Form_nhapkho : Form
     {
-        GarageDB ga = new GarageDB();
+        GarageDB ga;
         string user;
         string pass;
         DataBase db;
@@ -26,6 +26,7 @@ namespace giaodien
             this.user = user;
             this.pass = pass;
             this.db = new DataBase(user, pass);
+            this.ga = new GarageDB(user, pass);
         }
         private void Form_nhankho_Load(object sender, System.EventArgs e)
         {

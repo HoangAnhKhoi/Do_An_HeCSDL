@@ -13,7 +13,7 @@ namespace giaodien
 {
     public partial class Form_NhanVien : Form
     {
-        GarageDB ga = new GarageDB();
+        GarageDB ga;
         string user;
         string pass;
         DataBase db;
@@ -26,6 +26,7 @@ namespace giaodien
             this.user = user;
             this.pass = pass;
             this.db = new DataBase(user, pass);
+            this.ga = new GarageDB(user,pass);
         }
         private void Form_NhanVien_Load(object sender, EventArgs e)
         {
@@ -62,39 +63,6 @@ namespace giaodien
                 data_nv.Rows[i].Cells[4].Value = list.Rows[i][4].ToString();
             }
         }
-        private void FillComboxNhom(DataTable nhom)
-        {
-            //cb_nhom.DataSource = null;
-            //cb_nhom.Items.Clear();
-            //cb_nhom.DataSource = nhom;
-            //cb_nhom.DisplayMember = "MaNhom";
-            //cb_nhom.ValueMember = "MaNhom";
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gunaButton2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gunaButton3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gunaGroupBox1_Click(object sender, EventArgs e)
-        {
-        }
-
         private void data_nv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try

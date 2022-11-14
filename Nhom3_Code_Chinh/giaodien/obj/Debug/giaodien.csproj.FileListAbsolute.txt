@@ -99,7 +99,6 @@ D:\STUDY\HeCSDL\Do_An_HeCSDL\Nhom3_Code_Chinh\giaodien\obj\Debug\giaodien.Form_K
 D:\STUDY\HeCSDL\Do_An_HeCSDL\Nhom3_Code_Chinh\giaodien\obj\Debug\giaodien.Form_NhanVien.resources
 D:\STUDY\HeCSDL\Do_An_HeCSDL\Nhom3_Code_Chinh\giaodien\obj\Debug\giaodien.Form_nhapkho.resources
 D:\STUDY\HeCSDL\Do_An_HeCSDL\Nhom3_Code_Chinh\giaodien\obj\Debug\giaodien.Form_PhieuThu.resources
-D:\STUDY\HeCSDL\Do_An_HeCSDL\Nhom3_Code_Chinh\giaodien\obj\Debug\giaodien.Form_TinhLuong.resources
 D:\STUDY\HeCSDL\Do_An_HeCSDL\Nhom3_Code_Chinh\giaodien\obj\Debug\giaodien.Form_XemHD.resources
 D:\STUDY\HeCSDL\Do_An_HeCSDL\Nhom3_Code_Chinh\giaodien\obj\Debug\giaodien.Sign_up.resources
 D:\STUDY\HeCSDL\Do_An_HeCSDL\Nhom3_Code_Chinh\giaodien\obj\Debug\giaodien.Form_Chinh.resources

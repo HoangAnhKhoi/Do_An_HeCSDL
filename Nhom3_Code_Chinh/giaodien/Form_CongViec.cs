@@ -13,10 +13,10 @@ namespace giaodien
 {
     public partial class Form_CongViec : Form
     {
-        GarageDB ga = new GarageDB();
         string user;
         string pass;
         DataBase db;
+        GarageDB ga;
         public Form_CongViec()
         {
             InitializeComponent();
@@ -26,6 +26,7 @@ namespace giaodien
             this.user = user;
             this.pass = pass;
             this.db = new DataBase(user, pass);
+            this.ga = new GarageDB(user, pass);
         }
 
         private void Form_CongViec_Load(object sender, EventArgs e)
@@ -68,31 +69,6 @@ namespace giaodien
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void txt_tiencv_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_tiencv_Leave(object sender, EventArgs e)
-        {
-            bool a = true;
-            GarageDB gr = new GarageDB();
-            string tiencv = txt_noidungcv.Text;
-            foreach (int i in tiencv)
-            {
-                if (i < 48 || i > 57)
-                {
-                    a = false;
-                    break;
-                }
-            }
-            if (a == false)
-            {
-                MessageBox.Show("Mục này không được có chữ", "Thông báo", MessageBoxButtons.OK);
-                txt_noidungcv.Text = "";
             }
         }
         private int them_sua_CV(SqlCommand cmd)

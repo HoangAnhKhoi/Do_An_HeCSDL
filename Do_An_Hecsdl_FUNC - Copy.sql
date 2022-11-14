@@ -692,3 +692,33 @@ AS
 		SELECT @tiendathu = SUM(SoTienThu) FROM HOADON WHERE MaHopDong=@soHD
 		RETURN @giatriHD - @tiendathu
 	END
+---Thêm phiếu thu 
+CREATE PROC THEM_HOADON 
+@mahoadon CHAR(15),
+@mahdong CHAR(15),
+@hoten NVARCHAR(40),
+@sotienthu INT,
+@result int output
+AS
+	BEGIN TRAN
+		BEGIN TRY
+			DECLARE @idkh CHAR(6),@tiendu int
+			SELECT @idkh=KH_NguoiID FROM HOPDONG WHERE SoHD=@mahdong
+			INSERT INTO HOADON VALUES(@mahoadon,DEFAULT,@mahdong,@idkh,@hoten,@sotienthu)
+			EXEC @tiendu=TIEN_HOADON @mahdong
+			if(@tiendu < 0)
+			BEGIN
+				set @result=2
+				ROLLBACK TRAN
+			END
+			ELSE
+			BEGIN
+				set @result=1
+				COMMIT TRAN
+			END
+		END TRY 
+		BEGIN CATCH
+		ROLLBACK TRAN
+		set @result=0
+		END CATCH
+		

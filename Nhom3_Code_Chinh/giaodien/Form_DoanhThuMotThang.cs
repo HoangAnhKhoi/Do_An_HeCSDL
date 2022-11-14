@@ -12,8 +12,8 @@ namespace giaodien
 {
     public partial class Form_DoanhThuMotThang : Form
     {
-        private GarageDB gr = new GarageDB();
-        GarageDB ga = new GarageDB();
+        GarageDB gr;
+        GarageDB ga;
         string user;
         string pass;
         DataBase db;
@@ -26,6 +26,8 @@ namespace giaodien
             this.user = user;
             this.pass = pass;
             this.db = new DataBase(user, pass);
+            this.gr = new GarageDB(user, pass);
+            this.ga = new GarageDB(user, pass);
         }
 
         private void btn_tinhDthu_Click(object sender, EventArgs e)
@@ -36,7 +38,9 @@ namespace giaodien
                 string KT = date_to.Value.ToString("yyyy-MM-dd");
                 string query1 = "SELECT * FROM XUAT_DOANHTHU('" + BD + "','" + KT + "')";
                 DataTable tb1 = db.Execute(query1);
-                txt_tongtien.Text = "0";
+                string query2 = "DECLARE @result int EXEC @result= DOANHTHU '" + BD + "','" + KT + "' SELECT @result";
+                DataTable tb2 = db.Execute(query2);
+                txt_tongtien.Text = tb2.Rows[0][0].ToString();
                 data_DoanhThu.DataSource = tb1;
             }
             catch (Exception ex)
@@ -114,22 +118,17 @@ namespace giaodien
 
         private void gunaButton1_Click(object sender, EventArgs e)
         {
-            if(data_DoanhThu.Rows.Count==1)
-                MessageBox.Show("Hãy tính doanh thu của tháng trước");
-            else
+            try
             {
-                if (MessageBox.Show("Bạn có muốn xóa hết dữ liệu của tháng này?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                {
-                    for (int i = 0; i < data_DoanhThu.Rows.Count - 1; i++)
-                    {
-                        string query1 = " SoHD =" + data_DoanhThu.Rows[i].Cells[0].Value.ToString();
-                        gr.deleteDK(query1, gr.CT);
-                        gr.deleteDK(query1, gr.PT);
-                        gr.deleteDK(query1, gr.HD);
-                    }
-                    MessageBox.Show("Xóa thành công");
-                }
-            }    
+                string BD = date_from.Value.ToString("yyyy-MM-dd");
+                string KT = date_to.Value.ToString("yyyy-MM-dd");
+                string query1 = "EXEC XOA_DOANHTHU '" + BD + "','" + KT + "'";
+                db.ExecuteNonQuery(query1);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
