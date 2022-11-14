@@ -12,18 +12,45 @@ namespace giaodien
 {
     public partial class Form_XemHD : Form
     {
+        GarageDB ga;
+        string user;
+        string pass;
+        DataBase db;
+        public Form_XemHD(string user, string pass) : this()
+        {
+            this.user = user;
+            this.pass = pass;
+            this.db = new DataBase(user, pass);
+            this.ga = new GarageDB(user, pass);
+        }
         public Form_XemHD()
         {
             InitializeComponent();
         }
 
-        private void txt_mahd_Enter(object sender, EventArgs e)
+        private void btn_timkiem_Click(object sender, EventArgs e)
         {
-            if(txt_mahd.Text=="Nhập mã hợp đồng")
+            try
             {
-                txt_mahd.Text = "";
-                txt_mahd.ForeColor = Color.Silver;
-            }    
+                string query1 = "SELECT * FROM XUAT_HOPDONG_BACKUP('" + txt_mahd.Text + "')";
+                DataTable hd = db.Execute(query1);
+                if(hd.Rows.Count==1)
+                {
+                    lb_sohd.Text = hd.Rows[0][0].ToString();
+                    lb_ngayhopdong.Text= hd.Rows[0][1].ToString();
+                    lb_kh.Text= hd.Rows[0][2].ToString();
+                    lb_soxehd.Text= hd.Rows[0][3].ToString();
+                    lb_gthopdong.Text= hd.Rows[0][4].ToString();
+                    lb_ngaygiaodk.Text= hd.Rows[0][5].ToString();
+                    lb_ngaynghiemthu.Text= hd.Rows[0][6].ToString();
+                    string query2 = "SELECT * FROM CONGVIEC_HD('" + txt_mahd.Text + "')";
+                    data_chitietHD.DataSource = db.Execute(query2);
+                }    
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void txt_mahd_Leave(object sender, EventArgs e)
@@ -31,30 +58,17 @@ namespace giaodien
             if (txt_mahd.Text == "")
             {
                 txt_mahd.Text = "Nhập mã hợp đồng";
-                txt_mahd.ForeColor = Color.Silver;
+                txt_mahd.ForeColor = Color.Gray;
             }
         }
 
-        private void btn_timkiem_Click(object sender, EventArgs e)
+        private void txt_mahd_Enter(object sender, EventArgs e)
         {
-        }
-        private void FillDataIntoGrid(DataTable list)
-        {
-            data_chitietHD.Rows.Clear();
-            for (int i = 0; i < list.Rows.Count; i++)
+            if (txt_mahd.Text == "Nhập mã hợp đồng")
             {
-                int index = data_chitietHD.Rows.Add();
-                data_chitietHD.Rows[i].Cells[0].Value = list.Rows[i][0].ToString();
-                data_chitietHD.Rows[i].Cells[1].Value = list.Rows[i][1].ToString();
-                data_chitietHD.Rows[i].Cells[2].Value = list.Rows[i][2].ToString();
-                data_chitietHD.Rows[i].Cells[3].Value = list.Rows[i][3].ToString();
-                data_chitietHD.Rows[i].Cells[4].Value = list.Rows[i][4].ToString();
+                txt_mahd.Text = "";
+                txt_mahd.ForeColor = Color.Gray;
             }
-        }
-
-        private void Form_XemHD_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

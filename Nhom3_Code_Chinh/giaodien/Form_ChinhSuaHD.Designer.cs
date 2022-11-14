@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tab_hd = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -55,6 +55,7 @@
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tab_chinhsua = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_thoat = new Guna.UI.WinForms.GunaButton();
             this.btn_luuhd = new Guna.UI.WinForms.GunaButton();
             this.btn_xuathd = new Guna.UI.WinForms.GunaButton();
             this.data_cv = new System.Windows.Forms.DataGridView();
@@ -81,7 +82,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.btn_thoat = new Guna.UI.WinForms.GunaButton();
             this.tabControl1.SuspendLayout();
             this.tab_hd.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -350,6 +350,7 @@
             this.dtgHopDong.RowHeadersWidth = 51;
             this.dtgHopDong.Size = new System.Drawing.Size(605, 556);
             this.dtgHopDong.TabIndex = 43;
+            this.dtgHopDong.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgHopDong_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -450,6 +451,35 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin hợp đồng";
             // 
+            // btn_thoat
+            // 
+            this.btn_thoat.AnimationHoverSpeed = 0.07F;
+            this.btn_thoat.AnimationSpeed = 0.03F;
+            this.btn_thoat.BackColor = System.Drawing.Color.Transparent;
+            this.btn_thoat.BaseColor = System.Drawing.Color.Transparent;
+            this.btn_thoat.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_thoat.BorderSize = 2;
+            this.btn_thoat.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btn_thoat.FocusedColor = System.Drawing.Color.Empty;
+            this.btn_thoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_thoat.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btn_thoat.Image = null;
+            this.btn_thoat.ImageSize = new System.Drawing.Size(20, 20);
+            this.btn_thoat.Location = new System.Drawing.Point(787, 196);
+            this.btn_thoat.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_thoat.Name = "btn_thoat";
+            this.btn_thoat.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.btn_thoat.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btn_thoat.OnHoverForeColor = System.Drawing.Color.White;
+            this.btn_thoat.OnHoverImage = null;
+            this.btn_thoat.OnPressedColor = System.Drawing.Color.Black;
+            this.btn_thoat.Radius = 20;
+            this.btn_thoat.Size = new System.Drawing.Size(204, 57);
+            this.btn_thoat.TabIndex = 81;
+            this.btn_thoat.Text = "Thoát";
+            this.btn_thoat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btn_thoat.Click += new System.EventHandler(this.btn_thoat_Click);
+            // 
             // btn_luuhd
             // 
             this.btn_luuhd.AnimationHoverSpeed = 0.07F;
@@ -464,7 +494,7 @@
             this.btn_luuhd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btn_luuhd.Image = null;
             this.btn_luuhd.ImageSize = new System.Drawing.Size(20, 20);
-            this.btn_luuhd.Location = new System.Drawing.Point(787, 115);
+            this.btn_luuhd.Location = new System.Drawing.Point(787, 36);
             this.btn_luuhd.Margin = new System.Windows.Forms.Padding(4);
             this.btn_luuhd.Name = "btn_luuhd";
             this.btn_luuhd.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
@@ -493,7 +523,7 @@
             this.btn_xuathd.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btn_xuathd.Image = null;
             this.btn_xuathd.ImageSize = new System.Drawing.Size(20, 20);
-            this.btn_xuathd.Location = new System.Drawing.Point(787, 36);
+            this.btn_xuathd.Location = new System.Drawing.Point(787, 113);
             this.btn_xuathd.Margin = new System.Windows.Forms.Padding(4);
             this.btn_xuathd.Name = "btn_xuathd";
             this.btn_xuathd.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
@@ -511,14 +541,14 @@
             // 
             this.data_cv.AllowUserToAddRows = false;
             this.data_cv.BackgroundColor = System.Drawing.Color.SeaShell;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.data_cv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.data_cv.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.data_cv.ColumnHeadersHeight = 41;
             this.data_cv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.data_cv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -824,35 +854,6 @@
             this.label12.Size = new System.Drawing.Size(126, 24);
             this.label12.TabIndex = 30;
             this.label12.Text = "Số hợp đồng:";
-            // 
-            // btn_thoat
-            // 
-            this.btn_thoat.AnimationHoverSpeed = 0.07F;
-            this.btn_thoat.AnimationSpeed = 0.03F;
-            this.btn_thoat.BackColor = System.Drawing.Color.Transparent;
-            this.btn_thoat.BaseColor = System.Drawing.Color.Transparent;
-            this.btn_thoat.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_thoat.BorderSize = 2;
-            this.btn_thoat.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btn_thoat.FocusedColor = System.Drawing.Color.Empty;
-            this.btn_thoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_thoat.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btn_thoat.Image = null;
-            this.btn_thoat.ImageSize = new System.Drawing.Size(20, 20);
-            this.btn_thoat.Location = new System.Drawing.Point(787, 196);
-            this.btn_thoat.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_thoat.Name = "btn_thoat";
-            this.btn_thoat.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.btn_thoat.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btn_thoat.OnHoverForeColor = System.Drawing.Color.White;
-            this.btn_thoat.OnHoverImage = null;
-            this.btn_thoat.OnPressedColor = System.Drawing.Color.Black;
-            this.btn_thoat.Radius = 20;
-            this.btn_thoat.Size = new System.Drawing.Size(204, 57);
-            this.btn_thoat.TabIndex = 81;
-            this.btn_thoat.Text = "Thoát";
-            this.btn_thoat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btn_thoat.Click += new System.EventHandler(this.btn_thoat_Click);
             // 
             // Form_ChinhSuaHD
             // 

@@ -121,7 +121,7 @@ namespace giaodien
 
         private void btnXemHD_Click(object sender, EventArgs e)
         {
-            openchildform(new Form_XemHD());
+            openchildform(new Form_XemHD(user, pass));
         }
         private void btnNhapKho_Click(object sender, EventArgs e)
         {

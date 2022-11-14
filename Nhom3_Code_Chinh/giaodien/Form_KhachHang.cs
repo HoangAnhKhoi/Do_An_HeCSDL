@@ -175,7 +175,7 @@ namespace giaodien
                     txt_sdtkh.Text = row.Cells[3].Value.ToString();
                     string[] arrListStr = row.Cells[4].Value.ToString().Split('/');
                     arrListStr[2] = arrListStr[2].Substring(0, 4);
-                    date_ngaysinhkh.Value = new DateTime(int.Parse(arrListStr[2]), int.Parse(arrListStr[0]), int.Parse(arrListStr[1]));
+                    date_ngaysinhkh.Value = new DateTime(int.Parse(arrListStr[2]), int.Parse(arrListStr[1]), int.Parse(arrListStr[0]));
                     txt_CCCDkh.Text = row.Cells[5].Value.ToString();
                     if (row.Cells[6].Value.ToString() == "False")
                         rbn_nukh.Checked = true;

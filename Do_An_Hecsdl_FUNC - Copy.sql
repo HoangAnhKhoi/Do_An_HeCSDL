@@ -11,16 +11,8 @@ as
 	RETURN (SELECT * FROM VIEW_NV WHERE NV_NguoiID in (SELECT NV_NguoiID FROM NHANVIEN WHERE MaCV=@machucvu))
 -----thêm
 CREATE proc THEM_NV
-@nguoiid CHAR(6),
-@hoten nvarchar(30),
-@diachi nvarchar(30),
-@dienthoai CHAR(11),
-@ngaysinh date,
-@cccd CHAR(11),
-@gioitinnh bit,
-@macv CHAR(6),
-@luong int,
-@result int output
+@nguoiid CHAR(6),@hoten nvarchar(30),@diachi nvarchar(30),@dienthoai CHAR(11),
+@ngaysinh date,@cccd CHAR(11),@gioitinnh bit,@macv CHAR(6),@luong int,@result int output
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -37,16 +29,8 @@ AS
 		END CATCH
 -----sửa
 CREATE PROC SUA_NV
-@nguoiid CHAR(6),
-@hoten nvarchar(30),
-@diachi nvarchar(30),
-@dienthoai CHAR(11),
-@ngaysinh date,
-@cccd CHAR(11),
-@gioitinh bit,
-@macv CHAR(6),
-@luong INT,
-@result int output
+@nguoiid CHAR(6),@hoten nvarchar(30),@diachi nvarchar(30),@dienthoai CHAR(11),@ngaysinh date,
+@cccd CHAR(11),@gioitinh bit,@macv CHAR(6),@luong INT,@result int output
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -89,14 +73,8 @@ as
 GO
 -----THÊM
 CREATE PROC THEM_KH 
-@nguoiid CHAR(6),
-@hoten nvarchar(30),
-@diachi nvarchar(30),
-@dienthoai CHAR(11),
-@ngaysinh date,
-@cccd CHAR(11),
-@gioitinh bit,
-@result int output 
+@nguoiid CHAR(6),@hoten nvarchar(30),@diachi nvarchar(30),@dienthoai CHAR(11),
+@ngaysinh date,@cccd CHAR(11),@gioitinh bit,@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -113,14 +91,8 @@ AS
 GO
 ----- SỬA
 CREATE PROC SUA_KH
-@nguoiid CHAR(6),
-@hoten nvarchar(30),
-@diachi nvarchar(30),
-@dienthoai CHAR(11),
-@ngaysinh date,
-@cccd CHAR(11),
-@gioitinh bit,
-@result int output 
+@nguoiid CHAR(6),@hoten nvarchar(30),@diachi nvarchar(30),@dienthoai CHAR(11),
+@ngaysinh date,@cccd CHAR(11),@gioitinh bit,@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -162,10 +134,7 @@ as
 GO
 -----THÊM
 CREATE PROC THEM_VL 
-@mavl CHAR(6),
-@tenvl nvarchar(20),
-@soluong int,
-@result int output 
+@mavl CHAR(6),@tenvl nvarchar(20),@soluong int,@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -181,10 +150,7 @@ AS
 GO
 ----- SỬA
 CREATE PROC SUA_VL
-@mavl CHAR(6),
-@tenvl nvarchar(20),
-@soluong int,
-@result int output 
+@mavl CHAR(6),@tenvl nvarchar(20),@soluong int,@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -225,11 +191,8 @@ as
 	SELECT * FROM NHACUNGCAP
 -----THÊM
 CREATE PROC THEM_NCC
-@manhacc CHAR(6),
-@tennhacc nvarchar(30),
-@dienthoai CHAR(11),
-@diachi nvarchar(30),
-@result int output 
+@manhacc CHAR(6),@tennhacc nvarchar(30),@dienthoai CHAR(11),
+@diachi nvarchar(30),@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -243,11 +206,8 @@ AS
 		END CATCH
 ----- SỬA
 CREATE PROC SUA_NCC
-@manhacc CHAR(6),
-@tennhacc nvarchar(30),
-@dienthoai CHAR(11),
-@diachi nvarchar(30),
-@result int output 
+@manhacc CHAR(6),@tennhacc nvarchar(30),@dienthoai CHAR(11),
+@diachi nvarchar(30),@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -263,8 +223,7 @@ AS
 		END CATCH
 ----- Xóa
 CREATE PROC XOA_NCC
-@manhacc CHAR(6),
-@result int output 
+@manhacc CHAR(6),@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -286,11 +245,8 @@ RETURN (SELECT * FROM VIEW_CVIEC)
 
 -----THÊM
 CREATE PROC THEM_CVIEC
-@macv CHAR(6),
-@noidungcv nvarchar(40),
-@tiencong int,
-@vatlieu char(6),
-@result int output 
+@macv CHAR(6),@noidungcv nvarchar(40),@tiencong int,
+@vatlieu char(6),@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -306,11 +262,8 @@ AS
 GO
 ----- SỬA
 CREATE PROC SUA_CViec
-@macv CHAR(6),
-@noidungcv nvarchar(40),
-@tiencong int,
-@vatlieu char(6),
-@result int output 
+@macv CHAR(6),@noidungcv nvarchar(40),@tiencong int,
+@vatlieu char(6),@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -352,9 +305,7 @@ as
 GO
 -----Them chuc vu
 CREATE proc THEM_CHUCVU
-@macv char(6),
-@tencv nvarchar(20),
-@result int output 
+@macv char(6),@tencv nvarchar(20),@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -371,8 +322,7 @@ GO
 --exec THEM_CHUCVU '1','nongdan'
 ------Xoa chuc vu
 CREATE PROC XOA_CHUCVU
-@macv CHAR(6),
-@result int output 
+@macv CHAR(6),@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -388,9 +338,7 @@ GO
 ---exec XOA_CHUCVU '1'
 ----Sua chuc vu
 CREATE proc SUA_CHUCVU
-@macv char(6),
-@tencv nvarchar(20),
-@result int output 
+@macv char(6),@tencv nvarchar(20),@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -408,10 +356,7 @@ go
 ---Thêm xóa sửa bảng USERS
 -----Thêm
 CREATE PROC THEM_USER
-@Username VARCHAR(20),
-@Pass VARCHAR(20),
-@Chucvu NVARCHAR(30),
-@result int output 
+@Username VARCHAR(20),@Pass VARCHAR(20),@Chucvu NVARCHAR(30),@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -440,10 +385,7 @@ AS
 GO
 -----Sửa
 CREATE PROC SUA_USERS
-@Username VARCHAR(20),
-@Pass VARCHAR(20),
-@Chucvu NVARCHAR(30),
-@result int output 
+@Username VARCHAR(20),@Pass VARCHAR(20),@Chucvu NVARCHAR(30),@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -487,11 +429,8 @@ as
 RETURN (SELECT * FROM HOPDONG)
 -----Thêm
 CREATE PROC THEM_HDONG
-@SoHD CHAR(15),
-@KH_NguoiID CHAR(6),
-@SoXe CHAR(10),
-@NgayGiaoDuKien DATE,
-@result int output 
+@SoHD CHAR(15),@KH_NguoiID CHAR(6),@SoXe CHAR(10),
+@NgayGiaoDuKien DATE,@result int output 
 AS
 		BEGIN TRY
 			BEGIN TRAN
@@ -514,8 +453,7 @@ AS
 GO
 -----Xóa 
 CREATE PROC XOA_HDONG
-@SoHD CHAR(15),
-@result int output 
+@SoHD CHAR(15),@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -544,12 +482,38 @@ CREATE FUNCTION TIMKIEM_CHITIET_HD(@SoHD CHAR(15)) RETURNS table
 as
 RETURN (SELECT * FROM CHITIET_HD WHERE SoHD=@SoHD)
 GO
+-----Lấy chi tiết công việc
+CREATE FUNCTION CONGVIEC_CHITIET_HD(@SoHD CHAR(15)) RETURNS
+@congviec table(MaCV CHAR(6),TenCV NVARCHAR(40),MaTho CHAR(6),TenTho NVARCHAR(30))
+AS
+BEGIN
+	INSERT @congviec SELECT CHITIET_HD.MaCV,CONGVIEC.NoiDungCV,CHITIET_HD.MaNV,TT_NGUOI.Hoten
+	FROM CHITIET_HD, TT_NGUOI, CONGVIEC
+	WHERE CHITIET_HD.MaNV=TT_NGUOI.NguoiID AND CHITIET_HD.MaCV=CONGVIEC.MaCViec AND CHITIET_HD.SoHD=@SoHD
+	return
+END
+-----Lấy chi tiết công việc cho xem hợp đồng
+CREATE FUNCTION CONGVIEC_HD(@SoHD CHAR(15)) RETURNS
+@congviec table(TenCV NVARCHAR(40),TenTho NVARCHAR(30),TriGiaCV int)
+AS
+BEGIN
+	IF EXISTS(SELECT 1 FROM HOPDONG WHERE SoHD= @soHD)
+		BEGIN
+			INSERT @congviec SELECT CONGVIEC.NoiDungCV,TT_NGUOI.Hoten,CHITIET_HD.TriGiaCV
+			FROM CHITIET_HD, TT_NGUOI, CONGVIEC
+			WHERE CHITIET_HD.MaNV=TT_NGUOI.NguoiID AND CHITIET_HD.MaCV=CONGVIEC.MaCViec AND CHITIET_HD.SoHD=@SoHD
+		END
+	ELSE
+		BEGIN
+			INSERT @congviec SELECT CONGVIEC.NoiDungCV,TT_NGUOI.Hoten,CHITIET_HD_BACKUP.TriGiaCV
+			FROM CHITIET_HD_BACKUP, TT_NGUOI, CONGVIEC
+			WHERE CHITIET_HD_BACKUP.MaNV=TT_NGUOI.NguoiID AND CHITIET_HD_BACKUP.MaCV=CONGVIEC.MaCViec AND CHITIET_HD_BACKUP.SoHD=@SoHD
+		END
+	return
+END
 -----Thêm
 CREATE PROC THEM_CHITIET_HD
-@SoHD CHAR(15),
-@MaCV CHAR(6),
-@MaNV CHAR(6),
-@result int output 
+@SoHD CHAR(15),@MaCV CHAR(6),@MaNV CHAR(6),@result int output 
 AS
 	BEGIN TRAN 
 		BEGIN TRY
@@ -590,13 +554,8 @@ RETURN (SELECT * FROM VIEW_NHAPKHO)
 -----Thêm
 GO 
 CREATE PROC THEM_NHAPKHO
-@MaNKho CHAR(15),
-@MaVL CHAR(6),
-@MaNhaCC CHAR(6),
-@SoLuong INT,
-@GiaTri DECIMAL,
-@MaNV CHAR(6),
-@result int output 
+@MaNKho CHAR(15),@MaVL CHAR(6),@MaNhaCC CHAR(6),
+@SoLuong INT,@GiaTri DECIMAL,@MaNV CHAR(6),@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -611,13 +570,8 @@ AS
 GO
 -----Sửa
 CREATE PROC SUA_NHAPKHO
-@MaNKho CHAR(15),
-@MaVL CHAR(6),
-@MaNhaCC CHAR(6),
-@SoLuong INT,
-@GiaTri DECIMAL,
-@MaNV CHAR(6),
-@result int output 
+@MaNKho CHAR(15),@MaVL CHAR(6),@MaNhaCC CHAR(6),
+@SoLuong INT,@GiaTri DECIMAL,@MaNV CHAR(6),@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -634,8 +588,7 @@ AS
 GO
 -----Xóa
 CREATE PROC XOA_NHAPKHO
-@mankho CHAR(15),
-@result int output 
+@mankho CHAR(15),@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
@@ -650,7 +603,8 @@ AS
 		set @result=0
 		END CATCH
 GO
----Tính toán doanh thu 
+---Doanh thu
+-----Tính toán doanh thu 
 CREATE FUNCTION DOANHTHU(@ngaydautien date,@ngaycuoicung date) RETURNS INT 
 AS
 	BEGIN
@@ -659,7 +613,22 @@ AS
 		return @doanhthu 
 	END
 GO 
-EXEC XUAT_KH
+-----Tìm hợp đồng trong doanh thu
+CREATE FUNCTION XUAT_HOPDONG_BACKUP(@soHD CHAR(15)) RETURNS
+@table TABLE(SoHD CHAR(15),NgayHD DATE,KH_NguoiID CHAR(6),SoXE CHAR(10),TriGiaHD INT,NgayGiaoDuKien DATE, NgayNghiemThu DATE)
+AS
+	BEGIN
+		IF EXISTS(SELECT 1 FROM HOPDONG WHERE SoHD= @soHD)
+		BEGIN
+			INSERT @table SELECT * FROM HOPDONG WHERE SoHD= @soHD
+		END
+		ELSE
+		BEGIN
+			INSERT @table SELECT * FROM HOPDONG_BACKUP WHERE SoHD= @soHD
+		END
+		RETURN
+	END
+-----Xuất doanh thu
 CREATE FUNCTION XUAT_DOANHTHU(@ngaydautien date,@ngaycuoicung date) 
 RETURNS 
 @doanhthu table(sohd CHAR(15),ngayHD date,ngaynghiemthu date,giatriHD int)
@@ -672,8 +641,7 @@ AS
 	END
 ---Xóa doanh thu 
 CREATE PROC XOA_DOANHTHU
-@ngaydautien date,
-@ngaycuoicung date
+@ngaydautien date,@ngaycuoicung date
 AS
 	DELETE 
 	FROM HOPDONG_BACKUP
@@ -694,11 +662,8 @@ AS
 	END
 ---Thêm phiếu thu 
 CREATE PROC THEM_HOADON 
-@mahoadon CHAR(15),
-@mahdong CHAR(15),
-@hoten NVARCHAR(40),
-@sotienthu INT,
-@result int output
+@mahoadon CHAR(15),@mahdong CHAR(15),@hoten NVARCHAR(40),
+@sotienthu INT,@result int output
 AS
 	BEGIN TRAN
 		BEGIN TRY

@@ -42,6 +42,7 @@ namespace giaodien
 
         private void Form_ChinhSuaHD_Load(object sender, EventArgs e)
         {
+            btn_luuhd.Show();
             string query = "SELECT * FROM  XUAT_HDONG()";
             DataTable table_hd = db.Execute(query);
             dtgHopDong.DataSource = table_hd;
@@ -52,6 +53,20 @@ namespace giaodien
             cb_makh.DataSource = table_kh;
             cb_makh.DisplayMember = "KH_NguoiID";
             cb_makh.ValueMember = "KH_NguoiID";
+            string query3 = "SELECT * FROM  XUAT_NV_CHUCVU('3')";
+            DataTable table_thochinh = db.Execute(query3);
+            cb_thochinh.DataSource = null;
+            cb_thochinh.Items.Clear();
+            cb_thochinh.DataSource = table_thochinh;
+            cb_thochinh.DisplayMember = "Hoten";
+            cb_thochinh.ValueMember = "NV_NguoiID";
+            string query2 = "SELECT * FROM  XUAT_CVIEC()";
+            DataTable table_cviec = db.Execute(query2);
+            cb_congviec.DataSource = null;
+            cb_congviec.Items.Clear();
+            cb_congviec.DataSource = table_cviec;
+            cb_congviec.DisplayMember = "NoiDungCV";
+            cb_congviec.ValueMember = "MaCViec";
         }
         private void ghileft(ref Spire.Doc.Document doc, string str)
         {
@@ -77,20 +92,6 @@ namespace giaodien
             lb_kh.Text = cb_makh.Text;
             lb_soxehd.Text = txtSoxe.Text;
             lb_ngaygiaodk.Text = date_ngaygiaodukien.Text;
-            string query1 = "SELECT * FROM  XUAT_NV_CHUCVU('3')";
-            DataTable table_thochinh = db.Execute(query1);
-            cb_thochinh.DataSource = null;
-            cb_thochinh.Items.Clear();
-            cb_thochinh.DataSource = table_thochinh;
-            cb_thochinh.DisplayMember = "Hoten";
-            cb_thochinh.ValueMember = "NV_NguoiID";
-            string query2 = "SELECT * FROM  XUAT_CVIEC()";
-            DataTable table_cviec = db.Execute(query2);
-            cb_congviec.DataSource = null;
-            cb_congviec.Items.Clear();
-            cb_congviec.DataSource = table_cviec;
-            cb_congviec.DisplayMember = "NoiDungCV";
-            cb_congviec.ValueMember = "MaCViec";
         }
         private void btn_themhd_Click(object sender, EventArgs e)
         {
@@ -118,12 +119,19 @@ namespace giaodien
                 MessageBox.Show("Không có hợp đồng này", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else
             {
+                string query1 = "SELECT * FROM CONGVIEC_CHITIET_HD('" + txtSoHopDong.Text + "')";
+                tb_cv = db.Execute(query1);
+                FillDataCV(tb_cv);
                 lb_sohd.Text = table_hd.Rows[0][0].ToString();
-                lb_ngayhopdong.Text= table_hd.Rows[0][2].ToString();
+                lb_ngayhopdong.Text= table_hd.Rows[0][1].ToString();
                 lb_kh.Text= table_hd.Rows[0][2].ToString();
                 lb_soxehd.Text= table_hd.Rows[0][3].ToString();
-                lb_gthopdong.Text= table_hd.Rows[0][4].ToString();
+                lb_gthopdong.Text= table_hd.Rows[0][4].ToString() + "Đ";
                 lb_ngaygiaodk.Text= table_hd.Rows[0][5].ToString();
+                tabControl1.TabPages.Add(tab_chinhsua);
+                tabControl1.TabPages.Remove(tab_hd);
+                btn_luuhd.Hide();
+                save = true;
             }
         }
         private void btn_themcvhd_Click(object sender, EventArgs e)
@@ -194,7 +202,6 @@ namespace giaodien
                 if (i["MaCV"].ToString() == macv)
                 {
                     i.Delete();
-                    break;
                     SqlCommand cmd = new SqlCommand();
                     cmd.CommandText="EXECUTE XOA_CHITIET_HD @sohd,@macv";
                     SqlParameter soHDParam = new SqlParameter("@sohd", lb_sohd.Text);
@@ -206,6 +213,7 @@ namespace giaodien
                     cmd.Parameters.Add(soHDParam);
                     cmd.Parameters.Add(maCVParam);
                     db.ExecuteCMD(cmd);
+                    break;
                 }
             }
             update_trigiahd();
@@ -322,6 +330,28 @@ namespace giaodien
             catch (Exception ex)
             {
                 MessageBox.Show("Xóa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dtgHopDong_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row = dtgHopDong.Rows[e.RowIndex];
+                if (row != null)
+                {
+                    txtSoHopDong.Text = row.Cells[0].Value.ToString();
+                    cb_makh.Text = row.Cells[2].Value.ToString();
+                    txtSoxe.Text = row.Cells[3].Value.ToString();
+                    string[] arrListStr = row.Cells[5].Value.ToString().Split('/');
+                    arrListStr[2] = arrListStr[2].Substring(0, 4);
+                    date_ngaygiaodukien.Value = new DateTime(int.Parse(arrListStr[2]), int.Parse(arrListStr[1]), int.Parse(arrListStr[0]));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

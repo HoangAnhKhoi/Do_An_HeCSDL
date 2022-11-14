@@ -28,27 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt_mahd = new Guna.UI.WinForms.GunaTextBox();
-            this.data_infoHD = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.data_chitietHD = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_timkiem = new Guna.UI.WinForms.GunaButton();
+            this.lb_gthopdong = new System.Windows.Forms.Label();
+            this.lb_kh = new System.Windows.Forms.Label();
+            this.lb_ngaygiaodk = new System.Windows.Forms.Label();
+            this.lb_soxehd = new System.Windows.Forms.Label();
+            this.lb_ngayhopdong = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.lb_sohd = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lb_ngaynghiemthu = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_timkiem = new Guna.UI.WinForms.GunaButton();
-            ((System.ComponentModel.ISupportInitialize)(this.data_infoHD)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.data_chitietHD)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +65,7 @@
             this.txt_mahd.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txt_mahd.ForeColor = System.Drawing.Color.Silver;
             this.txt_mahd.Location = new System.Drawing.Point(16, 25);
-            this.txt_mahd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txt_mahd.Margin = new System.Windows.Forms.Padding(4);
             this.txt_mahd.Name = "txt_mahd";
             this.txt_mahd.PasswordChar = '\0';
             this.txt_mahd.SelectedText = "";
@@ -73,94 +75,9 @@
             this.txt_mahd.Enter += new System.EventHandler(this.txt_mahd_Enter);
             this.txt_mahd.Leave += new System.EventHandler(this.txt_mahd_Leave);
             // 
-            // data_infoHD
-            // 
-            this.data_infoHD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.data_infoHD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.data_infoHD.ColumnHeadersHeight = 50;
-            this.data_infoHD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7});
-            this.data_infoHD.Location = new System.Drawing.Point(16, 73);
-            this.data_infoHD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.data_infoHD.Name = "data_infoHD";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.data_infoHD.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.data_infoHD.RowHeadersVisible = false;
-            this.data_infoHD.RowHeadersWidth = 51;
-            this.data_infoHD.Size = new System.Drawing.Size(1024, 87);
-            this.data_infoHD.TabIndex = 18;
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.FillWeight = 60F;
-            this.Column1.HeaderText = "Số hợp đồng";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.HeaderText = "Ngày hợp đồng";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.HeaderText = "Mã khách hàng";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column4.HeaderText = "Số xe";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column5.HeaderText = "Trị giá hợp đồng";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.HeaderText = "Ngày giao dự kiến";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            // 
-            // Column7
-            // 
-            this.Column7.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column7.HeaderText = "Ngày nghiệm thu";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            // 
             // data_chitietHD
             // 
+            this.data_chitietHD.AllowUserToAddRows = false;
             this.data_chitietHD.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
@@ -172,13 +89,11 @@
             this.data_chitietHD.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.data_chitietHD.ColumnHeadersHeight = 50;
             this.data_chitietHD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6});
-            this.data_chitietHD.Location = new System.Drawing.Point(16, 167);
-            this.data_chitietHD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewTextBoxColumn5});
+            this.data_chitietHD.Location = new System.Drawing.Point(466, 73);
+            this.data_chitietHD.Margin = new System.Windows.Forms.Padding(4);
             this.data_chitietHD.Name = "data_chitietHD";
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
@@ -190,44 +105,8 @@
             this.data_chitietHD.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.data_chitietHD.RowHeadersVisible = false;
             this.data_chitietHD.RowHeadersWidth = 51;
-            this.data_chitietHD.Size = new System.Drawing.Size(1024, 411);
+            this.data_chitietHD.Size = new System.Drawing.Size(574, 505);
             this.data_chitietHD.TabIndex = 19;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.FillWeight = 60F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Số hợp đồng";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.HeaderText = "Mã công việc";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.HeaderText = "Trị giá công việc";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn5.HeaderText = "Mã thợ";
-            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Tiền giao khoán";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             // 
             // btn_timkiem
             // 
@@ -244,7 +123,7 @@
             this.btn_timkiem.Image = null;
             this.btn_timkiem.ImageSize = new System.Drawing.Size(20, 20);
             this.btn_timkiem.Location = new System.Drawing.Point(837, 15);
-            this.btn_timkiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_timkiem.Margin = new System.Windows.Forms.Padding(4);
             this.btn_timkiem.Name = "btn_timkiem";
             this.btn_timkiem.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btn_timkiem.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -258,44 +137,265 @@
             this.btn_timkiem.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btn_timkiem.Click += new System.EventHandler(this.btn_timkiem_Click);
             // 
+            // lb_gthopdong
+            // 
+            this.lb_gthopdong.AutoSize = true;
+            this.lb_gthopdong.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_gthopdong.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lb_gthopdong.Location = new System.Drawing.Point(186, 492);
+            this.lb_gthopdong.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_gthopdong.Name = "lb_gthopdong";
+            this.lb_gthopdong.Size = new System.Drawing.Size(73, 24);
+            this.lb_gthopdong.TabIndex = 89;
+            this.lb_gthopdong.Text = "10000Đ";
+            // 
+            // lb_kh
+            // 
+            this.lb_kh.AutoSize = true;
+            this.lb_kh.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_kh.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lb_kh.Location = new System.Drawing.Point(186, 175);
+            this.lb_kh.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_kh.Name = "lb_kh";
+            this.lb_kh.Size = new System.Drawing.Size(66, 24);
+            this.lb_kh.TabIndex = 88;
+            this.lb_kh.Text = "KH001";
+            // 
+            // lb_ngaygiaodk
+            // 
+            this.lb_ngaygiaodk.AutoSize = true;
+            this.lb_ngaygiaodk.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_ngaygiaodk.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lb_ngaygiaodk.Location = new System.Drawing.Point(186, 375);
+            this.lb_ngaygiaodk.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_ngaygiaodk.Name = "lb_ngaygiaodk";
+            this.lb_ngaygiaodk.Size = new System.Drawing.Size(100, 24);
+            this.lb_ngaygiaodk.TabIndex = 87;
+            this.lb_ngaygiaodk.Text = "21/11/2002";
+            // 
+            // lb_soxehd
+            // 
+            this.lb_soxehd.AutoSize = true;
+            this.lb_soxehd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_soxehd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lb_soxehd.Location = new System.Drawing.Point(186, 307);
+            this.lb_soxehd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_soxehd.Name = "lb_soxehd";
+            this.lb_soxehd.Size = new System.Drawing.Size(109, 24);
+            this.lb_soxehd.TabIndex = 86;
+            this.lb_soxehd.Text = "78D1-67894";
+            // 
+            // lb_ngayhopdong
+            // 
+            this.lb_ngayhopdong.AutoSize = true;
+            this.lb_ngayhopdong.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_ngayhopdong.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lb_ngayhopdong.Location = new System.Drawing.Point(186, 243);
+            this.lb_ngayhopdong.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_ngayhopdong.Name = "lb_ngayhopdong";
+            this.lb_ngayhopdong.Size = new System.Drawing.Size(80, 24);
+            this.lb_ngayhopdong.TabIndex = 85;
+            this.lb_ngayhopdong.Text = "2/1/2002";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label15.Location = new System.Drawing.Point(20, 492);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(155, 24);
+            this.label15.TabIndex = 84;
+            this.label15.Text = "Trị giá hợp đồng:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label14.Location = new System.Drawing.Point(20, 175);
+            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(145, 24);
+            this.label14.TabIndex = 83;
+            this.label14.Text = "Mã khách hàng:";
+            // 
+            // lb_sohd
+            // 
+            this.lb_sohd.AutoSize = true;
+            this.lb_sohd.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_sohd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lb_sohd.Location = new System.Drawing.Point(186, 111);
+            this.lb_sohd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_sohd.Name = "lb_sohd";
+            this.lb_sohd.Size = new System.Drawing.Size(67, 24);
+            this.lb_sohd.TabIndex = 82;
+            this.lb_sohd.Text = "HD001";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label5.Location = new System.Drawing.Point(20, 375);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(167, 24);
+            this.label5.TabIndex = 81;
+            this.label5.Text = "Ngày giao dự kiến:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label3.Location = new System.Drawing.Point(20, 307);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 24);
+            this.label3.TabIndex = 80;
+            this.label3.Text = "Số xe:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label1.Location = new System.Drawing.Point(20, 243);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(147, 24);
+            this.label1.TabIndex = 79;
+            this.label1.Text = "Ngày hợp đồng:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label4.Location = new System.Drawing.Point(11, 197);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 20);
+            this.label4.TabIndex = 78;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label12.Location = new System.Drawing.Point(20, 111);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(126, 24);
+            this.label12.TabIndex = 77;
+            this.label12.Text = "Số hợp đồng:";
+            // 
+            // lb_ngaynghiemthu
+            // 
+            this.lb_ngaynghiemthu.AutoSize = true;
+            this.lb_ngaynghiemthu.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_ngaynghiemthu.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lb_ngaynghiemthu.Location = new System.Drawing.Point(186, 436);
+            this.lb_ngaynghiemthu.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_ngaynghiemthu.Name = "lb_ngaynghiemthu";
+            this.lb_ngaynghiemthu.Size = new System.Drawing.Size(100, 24);
+            this.lb_ngaynghiemthu.TabIndex = 91;
+            this.lb_ngaynghiemthu.Text = "21/11/2002";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label6.Location = new System.Drawing.Point(20, 436);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(159, 24);
+            this.label6.TabIndex = 90;
+            this.label6.Text = "Ngày nghiệm thu:";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "TenCV";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Công việc";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "TriGiaCV";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Trị giá công việc";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "TenTho";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Tên thợ";
+            this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
             // Form_XemHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(1056, 593);
+            this.Controls.Add(this.lb_ngaynghiemthu);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lb_gthopdong);
+            this.Controls.Add(this.lb_kh);
+            this.Controls.Add(this.lb_ngaygiaodk);
+            this.Controls.Add(this.lb_soxehd);
+            this.Controls.Add(this.lb_ngayhopdong);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.lb_sohd);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.btn_timkiem);
             this.Controls.Add(this.data_chitietHD);
-            this.Controls.Add(this.data_infoHD);
             this.Controls.Add(this.txt_mahd);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form_XemHD";
             this.Text = "Form_XemHD";
-            this.Load += new System.EventHandler(this.Form_XemHD_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.data_infoHD)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.data_chitietHD)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private Guna.UI.WinForms.GunaTextBox txt_mahd;
-        private System.Windows.Forms.DataGridView data_infoHD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridView data_chitietHD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private Guna.UI.WinForms.GunaButton btn_timkiem;
+        private System.Windows.Forms.Label lb_gthopdong;
+        private System.Windows.Forms.Label lb_kh;
+        private System.Windows.Forms.Label lb_ngaygiaodk;
+        private System.Windows.Forms.Label lb_soxehd;
+        private System.Windows.Forms.Label lb_ngayhopdong;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label lb_sohd;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lb_ngaynghiemthu;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private Guna.UI.WinForms.GunaButton btn_timkiem;
     }
 }
