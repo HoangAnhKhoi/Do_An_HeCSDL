@@ -30,7 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btn_xuatDL = new Guna.UI.WinForms.GunaButton();
             this.btn_tinhDthu = new Guna.UI.WinForms.GunaButton();
             this.gunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,38 +43,10 @@
             this.dataGridViewButtonColumn2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.dataGridViewButtonColumn3 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btn_xuatDL = new Guna.UI.WinForms.GunaButton();
             this.gunaGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.data_DoanhThu)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btn_xuatDL
-            // 
-            this.btn_xuatDL.AnimationHoverSpeed = 0.07F;
-            this.btn_xuatDL.AnimationSpeed = 0.03F;
-            this.btn_xuatDL.BackColor = System.Drawing.Color.Transparent;
-            this.btn_xuatDL.BaseColor = System.Drawing.Color.Transparent;
-            this.btn_xuatDL.BorderColor = System.Drawing.Color.DarkGray;
-            this.btn_xuatDL.BorderSize = 2;
-            this.btn_xuatDL.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btn_xuatDL.FocusedColor = System.Drawing.Color.Empty;
-            this.btn_xuatDL.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_xuatDL.ForeColor = System.Drawing.Color.LightGray;
-            this.btn_xuatDL.Image = null;
-            this.btn_xuatDL.ImageSize = new System.Drawing.Size(20, 20);
-            this.btn_xuatDL.Location = new System.Drawing.Point(776, 85);
-            this.btn_xuatDL.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_xuatDL.Name = "btn_xuatDL";
-            this.btn_xuatDL.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.btn_xuatDL.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btn_xuatDL.OnHoverForeColor = System.Drawing.Color.White;
-            this.btn_xuatDL.OnHoverImage = null;
-            this.btn_xuatDL.OnPressedColor = System.Drawing.Color.Black;
-            this.btn_xuatDL.Radius = 20;
-            this.btn_xuatDL.Size = new System.Drawing.Size(184, 63);
-            this.btn_xuatDL.TabIndex = 18;
-            this.btn_xuatDL.Text = "Xuất dữ liệu";
-            this.btn_xuatDL.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btn_xuatDL.Click += new System.EventHandler(this.btn_xuatDL_Click);
             // 
             // btn_tinhDthu
             // 
@@ -287,6 +258,35 @@
             this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // btn_xuatDL
+            // 
+            this.btn_xuatDL.AnimationHoverSpeed = 0.07F;
+            this.btn_xuatDL.AnimationSpeed = 0.03F;
+            this.btn_xuatDL.BackColor = System.Drawing.Color.Transparent;
+            this.btn_xuatDL.BaseColor = System.Drawing.Color.Transparent;
+            this.btn_xuatDL.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_xuatDL.BorderSize = 2;
+            this.btn_xuatDL.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btn_xuatDL.FocusedColor = System.Drawing.Color.Empty;
+            this.btn_xuatDL.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_xuatDL.ForeColor = System.Drawing.Color.LightGray;
+            this.btn_xuatDL.Image = null;
+            this.btn_xuatDL.ImageSize = new System.Drawing.Size(20, 20);
+            this.btn_xuatDL.Location = new System.Drawing.Point(776, 85);
+            this.btn_xuatDL.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_xuatDL.Name = "btn_xuatDL";
+            this.btn_xuatDL.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.btn_xuatDL.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btn_xuatDL.OnHoverForeColor = System.Drawing.Color.White;
+            this.btn_xuatDL.OnHoverImage = null;
+            this.btn_xuatDL.OnPressedColor = System.Drawing.Color.Black;
+            this.btn_xuatDL.Radius = 20;
+            this.btn_xuatDL.Size = new System.Drawing.Size(184, 63);
+            this.btn_xuatDL.TabIndex = 18;
+            this.btn_xuatDL.Text = "Xuất dữ liệu";
+            this.btn_xuatDL.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btn_xuatDL.Click += new System.EventHandler(this.btn_xuatDL_Click);
+            // 
             // Form_DoanhThuMotThang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -314,8 +314,6 @@
         }
 
         #endregion
-
-        private Guna.UI.WinForms.GunaButton btn_xuatDL;
         private Guna.UI.WinForms.GunaButton btn_tinhDthu;
         private Guna.UI.WinForms.GunaGroupBox gunaGroupBox1;
         private Guna.UI.WinForms.GunaLabel gunaLabel3;
@@ -329,5 +327,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn2;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn3;
         private System.Windows.Forms.DataGridViewButtonColumn Column4;
+        private Guna.UI.WinForms.GunaButton btn_xuatDL;
     }
 }

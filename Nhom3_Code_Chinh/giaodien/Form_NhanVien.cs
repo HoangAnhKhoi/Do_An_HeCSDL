@@ -199,5 +199,27 @@ namespace giaodien
                 MessageBox.Show("Xóa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void txt_manv_TextChanged(object sender, EventArgs e)
+        {
+            if(txt_manv.Text!="")
+            {
+                string query = "SELECT * FROM TIM_MS_NV('" + txt_manv.Text + "')";
+                data_nv.DataSource = db.Execute(query);
+            }
+            else
+                Form_NhanVien_Load(sender, e);
+        }
+
+        private void txt_tennv_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_tennv.Text != "")
+            {
+                string query = "SELECT * FROM TIM_TEN_NV(N'" + txt_tennv.Text + "')";
+                data_nv.DataSource = db.Execute(query);
+            }
+            else
+                Form_NhanVien_Load(sender, e);
+        }
     }
 }

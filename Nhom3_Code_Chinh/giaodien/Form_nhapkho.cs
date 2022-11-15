@@ -382,5 +382,71 @@ namespace giaodien
                 MessageBox.Show("Sửa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void txt_mavl_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_mavl.Text != "")
+            {
+                string query = "SELECT * FROM TIM_MS_VL(N'" + txt_mavl.Text + "')";
+                data_vl.DataSource = db.Execute(query);
+            }
+            else
+                Form_nhankho_Load(sender, e);
+        }
+
+        private void txt_tenvl_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_tenvl.Text != "")
+            {
+                string query = "SELECT * FROM TIM_TEN_VL(N'" + txt_tenvl.Text + "')";
+                data_vl.DataSource = db.Execute(query);
+            }
+            else
+                Form_nhankho_Load(sender, e);
+        }
+
+        private void txt_mancc_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_mancc.Text != "")
+            {
+                string query = "SELECT * FROM TIM_MS_NCC(N'" + txt_mancc.Text + "')";
+                data_ncc.DataSource = db.Execute(query);
+            }
+            else
+                Form_nhankho_Load(sender, e);
+        }
+
+        private void txt_tenncc_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_tenncc.Text != "")
+            {
+                string query = "SELECT * FROM TIM_TEN_NCC(N'" + txt_tenncc.Text + "')";
+                data_ncc.DataSource = db.Execute(query);
+            }
+            else
+                Form_nhankho_Load(sender, e);
+        }
+
+        private void cb_mavl_TextChanged(object sender, EventArgs e)
+        {
+            if (cb_mavl.Text != "")
+            {
+                string query = "SELECT * FROM TIM_VL_NHAPKHO('" + cb_mavl.Text + "')";
+                data_NKho.DataSource = db.Execute(query);
+            }
+            else
+                Form_nhankho_Load(sender, e);
+        }
+
+        private void gunaButton2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gunaButton1_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT * FROM TIM_TG_NHAPKHO('" + date_bdnhapkho.Value.ToString("yyyy/MM/dd") + "','" + date_ktnhapkho.Value.ToString("yyyy/MM/dd") + "')";
+            data_NKho.DataSource = db.Execute(query);
+        }
     }
 }

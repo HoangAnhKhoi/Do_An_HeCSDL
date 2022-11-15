@@ -5,6 +5,19 @@ GO
 CREATE PROC XUAT_NV
 as
 	SELECT * FROM VIEW_NV
+-----Tìm nhân viên theo tên
+GO
+CREATE FUNCTION TIM_TEN_NV(@name NVARCHAR(50)) RETURNS TABLE
+AS
+	RETURN(SELECT * FROM VIEW_NV
+		WHERE Hoten LIKE N'%' + @name + '%')
+GO
+-----Tìm nhân viên theo mã số
+CREATE FUNCTION TIM_MS_NV(@maNV CHAR(6)) RETURNS TABLE
+AS
+	RETURN(SELECT * FROM VIEW_NV
+		WHERE NV_NguoiID LIKE '%' + @maNV + '%')
+GO
 -----Lấy các nhân viên cùng một chức vụ
 CREATE FUNCTION XUAT_NV_CHUCVU(@machucvu CHAR(6)) RETURNS table
 as
@@ -71,6 +84,19 @@ as
 	SELECT * FROM VIEW_KH
 
 GO
+-----Tìm khách hàng theo tên
+GO
+CREATE FUNCTION TIM_TEN_KH(@name NVARCHAR(50)) RETURNS TABLE
+AS
+	RETURN(SELECT * FROM VIEW_KH
+		WHERE Hoten LIKE N'%' + @name + '%')
+GO
+-----Tìm khách hàng theo mã số
+CREATE FUNCTION TIM_MS_KH(@maKH CHAR(6)) RETURNS TABLE
+AS
+	RETURN(SELECT * FROM VIEW_KH
+		WHERE KH_NguoiID LIKE N'%' + @maKH + '%')
+GO
 -----THÊM
 CREATE PROC THEM_KH 
 @nguoiid CHAR(6),@hoten nvarchar(30),@diachi nvarchar(30),@dienthoai CHAR(11),
@@ -132,6 +158,19 @@ as
 	SELECT * FROM VATLIEU
 
 GO
+-----Tìm vật liệu theo tên
+GO
+CREATE FUNCTION TIM_TEN_VL(@name NVARCHAR(50)) RETURNS TABLE
+AS
+	RETURN(SELECT * FROM VATLIEU
+		WHERE TenVL LIKE N'%' + @name + '%')
+GO
+-----Tìm vật liệu theo mã số
+CREATE FUNCTION TIM_MS_VL(@maVL CHAR(6)) RETURNS TABLE
+AS
+	RETURN(SELECT * FROM VATLIEU
+		WHERE MaVL LIKE N'%' + @maVL + '%')
+GO
 -----THÊM
 CREATE PROC THEM_VL 
 @mavl CHAR(6),@tenvl nvarchar(20),@soluong int,@result int output 
@@ -189,6 +228,19 @@ GO
 CREATE PROC XUAT_NCC
 as
 	SELECT * FROM NHACUNGCAP
+GO
+-----Tìm vật liệu theo tên
+CREATE FUNCTION TIM_TEN_NCC(@name NVARCHAR(50)) RETURNS TABLE
+AS
+	RETURN(SELECT * FROM NHACUNGCAP
+		WHERE TenNhaCC LIKE N'%' + @name + '%')
+GO
+-----Tìm khách hàng theo mã số
+CREATE FUNCTION TIM_MS_NCC(@maNCC CHAR(6)) RETURNS TABLE
+AS
+	RETURN(SELECT * FROM NHACUNGCAP
+		WHERE MaNhaCC LIKE N'%' + @maNCC + '%')
+GO
 -----THÊM
 CREATE PROC THEM_NCC
 @manhacc CHAR(6),@tennhacc nvarchar(30),@dienthoai CHAR(11),
@@ -551,6 +603,15 @@ GO
 CREATE FUNCTION XUAT_NHAPKHO() RETURNS table
 as
 RETURN (SELECT * FROM VIEW_NHAPKHO)
+GO
+-----Tìm kiếm trong một khoảng thời gian
+CREATE FUNCTION TIM_TG_NHAPKHO(@ngaydautien date,@ngaycuoicung date) RETURNS table
+as
+RETURN (SELECT * FROM VIEW_NHAPKHO WHERE NgayNhap >= @ngaydautien AND NgayNhap <= @ngaycuoicung)
+-----Tìm kiếm theo vật liệu
+CREATE FUNCTION TIM_VL_NHAPKHO(@tenVL NVARCHAR(20)) RETURNS table
+as
+RETURN (SELECT * FROM VIEW_NHAPKHO WHERE TenVL = @tenVL)
 -----Thêm
 GO 
 CREATE PROC THEM_NHAPKHO

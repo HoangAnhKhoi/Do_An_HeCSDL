@@ -188,5 +188,27 @@ namespace giaodien
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void txt_makh_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_makh.Text != "")
+            {
+                string query = "SELECT * FROM TIM_MS_KH('" + txt_makh.Text + "')";
+                data_kh.DataSource = db.Execute(query);
+            }
+            else
+                Form_KhachHang_Load(sender, e);
+        }
+
+        private void txt_tenkh_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_tenkh.Text != "")
+            {
+                string query = "SELECT * FROM TIM_TEN_KH(N'" + txt_tenkh.Text + "')";
+                data_kh.DataSource = db.Execute(query);
+            }
+            else
+                Form_KhachHang_Load(sender, e);
+        }
     }
 }
