@@ -65,7 +65,6 @@ CREATE TABLE HOPDONG
 	TriGiaHD INT DEFAULT(0),
 	NgayGiaoDuKien DATE, 
 	NgayNghiemThu DATE
-
 )
 GO
 
