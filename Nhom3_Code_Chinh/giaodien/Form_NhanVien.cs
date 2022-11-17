@@ -17,6 +17,7 @@ namespace giaodien
         string user;
         string pass;
         DataBase db;
+        bool fix = true;
         public Form_NhanVien()
         {
             InitializeComponent();
@@ -61,38 +62,6 @@ namespace giaodien
                 data_nv.Rows[i].Cells[2].Value = list.Rows[i][2].ToString();
                 data_nv.Rows[i].Cells[3].Value = list.Rows[i][3].ToString();
                 data_nv.Rows[i].Cells[4].Value = list.Rows[i][4].ToString();
-            }
-        }
-        private void data_nv_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (data_nv.Rows.Count != 1)
-                {
-                     DataGridViewRow row = new DataGridViewRow();
-                    row = data_nv.Rows[e.RowIndex];
-                    if (row != data_nv.Rows[data_nv.Rows.Count-1] && row!=null)
-                    {
-                        txt_manv.Text = row.Cells[0].Value.ToString();
-                        txt_tennv.Text = row.Cells[1].Value.ToString();
-                        txt_dchinv.Text = row.Cells[2].Value.ToString();
-                        txt_sdtnv.Text = row.Cells[3].Value.ToString();
-                        string[] arrListStr = row.Cells[4].Value.ToString().Split('/');
-                        arrListStr[2]= arrListStr[2].Substring(0,4);
-                        date_ngaysinh.Value = new DateTime(int.Parse(arrListStr[2]),int.Parse(arrListStr[1]),int.Parse(arrListStr[0]));
-                        txt_cccdnv.Text = row.Cells[5].Value.ToString();
-                        if (row.Cells[6].Value.ToString() == "False")
-                            rdn_nu.Checked = true;
-                        else
-                            rbn_nam.Checked = true;
-                        cb_chucvu.Text = row.Cells[7].Value.ToString();
-                        txt_luong.Text = row.Cells[8].Value.ToString();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
             }
         }
 
@@ -202,24 +171,65 @@ namespace giaodien
 
         private void txt_manv_TextChanged(object sender, EventArgs e)
         {
-            if(txt_manv.Text!="")
+            if (fix == true)
             {
-                string query = "SELECT * FROM TIM_MS_NV('" + txt_manv.Text + "')";
-                data_nv.DataSource = db.Execute(query);
+                if (txt_manv.Text != "" && fix != true)
+                {
+                    string query = "SELECT * FROM TIM_MS_NV('" + txt_manv.Text + "')";
+                    data_nv.DataSource = db.Execute(query);
+                }
+                else
+                    Form_NhanVien_Load(sender, e);
             }
-            else
-                Form_NhanVien_Load(sender, e);
         }
 
         private void txt_tennv_TextChanged(object sender, EventArgs e)
         {
-            if (txt_tennv.Text != "")
+            if (fix == true)
             {
-                string query = "SELECT * FROM TIM_TEN_NV(N'" + txt_tennv.Text + "')";
-                data_nv.DataSource = db.Execute(query);
+                if (txt_tennv.Text != "" && fix != true)
+                {
+                    string query = "SELECT * FROM TIM_TEN_NV(N'" + txt_tennv.Text + "')";
+                    data_nv.DataSource = db.Execute(query);
+                }
+                else
+                    Form_NhanVien_Load(sender, e);
             }
-            else
-                Form_NhanVien_Load(sender, e);
+        }
+
+        private void data_nv_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (data_nv.Rows.Count != 1)
+                {
+                    fix = false;
+                    DataGridViewRow row = new DataGridViewRow();
+                    row = data_nv.Rows[e.RowIndex];
+                    if (row != data_nv.Rows[data_nv.Rows.Count - 1] && row != null)
+                    {
+                        txt_dchinv.Text = row.Cells[2].Value.ToString();
+                        txt_sdtnv.Text = row.Cells[3].Value.ToString();
+                        string[] arrListStr = row.Cells[4].Value.ToString().Split('/');
+                        arrListStr[2] = arrListStr[2].Substring(0, 4);
+                        date_ngaysinh.Value = new DateTime(int.Parse(arrListStr[2]), int.Parse(arrListStr[1]), int.Parse(arrListStr[0]));
+                        txt_cccdnv.Text = row.Cells[5].Value.ToString();
+                        if (row.Cells[6].Value.ToString() == "False")
+                            rdn_nu.Checked = true;
+                        else
+                            rbn_nam.Checked = true;
+                        cb_chucvu.Text = row.Cells[7].Value.ToString();
+                        txt_luong.Text = row.Cells[8].Value.ToString();
+                        txt_manv.Text = row.Cells[0].Value.ToString();
+                        txt_tennv.Text = row.Cells[1].Value.ToString();
+                    }
+                    fix = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

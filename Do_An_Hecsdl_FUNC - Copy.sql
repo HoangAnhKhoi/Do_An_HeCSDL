@@ -407,13 +407,13 @@ AS
 go
 ---Thêm xóa sửa bảng USERS
 -----Thêm
-CREATE PROC THEM_USER
-@Username VARCHAR(20),@Pass VARCHAR(20),@Chucvu NVARCHAR(30),@result int output 
+ALTER PROC THEM_USER
+@Username VARCHAR(20),@Pass VARCHAR(20),@Chucvu NVARCHAR(30),@manv CHAR(6),@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
 			INSERT INTO USERS
-			VALUES(@Username,@Pass,@Chucvu)
+			VALUES(@Username,@Pass,@Chucvu,@result)
 			DECLARE @t NVARCHAR(100)
 			SET @t = N'CREATE LOGIN ' + QUOTENAME(@Username) + ' WITH PASSWORD = ''' + @Pass +''''
 			EXEC(@t)
@@ -437,12 +437,12 @@ AS
 GO
 -----Sửa
 CREATE PROC SUA_USERS
-@Username VARCHAR(20),@Pass VARCHAR(20),@Chucvu NVARCHAR(30),@result int output 
+@Username VARCHAR(20),@Pass VARCHAR(20),@Chucvu NVARCHAR(30),@manv CHAR(6),@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
 			UPDATE USERS
-			SET Username=@Username, Pass=@Pass, Chucvu=@Chucvu
+			SET Username=@Username, Pass=@Pass, Chucvu=@Chucvu ,MaNV = @manv
 			WHERE Username=@Username
 			DECLARE @t NVARCHAR(100)
 			SET @t = N'ALTER LOGIN ' + QUOTENAME(@Username) + ' WITH PASSWORD = ''' + @Pass +''''
@@ -609,6 +609,8 @@ CREATE FUNCTION TIM_TG_NHAPKHO(@ngaydautien date,@ngaycuoicung date) RETURNS tab
 as
 RETURN (SELECT * FROM VIEW_NHAPKHO WHERE NgayNhap >= @ngaydautien AND NgayNhap <= @ngaycuoicung)
 -----Tìm kiếm theo vật liệu
+SELECT * FROM TIM_VL_NHAPKHO(N'Nhớt loại 2')
+SELECT * from VIEW_NHAPKHO
 CREATE FUNCTION TIM_VL_NHAPKHO(@tenVL NVARCHAR(20)) RETURNS table
 as
 RETURN (SELECT * FROM VIEW_NHAPKHO WHERE TenVL = @tenVL)
@@ -664,6 +666,48 @@ AS
 		set @result=0
 		END CATCH
 GO
+-----Xóa nhập kho theo tháng
+ALTER PROC XOA_MONTH_NHAPKHO
+@ngaydautien date,@ngaycuoicung date,@result int output 
+AS
+	BEGIN TRAN
+		BEGIN TRY
+			INSERT INTO NHAPKHO_BACKUP
+			SELECT *
+			FROM NHAPKHO
+			WHERE NgayNhap>=@ngaydautien AND NgayNhap<=@ngaycuoicung 
+
+			DELETE 
+			FROM NHAPKHO
+			WHERE NgayNhap>=@ngaydautien AND NgayNhap<=@ngaycuoicung
+			set @result=1
+			COMMIT TRAN
+		END TRY 
+		BEGIN CATCH
+		ROLLBACK TRAN
+		set @result=0
+		END CATCH
+-----Xuất nhập kho backup
+CREATE FUNCTION XUAT_NHAPKHO_BACKUP(@ngaydautien date,@ngaycuoicung date) RETURNS
+@table TABLE(MaNKho CHAR(15),MaVL CHAR(6),MaNhaCC CHAR(6),SoLuong INT,GiaTri DECIMAL,NgayNhap DATE,MaNV CHAR(6))
+AS
+	BEGIN
+		INSERT @table SELECT *
+		FROM NHAPKHO_BACKUP 
+		WHERE NgayNhap>=@ngaydautien AND NgayNhap<=@ngaycuoicung
+		RETURN
+	END
+GO
+CREATE FUNCTION TONGTIEN_NHAPKHO(@ngaydautien date,@ngaycuoicung date) RETURNS INT 
+AS
+	BEGIN
+		DECLARE @doanhthu int
+		SELECT @doanhthu=sum(GiaTri*SoLuong) FROM NHAPKHO_BACKUP WHERE NgayNhap>=@ngaydautien AND NgayNhap<=@ngaycuoicung
+		return @doanhthu 
+	END
+GO 
+------Tính tổng tiền nhập khoa của 1 tháng
+
 ---Doanh thu
 -----Tính toán doanh thu 
 CREATE FUNCTION DOANHTHU(@ngaydautien date,@ngaycuoicung date) RETURNS INT 
@@ -701,12 +745,18 @@ AS
 		return
 	END
 ---Xóa doanh thu 
-CREATE PROC XOA_DOANHTHU
+ALTER PROC XOA_DOANHTHU
 @ngaydautien date,@ngaycuoicung date
 AS
+BEGIN
 	DELETE 
 	FROM HOPDONG_BACKUP
 	WHERE NgayNghiemThu>= @ngaydautien AND NgayNghiemThu<=@ngaycuoicung
+
+	DELETE 
+	FROM NHAPKHO_BACKUP 
+	WHERE NgayNhap>=@ngaydautien AND NgayNhap<=@ngaycuoicung
+END
 -----Chỉnh sửa hóa đơn
 ---Tìm hóa đơn theo mã Hợp đồng 
 CREATE FUNCTION XUAT_HOADON(@soHD CHAR(15)) RETURNS TABLE

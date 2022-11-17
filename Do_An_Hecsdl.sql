@@ -1,6 +1,7 @@
 ﻿create database QLSuaChuaXe3
 go
 USE QLSuaChuaXe3
+ALTER TABLE USERS ADD MaNV char(6) FOREIGN KEY REFERENCES NHANVIEN(NV_NguoiID)
 GO
 ----------------------------------------------
 -------- ĐẶC TẢ ĐỀ TÀI QUẢN LÝ GARAGE --------

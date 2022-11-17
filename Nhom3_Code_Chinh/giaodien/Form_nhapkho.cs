@@ -17,6 +17,7 @@ namespace giaodien
         string user;
         string pass;
         DataBase db;
+        bool fix = true;
         public Form_nhapkho()
         {
             InitializeComponent();
@@ -305,6 +306,7 @@ namespace giaodien
         {
             try
             {
+                fix = false;
                 DataGridViewRow row = new DataGridViewRow();
                 row = data_vl.Rows[e.RowIndex];
                 if (row != null)
@@ -313,6 +315,7 @@ namespace giaodien
                     txt_tenvl.Text = row.Cells[1].Value.ToString();
                     txt_soluongvl.Text = row.Cells[2].Value.ToString();
                 }
+                fix = true;
             }
             catch (Exception ex)
             {
@@ -324,6 +327,7 @@ namespace giaodien
         {
             try
             {
+                fix = false;
                 DataGridViewRow row = new DataGridViewRow();
                 row = data_ncc.Rows[e.RowIndex];
                 if (row != null)
@@ -333,6 +337,7 @@ namespace giaodien
                     txt_sdtncc.Text = row.Cells[2].Value.ToString();
                     txt_dchincc.Text = row.Cells[3].Value.ToString();
                 }
+                fix = true;
             }
             catch (Exception ex)
             {
@@ -344,6 +349,7 @@ namespace giaodien
         {
             try
             {
+                fix = false;
                 DataGridViewRow row = new DataGridViewRow();
                 row = data_NKho.Rows[e.RowIndex];
                 if (row != null)
@@ -355,6 +361,7 @@ namespace giaodien
                     txt_giatri.Text= row.Cells[4].Value.ToString();
                     cb_manv.Text= row.Cells[6].Value.ToString();
                 }
+                fix = true;
             }
             catch (Exception ex)
             {
@@ -385,62 +392,109 @@ namespace giaodien
 
         private void txt_mavl_TextChanged(object sender, EventArgs e)
         {
-            if (txt_mavl.Text != "")
+            if (fix == true)
             {
-                string query = "SELECT * FROM TIM_MS_VL(N'" + txt_mavl.Text + "')";
-                data_vl.DataSource = db.Execute(query);
+                if (txt_mavl.Text != "")
+                {
+                    string query = "SELECT * FROM TIM_MS_VL(N'" + txt_mavl.Text + "')";
+                    data_vl.DataSource = db.Execute(query);
+                }
+                else
+                    Form_nhankho_Load(sender, e);
             }
-            else
-                Form_nhankho_Load(sender, e);
         }
 
         private void txt_tenvl_TextChanged(object sender, EventArgs e)
         {
-            if (txt_tenvl.Text != "")
+
+            if (fix == true)
             {
-                string query = "SELECT * FROM TIM_TEN_VL(N'" + txt_tenvl.Text + "')";
-                data_vl.DataSource = db.Execute(query);
+                if (txt_tenvl.Text != "")
+                {
+                    string query = "SELECT * FROM TIM_TEN_VL(N'" + txt_tenvl.Text + "')";
+                    data_vl.DataSource = db.Execute(query);
+                }
+                else
+                    Form_nhankho_Load(sender, e);
             }
-            else
-                Form_nhankho_Load(sender, e);
         }
 
         private void txt_mancc_TextChanged(object sender, EventArgs e)
         {
-            if (txt_mancc.Text != "")
+
+            if (fix == true)
             {
-                string query = "SELECT * FROM TIM_MS_NCC(N'" + txt_mancc.Text + "')";
-                data_ncc.DataSource = db.Execute(query);
+                if (txt_mancc.Text != "")
+                {
+                    string query = "SELECT * FROM TIM_MS_NCC(N'" + txt_mancc.Text + "')";
+                    data_ncc.DataSource = db.Execute(query);
+                }
+                else
+                    Form_nhankho_Load(sender, e);
             }
-            else
-                Form_nhankho_Load(sender, e);
         }
 
         private void txt_tenncc_TextChanged(object sender, EventArgs e)
         {
-            if (txt_tenncc.Text != "")
+            if (fix == true)
             {
-                string query = "SELECT * FROM TIM_TEN_NCC(N'" + txt_tenncc.Text + "')";
-                data_ncc.DataSource = db.Execute(query);
+                if (txt_tenncc.Text != "")
+                {
+                    string query = "SELECT * FROM TIM_TEN_NCC(N'" + txt_tenncc.Text + "')";
+                    data_ncc.DataSource = db.Execute(query);
+                }
+                else
+                    Form_nhankho_Load(sender, e);
             }
-            else
-                Form_nhankho_Load(sender, e);
         }
 
         private void cb_mavl_TextChanged(object sender, EventArgs e)
         {
-            if (cb_mavl.Text != "")
+            if (fix == true)
             {
-                string query = "SELECT * FROM TIM_VL_NHAPKHO('" + cb_mavl.Text + "')";
-                data_NKho.DataSource = db.Execute(query);
+                if (cb_mavl.Text != "")
+                {
+                    string query = "SELECT * FROM TIM_VL_NHAPKHO(N'" + cb_mavl.Text + "')";
+                    data_NKho.DataSource = db.Execute(query);
+                }
+                else
+                    Form_nhankho_Load(sender, e);
             }
-            else
-                Form_nhankho_Load(sender, e);
         }
 
         private void gunaButton2_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                if (MessageBox.Show("Bạn có muốn xóa dữ liệu tháng này?", "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    SqlCommand cmd=new SqlCommand();
+                    cmd.CommandText = "EXEC XOA_MONTH_NHAPKHO @bd, @kt, @result output";
+                    SqlParameter bdParam = new SqlParameter("@bd", date_bdnhapkho.Text);
+                    bdParam.SqlDbType = SqlDbType.Date;
+                    SqlParameter ktParam = new SqlParameter("@kt", date_ktnhapkho.Text);
+                    ktParam.SqlDbType = SqlDbType.Date;
+                    SqlParameter resultParam = new SqlParameter("@result", 0);
+                    resultParam.SqlDbType = SqlDbType.Int;
+                    resultParam.Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add(bdParam);
+                    cmd.Parameters.Add(ktParam);
+                    cmd.Parameters.Add(resultParam);
+                    db.ExecuteCMD(cmd);
+                    int result =  (int)cmd.Parameters["@result"].Value;
+                    if (result == 0)
+                        MessageBox.Show("Xóa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                    {
+                        MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                    }
+                    Form_nhankho_Load(sender, e);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void gunaButton1_Click(object sender, EventArgs e)

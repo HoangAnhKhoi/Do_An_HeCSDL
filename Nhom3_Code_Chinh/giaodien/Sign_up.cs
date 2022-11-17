@@ -144,7 +144,7 @@ namespace giaodien
                         if (String.Compare(Mkhau2_txt.Text.ToString(), MKhau_txt.Text.ToString(), false) == 0)
                         {
                             SqlCommand cmd = new SqlCommand();
-                            cmd.CommandText = "EXECUTE THEM_USER @user,@pass,@chucvu,@result output";
+                            cmd.CommandText = "EXECUTE THEM_USER @user,@pass,@chucvu,@manv,@result output";
                             SqlParameter userParam = new SqlParameter("@user", ĐNhap_txt.Text);
                             userParam.SqlDbType = SqlDbType.VarChar;
                             userParam.Size = 20;
@@ -154,12 +154,16 @@ namespace giaodien
                             SqlParameter chucvuParam = new SqlParameter("@chucvu", cb_chucvusu.Text);
                             chucvuParam.SqlDbType = SqlDbType.NVarChar;
                             chucvuParam.Size = 30;
+                            SqlParameter manvParam = new SqlParameter("@manv", cb_chucvusu.Text);
+                            manvParam.SqlDbType = SqlDbType.Char;
+                            manvParam.Size = 6;
                             SqlParameter resultParam = new SqlParameter("@result", 0);
                             resultParam.SqlDbType = SqlDbType.Int;
                             resultParam.Direction = ParameterDirection.Output;
                             cmd.Parameters.Add(userParam);
                             cmd.Parameters.Add(passParam);
                             cmd.Parameters.Add(chucvuParam);
+                            cmd.Parameters.Add(manvParam);
                             cmd.Parameters.Add(resultParam);
                             db.ExecuteCMD(cmd);
                             int result = (int)cmd.Parameters["@result"].Value;

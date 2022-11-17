@@ -42,6 +42,11 @@ namespace giaodien
                 DataTable tb2 = db.Execute(query2);
                 txt_tongtien.Text = tb2.Rows[0][0].ToString();
                 data_DoanhThu.DataSource = tb1;
+                string query3 = "SELECT * FROM XUAT_NHAPKHO_BACKUP('" + BD + "','" + KT + "')";
+                data_NKho.DataSource = db.Execute(query3);
+                string query4 = "DECLARE @result int EXEC @result= TONGTIEN_NHAPKHO '" + BD + "','" + KT + "' SELECT @result";
+                DataTable tb3 = db.Execute(query4);
+                txt_tienNKho.Text = tb3.Rows[0][0].ToString();
             }
             catch (Exception ex)
             {
