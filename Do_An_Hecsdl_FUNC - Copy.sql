@@ -529,21 +529,6 @@ RETURN (SELECT *
 	WHERE SoHD = @SoHD)
 GO
 ---Chỉnh sửa Chi tiết hợp đồng
------Tìm kiếm
-CREATE FUNCTION TIMKIEM_CHITIET_HD(@SoHD CHAR(15)) RETURNS table
-as
-RETURN (SELECT * FROM CHITIET_HD WHERE SoHD=@SoHD)
-GO
------Lấy chi tiết công việc
-CREATE FUNCTION CONGVIEC_CHITIET_HD(@SoHD CHAR(15)) RETURNS
-@congviec table(MaCV CHAR(6),TenCV NVARCHAR(40),MaTho CHAR(6),TenTho NVARCHAR(30))
-AS
-BEGIN
-	INSERT @congviec SELECT CHITIET_HD.MaCV,CONGVIEC.NoiDungCV,CHITIET_HD.MaNV,TT_NGUOI.Hoten
-	FROM CHITIET_HD, TT_NGUOI, CONGVIEC
-	WHERE CHITIET_HD.MaNV=TT_NGUOI.NguoiID AND CHITIET_HD.MaCV=CONGVIEC.MaCViec AND CHITIET_HD.SoHD=@SoHD
-	return
-END
 -----Lấy chi tiết công việc cho xem hợp đồng
 CREATE FUNCTION CONGVIEC_HD(@SoHD CHAR(15)) RETURNS
 @congviec table(TenCV NVARCHAR(40),TenTho NVARCHAR(30),TriGiaCV int)
@@ -609,11 +594,20 @@ CREATE FUNCTION TIM_TG_NHAPKHO(@ngaydautien date,@ngaycuoicung date) RETURNS tab
 as
 RETURN (SELECT * FROM VIEW_NHAPKHO WHERE NgayNhap >= @ngaydautien AND NgayNhap <= @ngaycuoicung)
 -----Tìm kiếm theo vật liệu
-SELECT * FROM TIM_VL_NHAPKHO(N'Nhớt loại 2')
-SELECT * from VIEW_NHAPKHO
 CREATE FUNCTION TIM_VL_NHAPKHO(@tenVL NVARCHAR(20)) RETURNS table
 as
 RETURN (SELECT * FROM VIEW_NHAPKHO WHERE TenVL = @tenVL)
+GO
+-----Xuất nhập kho backup
+CREATE FUNCTION XUAT_NHAPKHO_BACKUP(@ngaydautien date,@ngaycuoicung date) RETURNS
+@table TABLE(MaNKho CHAR(15),MaVL CHAR(6),MaNhaCC CHAR(6),SoLuong INT,GiaTri DECIMAL,NgayNhap DATE,MaNV CHAR(6))
+AS
+	BEGIN
+		INSERT @table SELECT *
+		FROM NHAPKHO_BACKUP 
+		WHERE NgayNhap>=@ngaydautien AND NgayNhap<=@ngaycuoicung
+		RETURN
+	END
 -----Thêm
 GO 
 CREATE PROC THEM_NHAPKHO
@@ -687,16 +681,6 @@ AS
 		ROLLBACK TRAN
 		set @result=0
 		END CATCH
------Xuất nhập kho backup
-CREATE FUNCTION XUAT_NHAPKHO_BACKUP(@ngaydautien date,@ngaycuoicung date) RETURNS
-@table TABLE(MaNKho CHAR(15),MaVL CHAR(6),MaNhaCC CHAR(6),SoLuong INT,GiaTri DECIMAL,NgayNhap DATE,MaNV CHAR(6))
-AS
-	BEGIN
-		INSERT @table SELECT *
-		FROM NHAPKHO_BACKUP 
-		WHERE NgayNhap>=@ngaydautien AND NgayNhap<=@ngaycuoicung
-		RETURN
-	END
 GO
 CREATE FUNCTION TONGTIEN_NHAPKHO(@ngaydautien date,@ngaycuoicung date) RETURNS INT 
 AS
