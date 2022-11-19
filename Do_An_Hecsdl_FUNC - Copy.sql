@@ -348,62 +348,6 @@ AS
 		ROLLBACK TRAN
 		set @result=0
 		END CATCH
-GO
----Thêm xóa sửa xuất bảng chức vụ
------Xuất chuc vu
-CREATE PROC XUAT_CHUCVU
-as
-	SELECT * FROM CHUCVU
-GO
------Them chuc vu
-CREATE proc THEM_CHUCVU
-@macv char(6),@tencv nvarchar(20),@result int output 
-AS
-	BEGIN TRAN
-		BEGIN TRY
-			INSERT INTO dbo.CHUCVU
-			VALUES(@macv,@tencv)
-			set @result=1
-			COMMIT TRAN
-		END TRY 
-		BEGIN CATCH
-		ROLLBACK TRAN
-		set @result=0
-		END CATCH
-GO
---exec THEM_CHUCVU '1','nongdan'
-------Xoa chuc vu
-CREATE PROC XOA_CHUCVU
-@macv CHAR(6),@result int output 
-AS
-	BEGIN TRAN
-		BEGIN TRY
-			DELETE FROM dbo.CHUCVU WHERE @macv = MaCV;
-			set @result=1
-			COMMIT TRAN
-		END TRY 
-		BEGIN CATCH
-		ROLLBACK TRAN
-		set @result=0
-		END CATCH
-GO
----exec XOA_CHUCVU '1'
-----Sua chuc vu
-CREATE proc SUA_CHUCVU
-@macv char(6),@tencv nvarchar(20),@result int output 
-AS
-	BEGIN TRAN
-		BEGIN TRY
-			update dbo.CHUCVU
-			set TenCV = @tencv
-			where @macv = MaCV
-			set @result=1
-			COMMIT TRAN
-		END TRY 
-		BEGIN CATCH
-		ROLLBACK TRAN
-		set @result=0
-		END CATCH
 go
 ---Thêm xóa sửa bảng USERS
 -----Thêm
@@ -670,7 +614,7 @@ AS
 		END CATCH
 GO
 -----Xóa nhập kho theo tháng
-ALTER PROC XOA_MONTH_NHAPKHO
+CREATE PROC XOA_MONTH_NHAPKHO
 @ngaydautien date,@ngaycuoicung date,@result int output 
 AS
 	BEGIN TRAN
@@ -790,4 +734,19 @@ AS
 		ROLLBACK TRAN
 		set @result=0
 		END CATCH
-		
+---Xóa phiếu thu
+CREATE PROC XOA_HOADON
+@mahoadon char(15) ,@result int output
+AS
+	BEGIN TRAN
+		BEGIN TRY
+			DELETE 
+			FROM HOADON
+			WHERE MaHoaDon = @mahoadon
+			set @result=1
+			COMMIT TRAN
+		END TRY 
+		BEGIN CATCH
+		ROLLBACK TRAN
+		set @result=0
+		END CATCH

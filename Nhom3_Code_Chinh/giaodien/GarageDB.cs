@@ -17,7 +17,7 @@ namespace giaodien
         public string VL = "VL";
         public string NCC = "NCC";
         public string KH = "KH";
-        public string PT = "PHIEUTHU";
+        public string HDON = "HOADON";
         public string NHANVIEN = "NV";
         public string NHAPKHO = "NHAPKHO";
         public GarageDB(string user,string pass)
