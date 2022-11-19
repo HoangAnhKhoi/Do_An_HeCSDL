@@ -407,7 +407,7 @@ AS
 go
 ---Thêm xóa sửa bảng USERS
 -----Thêm
-ALTER PROC THEM_USER
+CREATE PROC THEM_USER
 @Username VARCHAR(20),@Pass VARCHAR(20),@Chucvu NVARCHAR(30),@manv CHAR(6),@result int output 
 AS
 	BEGIN TRAN
@@ -530,6 +530,15 @@ RETURN (SELECT *
 GO
 ---Chỉnh sửa Chi tiết hợp đồng
 -----Lấy chi tiết công việc cho xem hợp đồng
+CREATE FUNCTION CONGVIEC_CHITIET_HD(@SoHD CHAR(15)) RETURNS
+@congviec table(MaCV CHAR(6),TenCV NVARCHAR(40),MaTho CHAR(6),TenTho NVARCHAR(30))
+AS
+BEGIN
+	INSERT @congviec SELECT CHITIET_HD.MaCV,CONGVIEC.NoiDungCV,CHITIET_HD.MaNV,TT_NGUOI.Hoten
+	FROM CHITIET_HD, TT_NGUOI, CONGVIEC
+	WHERE CHITIET_HD.MaNV=TT_NGUOI.NguoiID AND CHITIET_HD.MaCV=CONGVIEC.MaCViec AND CHITIET_HD.SoHD=@SoHD
+	return
+END
 CREATE FUNCTION CONGVIEC_HD(@SoHD CHAR(15)) RETURNS
 @congviec table(TenCV NVARCHAR(40),TenTho NVARCHAR(30),TriGiaCV int)
 AS
@@ -729,7 +738,7 @@ AS
 		return
 	END
 ---Xóa doanh thu 
-ALTER PROC XOA_DOANHTHU
+CREATE PROC XOA_DOANHTHU
 @ngaydautien date,@ngaycuoicung date
 AS
 BEGIN
