@@ -138,7 +138,6 @@ E:\Studying\Ki1_nam3\He quan tri co so du lieu\prj\Do_An_HeCSDL\Nhom3_Code_Chinh
 E:\Studying\Ki1_nam3\He quan tri co so du lieu\prj\Do_An_HeCSDL\Nhom3_Code_Chinh\giaodien\obj\Debug\giaodien.Form_NhanVien.resources
 E:\Studying\Ki1_nam3\He quan tri co so du lieu\prj\Do_An_HeCSDL\Nhom3_Code_Chinh\giaodien\obj\Debug\giaodien.Form_nhapkho.resources
 E:\Studying\Ki1_nam3\He quan tri co so du lieu\prj\Do_An_HeCSDL\Nhom3_Code_Chinh\giaodien\obj\Debug\giaodien.Form_PhieuThu.resources
-E:\Studying\Ki1_nam3\He quan tri co so du lieu\prj\Do_An_HeCSDL\Nhom3_Code_Chinh\giaodien\obj\Debug\giaodien.Form_TinhLuong.resources
 E:\Studying\Ki1_nam3\He quan tri co so du lieu\prj\Do_An_HeCSDL\Nhom3_Code_Chinh\giaodien\obj\Debug\giaodien.Form_XemHD.resources
 E:\Studying\Ki1_nam3\He quan tri co so du lieu\prj\Do_An_HeCSDL\Nhom3_Code_Chinh\giaodien\obj\Debug\giaodien.Sign_up.resources
 E:\Studying\Ki1_nam3\He quan tri co so du lieu\prj\Do_An_HeCSDL\Nhom3_Code_Chinh\giaodien\obj\Debug\giaodien.Form_Chinh.resources
