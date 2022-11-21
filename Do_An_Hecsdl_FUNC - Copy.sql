@@ -348,72 +348,16 @@ AS
 		ROLLBACK TRAN
 		set @result=0
 		END CATCH
-GO
----Thêm xóa sửa xuất bảng chức vụ
------Xuất chuc vu
-CREATE PROC XUAT_CHUCVU
-as
-	SELECT * FROM CHUCVU
-GO
------Them chuc vu
-CREATE proc THEM_CHUCVU
-@macv char(6),@tencv nvarchar(20),@result int output 
-AS
-	BEGIN TRAN
-		BEGIN TRY
-			INSERT INTO dbo.CHUCVU
-			VALUES(@macv,@tencv)
-			set @result=1
-			COMMIT TRAN
-		END TRY 
-		BEGIN CATCH
-		ROLLBACK TRAN
-		set @result=0
-		END CATCH
-GO
---exec THEM_CHUCVU '1','nongdan'
-------Xoa chuc vu
-CREATE PROC XOA_CHUCVU
-@macv CHAR(6),@result int output 
-AS
-	BEGIN TRAN
-		BEGIN TRY
-			DELETE FROM dbo.CHUCVU WHERE @macv = MaCV;
-			set @result=1
-			COMMIT TRAN
-		END TRY 
-		BEGIN CATCH
-		ROLLBACK TRAN
-		set @result=0
-		END CATCH
-GO
----exec XOA_CHUCVU '1'
-----Sua chuc vu
-CREATE proc SUA_CHUCVU
-@macv char(6),@tencv nvarchar(20),@result int output 
-AS
-	BEGIN TRAN
-		BEGIN TRY
-			update dbo.CHUCVU
-			set TenCV = @tencv
-			where @macv = MaCV
-			set @result=1
-			COMMIT TRAN
-		END TRY 
-		BEGIN CATCH
-		ROLLBACK TRAN
-		set @result=0
-		END CATCH
 go
 ---Thêm xóa sửa bảng USERS
 -----Thêm
 CREATE PROC THEM_USER
-@Username VARCHAR(20),@Pass VARCHAR(20),@Chucvu NVARCHAR(30),@result int output 
+@Username VARCHAR(20),@Pass VARCHAR(20),@Chucvu NVARCHAR(30),@manv CHAR(6),@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
 			INSERT INTO USERS
-			VALUES(@Username,@Pass,@Chucvu)
+			VALUES(@Username,@Pass,@Chucvu,@result)
 			DECLARE @t NVARCHAR(100)
 			SET @t = N'CREATE LOGIN ' + QUOTENAME(@Username) + ' WITH PASSWORD = ''' + @Pass +''''
 			EXEC(@t)
@@ -437,12 +381,12 @@ AS
 GO
 -----Sửa
 CREATE PROC SUA_USERS
-@Username VARCHAR(20),@Pass VARCHAR(20),@Chucvu NVARCHAR(30),@result int output 
+@Username VARCHAR(20),@Pass VARCHAR(20),@Chucvu NVARCHAR(30),@manv CHAR(6),@result int output 
 AS
 	BEGIN TRAN
 		BEGIN TRY
 			UPDATE USERS
-			SET Username=@Username, Pass=@Pass, Chucvu=@Chucvu
+			SET Username=@Username, Pass=@Pass, Chucvu=@Chucvu ,MaNV = @manv
 			WHERE Username=@Username
 			DECLARE @t NVARCHAR(100)
 			SET @t = N'ALTER LOGIN ' + QUOTENAME(@Username) + ' WITH PASSWORD = ''' + @Pass +''''
@@ -529,12 +473,7 @@ RETURN (SELECT *
 	WHERE SoHD = @SoHD)
 GO
 ---Chỉnh sửa Chi tiết hợp đồng
------Tìm kiếm
-CREATE FUNCTION TIMKIEM_CHITIET_HD(@SoHD CHAR(15)) RETURNS table
-as
-RETURN (SELECT * FROM CHITIET_HD WHERE SoHD=@SoHD)
-GO
------Lấy chi tiết công việc
+-----Lấy chi tiết công việc cho xem hợp đồng
 CREATE FUNCTION CONGVIEC_CHITIET_HD(@SoHD CHAR(15)) RETURNS
 @congviec table(MaCV CHAR(6),TenCV NVARCHAR(40),MaTho CHAR(6),TenTho NVARCHAR(30))
 AS
@@ -544,7 +483,6 @@ BEGIN
 	WHERE CHITIET_HD.MaNV=TT_NGUOI.NguoiID AND CHITIET_HD.MaCV=CONGVIEC.MaCViec AND CHITIET_HD.SoHD=@SoHD
 	return
 END
------Lấy chi tiết công việc cho xem hợp đồng
 CREATE FUNCTION CONGVIEC_HD(@SoHD CHAR(15)) RETURNS
 @congviec table(TenCV NVARCHAR(40),TenTho NVARCHAR(30),TriGiaCV int)
 AS
@@ -612,6 +550,17 @@ RETURN (SELECT * FROM VIEW_NHAPKHO WHERE NgayNhap >= @ngaydautien AND NgayNhap <
 CREATE FUNCTION TIM_VL_NHAPKHO(@tenVL NVARCHAR(20)) RETURNS table
 as
 RETURN (SELECT * FROM VIEW_NHAPKHO WHERE TenVL = @tenVL)
+GO
+-----Xuất nhập kho backup
+CREATE FUNCTION XUAT_NHAPKHO_BACKUP(@ngaydautien date,@ngaycuoicung date) RETURNS
+@table TABLE(MaNKho CHAR(15),MaVL CHAR(6),MaNhaCC CHAR(6),SoLuong INT,GiaTri DECIMAL,NgayNhap DATE,MaNV CHAR(6))
+AS
+	BEGIN
+		INSERT @table SELECT *
+		FROM NHAPKHO_BACKUP 
+		WHERE NgayNhap>=@ngaydautien AND NgayNhap<=@ngaycuoicung
+		RETURN
+	END
 -----Thêm
 GO 
 CREATE PROC THEM_NHAPKHO
@@ -664,6 +613,38 @@ AS
 		set @result=0
 		END CATCH
 GO
+-----Xóa nhập kho theo tháng
+CREATE PROC XOA_MONTH_NHAPKHO
+@ngaydautien date,@ngaycuoicung date,@result int output 
+AS
+	BEGIN TRAN
+		BEGIN TRY
+			INSERT INTO NHAPKHO_BACKUP
+			SELECT *
+			FROM NHAPKHO
+			WHERE NgayNhap>=@ngaydautien AND NgayNhap<=@ngaycuoicung 
+
+			DELETE 
+			FROM NHAPKHO
+			WHERE NgayNhap>=@ngaydautien AND NgayNhap<=@ngaycuoicung
+			set @result=1
+			COMMIT TRAN
+		END TRY 
+		BEGIN CATCH
+		ROLLBACK TRAN
+		set @result=0
+		END CATCH
+GO
+CREATE FUNCTION TONGTIEN_NHAPKHO(@ngaydautien date,@ngaycuoicung date) RETURNS INT 
+AS
+	BEGIN
+		DECLARE @doanhthu int
+		SELECT @doanhthu=sum(GiaTri*SoLuong) FROM NHAPKHO_BACKUP WHERE NgayNhap>=@ngaydautien AND NgayNhap<=@ngaycuoicung
+		return @doanhthu 
+	END
+GO 
+------Tính tổng tiền nhập khoa của 1 tháng
+
 ---Doanh thu
 -----Tính toán doanh thu 
 CREATE FUNCTION DOANHTHU(@ngaydautien date,@ngaycuoicung date) RETURNS INT 
@@ -704,9 +685,15 @@ AS
 CREATE PROC XOA_DOANHTHU
 @ngaydautien date,@ngaycuoicung date
 AS
+BEGIN
 	DELETE 
 	FROM HOPDONG_BACKUP
 	WHERE NgayNghiemThu>= @ngaydautien AND NgayNghiemThu<=@ngaycuoicung
+
+	DELETE 
+	FROM NHAPKHO_BACKUP 
+	WHERE NgayNhap>=@ngaydautien AND NgayNhap<=@ngaycuoicung
+END
 -----Chỉnh sửa hóa đơn
 ---Tìm hóa đơn theo mã Hợp đồng 
 CREATE FUNCTION XUAT_HOADON(@soHD CHAR(15)) RETURNS TABLE
@@ -747,4 +734,19 @@ AS
 		ROLLBACK TRAN
 		set @result=0
 		END CATCH
-		
+---Xóa phiếu thu
+CREATE PROC XOA_HOADON
+@mahoadon char(15) ,@result int output
+AS
+	BEGIN TRAN
+		BEGIN TRY
+			DELETE 
+			FROM HOADON
+			WHERE MaHoaDon = @mahoadon
+			set @result=1
+			COMMIT TRAN
+		END TRY 
+		BEGIN CATCH
+		ROLLBACK TRAN
+		set @result=0
+		END CATCH

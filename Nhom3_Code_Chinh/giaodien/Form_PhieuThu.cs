@@ -45,10 +45,6 @@ namespace giaodien
                 txt_tienthieu.Text = tb1.Rows[0][0].ToString();
             }
         }
-        private void data_phieuthu_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void btn_taopt_Click(object sender, EventArgs e)
         {
@@ -185,6 +181,46 @@ namespace giaodien
             text.CharacterFormat.FontSize = 14;
             paragraph.Format.TextAlignment = TextAlignment.Auto;
             paragraph.Format.HorizontalAlignment = Spire.Doc.Documents.HorizontalAlignment.Right;
+        }
+
+        private void btn_xoapt_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int result = gr.delete15(gr.HDON, txt_sopt.Text);
+                if (result == 0)
+                    MessageBox.Show("Xóa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                    MessageBox.Show("Xóa thành công", "Thông báo", MessageBoxButtons.OK);
+                btn_timpt_Click(sender, e);
+            }
+            catch (Exception a)
+            {
+                MessageBox.Show("Xóa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void data_phieuthu_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (data_phieuthu.Rows.Count != 1)
+                {
+                    DataGridViewRow row = new DataGridViewRow();
+                    row = data_phieuthu.Rows[e.RowIndex];
+                    if (row != null)
+                    {
+                        txt_sopt.Text = row.Cells[0].Value.ToString();
+                        txt_mahd.Text = row.Cells[2].Value.ToString();
+                        txt_hoten.Text = row.Cells[4].Value.ToString();
+                        txt_tienthu.Text = row.Cells[5].Value.ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

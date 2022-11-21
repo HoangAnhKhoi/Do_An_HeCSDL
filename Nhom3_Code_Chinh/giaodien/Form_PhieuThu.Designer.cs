@@ -31,6 +31,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.data_phieuthu = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btn_timpt = new Guna.UI.WinForms.GunaButton();
             this.btn_xuatpt = new Guna.UI.WinForms.GunaButton();
             this.gunaGroupBox1 = new Guna.UI.WinForms.GunaGroupBox();
@@ -46,12 +52,7 @@
             this.txt_tienthieu = new Guna.UI.WinForms.GunaTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btn_xoapt = new Guna.UI.WinForms.GunaButton();
             ((System.ComponentModel.ISupportInitialize)(this.data_phieuthu)).BeginInit();
             this.gunaGroupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -91,7 +92,73 @@
             this.data_phieuthu.RowHeadersWidth = 30;
             this.data_phieuthu.Size = new System.Drawing.Size(1024, 260);
             this.data_phieuthu.TabIndex = 3;
-            this.data_phieuthu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_phieuthu_CellContentClick);
+            this.data_phieuthu.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_phieuthu_CellClick);
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.DataPropertyName = "MaHoaDon";
+            this.Column1.FillWeight = 70F;
+            this.Column1.HeaderText = "Số phiếu thu";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column2.DataPropertyName = "MaHopDong";
+            this.Column2.FillWeight = 70F;
+            this.Column2.HeaderText = "Mã hợp đồng";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column3
+            // 
+            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column3.DataPropertyName = "KH_NguoiID";
+            this.Column3.FillWeight = 70F;
+            this.Column3.HeaderText = "Mã khách hàng";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column4
+            // 
+            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column4.DataPropertyName = "HoTen";
+            this.Column4.FillWeight = 134.4052F;
+            this.Column4.HeaderText = "Họ Tên";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column5
+            // 
+            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column5.DataPropertyName = "SoTienThu";
+            this.Column5.FillWeight = 134.4052F;
+            this.Column5.HeaderText = "Số tiền thu";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column6.DataPropertyName = "NgayLapHoaDon";
+            this.Column6.FillWeight = 120F;
+            this.Column6.HeaderText = "Ngày lập phiếu thu";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // btn_timpt
             // 
@@ -107,7 +174,7 @@
             this.btn_timpt.ForeColor = System.Drawing.Color.LightGray;
             this.btn_timpt.Image = null;
             this.btn_timpt.ImageSize = new System.Drawing.Size(20, 20);
-            this.btn_timpt.Location = new System.Drawing.Point(788, 42);
+            this.btn_timpt.Location = new System.Drawing.Point(714, 145);
             this.btn_timpt.Margin = new System.Windows.Forms.Padding(4);
             this.btn_timpt.Name = "btn_timpt";
             this.btn_timpt.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
@@ -116,7 +183,7 @@
             this.btn_timpt.OnHoverImage = null;
             this.btn_timpt.OnPressedColor = System.Drawing.Color.Black;
             this.btn_timpt.Radius = 20;
-            this.btn_timpt.Size = new System.Drawing.Size(173, 73);
+            this.btn_timpt.Size = new System.Drawing.Size(163, 73);
             this.btn_timpt.TabIndex = 14;
             this.btn_timpt.Text = "Tìm hợp đồng";
             this.btn_timpt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -310,7 +377,7 @@
             this.btn_taopt.ForeColor = System.Drawing.Color.LightGray;
             this.btn_taopt.Image = null;
             this.btn_taopt.ImageSize = new System.Drawing.Size(20, 20);
-            this.btn_taopt.Location = new System.Drawing.Point(696, 145);
+            this.btn_taopt.Location = new System.Drawing.Point(714, 71);
             this.btn_taopt.Margin = new System.Windows.Forms.Padding(4);
             this.btn_taopt.Name = "btn_taopt";
             this.btn_taopt.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
@@ -319,7 +386,7 @@
             this.btn_taopt.OnHoverImage = null;
             this.btn_taopt.OnPressedColor = System.Drawing.Color.Black;
             this.btn_taopt.Radius = 20;
-            this.btn_taopt.Size = new System.Drawing.Size(173, 73);
+            this.btn_taopt.Size = new System.Drawing.Size(163, 73);
             this.btn_taopt.TabIndex = 18;
             this.btn_taopt.Text = "Tạo phiếu thu";
             this.btn_taopt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -367,71 +434,34 @@
             this.label6.TabIndex = 25;
             this.label6.Text = "VND";
             // 
-            // Column1
+            // btn_xoapt
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column1.DataPropertyName = "MaHoaDon";
-            this.Column1.FillWeight = 70F;
-            this.Column1.HeaderText = "Số phiếu thu";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column2.DataPropertyName = "MaHopDong";
-            this.Column2.FillWeight = 70F;
-            this.Column2.HeaderText = "Mã hợp đồng";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column3
-            // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column3.DataPropertyName = "KH_NguoiID";
-            this.Column3.FillWeight = 70F;
-            this.Column3.HeaderText = "Mã khách hàng";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column4
-            // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column4.DataPropertyName = "HoTen";
-            this.Column4.FillWeight = 134.4052F;
-            this.Column4.HeaderText = "Họ Tên";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column4.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column5
-            // 
-            this.Column5.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column5.DataPropertyName = "SoTienThu";
-            this.Column5.FillWeight = 134.4052F;
-            this.Column5.HeaderText = "Số tiền thu";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column6.DataPropertyName = "NgayLapHoaDon";
-            this.Column6.FillWeight = 120F;
-            this.Column6.HeaderText = "Ngày lập phiếu thu";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column6.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btn_xoapt.AnimationHoverSpeed = 0.07F;
+            this.btn_xoapt.AnimationSpeed = 0.03F;
+            this.btn_xoapt.BackColor = System.Drawing.Color.Transparent;
+            this.btn_xoapt.BaseColor = System.Drawing.Color.Transparent;
+            this.btn_xoapt.BorderColor = System.Drawing.Color.DarkGray;
+            this.btn_xoapt.BorderSize = 2;
+            this.btn_xoapt.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btn_xoapt.FocusedColor = System.Drawing.Color.Empty;
+            this.btn_xoapt.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_xoapt.ForeColor = System.Drawing.Color.LightGray;
+            this.btn_xoapt.Image = null;
+            this.btn_xoapt.ImageSize = new System.Drawing.Size(20, 20);
+            this.btn_xoapt.Location = new System.Drawing.Point(885, 70);
+            this.btn_xoapt.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_xoapt.Name = "btn_xoapt";
+            this.btn_xoapt.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.btn_xoapt.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btn_xoapt.OnHoverForeColor = System.Drawing.Color.White;
+            this.btn_xoapt.OnHoverImage = null;
+            this.btn_xoapt.OnPressedColor = System.Drawing.Color.Black;
+            this.btn_xoapt.Radius = 20;
+            this.btn_xoapt.Size = new System.Drawing.Size(163, 73);
+            this.btn_xoapt.TabIndex = 26;
+            this.btn_xoapt.Text = "Xóa phiếu thu";
+            this.btn_xoapt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btn_xoapt.Click += new System.EventHandler(this.btn_xoapt_Click);
             // 
             // Form_PhieuThu
             // 
@@ -439,6 +469,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
             this.ClientSize = new System.Drawing.Size(1056, 597);
+            this.Controls.Add(this.btn_xoapt);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txt_tienthieu);
@@ -483,5 +514,6 @@
         private System.Windows.Forms.DataGridViewButtonColumn Column4;
         private System.Windows.Forms.DataGridViewButtonColumn Column5;
         private System.Windows.Forms.DataGridViewButtonColumn Column6;
+        private Guna.UI.WinForms.GunaButton btn_xoapt;
     }
 }

@@ -17,6 +17,7 @@ namespace giaodien
         string user;
         string pass;
         DataBase db;
+        bool fix = true;
         public Form_KhachHang()
         {
             InitializeComponent();
@@ -165,6 +166,7 @@ namespace giaodien
         {
             try
             {
+                fix = false;
                 DataGridViewRow row = new DataGridViewRow();
                 row = data_kh.Rows[e.RowIndex];
                 if (row != null)
@@ -182,6 +184,7 @@ namespace giaodien
                     else
                         rbn_namkh.Checked = true;
                 }
+                fix = true;
             }
             catch (Exception ex)
             {
@@ -191,24 +194,31 @@ namespace giaodien
 
         private void txt_makh_TextChanged(object sender, EventArgs e)
         {
-            if (txt_makh.Text != "")
+
+            if (fix == true)
             {
-                string query = "SELECT * FROM TIM_MS_KH('" + txt_makh.Text + "')";
-                data_kh.DataSource = db.Execute(query);
+                if (txt_makh.Text != "")
+                {
+                    string query = "SELECT * FROM TIM_MS_KH('" + txt_makh.Text + "')";
+                    data_kh.DataSource = db.Execute(query);
+                }
+                else
+                    Form_KhachHang_Load(sender, e);
             }
-            else
-                Form_KhachHang_Load(sender, e);
         }
 
         private void txt_tenkh_TextChanged(object sender, EventArgs e)
         {
-            if (txt_tenkh.Text != "")
+            if (fix == true)
             {
-                string query = "SELECT * FROM TIM_TEN_KH(N'" + txt_tenkh.Text + "')";
-                data_kh.DataSource = db.Execute(query);
+                if (txt_tenkh.Text != "")
+                {
+                    string query = "SELECT * FROM TIM_TEN_KH(N'" + txt_tenkh.Text + "')";
+                    data_kh.DataSource = db.Execute(query);
+                }
+                else
+                    Form_KhachHang_Load(sender, e);
             }
-            else
-                Form_KhachHang_Load(sender, e);
         }
     }
 }
