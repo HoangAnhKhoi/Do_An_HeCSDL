@@ -135,22 +135,18 @@ namespace giaodien
             if (String.Compare(txt_FMKhau.Text, txt_FMKhau2.Text, false) == 0)
             {
                 SqlCommand cmd = new SqlCommand();
-                cmd.CommandText = "EXECUTE SUA_USERS @user,@pass,@chucvu,@result output";
+                cmd.CommandText = "EXECUTE SUA_USERS @user,@pass,@result output";
                 SqlParameter userParam = new SqlParameter("@user", txt_FAcc.Text);
                 userParam.SqlDbType = SqlDbType.VarChar;
                 userParam.Size = 20;
                 SqlParameter passParam = new SqlParameter("@pass", txt_FMKhau.Text);
                 passParam.SqlDbType = SqlDbType.VarChar;
                 passParam.Size = 20;
-                SqlParameter chucvuParam = new SqlParameter("@chucvu", cb_chucvusu.Text);
-                chucvuParam.SqlDbType = SqlDbType.NVarChar;
-                chucvuParam.Size = 30;
                 SqlParameter resultParam = new SqlParameter("@result", 0);
                 resultParam.SqlDbType = SqlDbType.Int;
                 resultParam.Direction = ParameterDirection.Output;
                 cmd.Parameters.Add(userParam);
                 cmd.Parameters.Add(passParam);
-                cmd.Parameters.Add(chucvuParam);
                 cmd.Parameters.Add(resultParam);
                 db.ExecuteCMD(cmd);
                 int result = (int)cmd.Parameters["@result"].Value;

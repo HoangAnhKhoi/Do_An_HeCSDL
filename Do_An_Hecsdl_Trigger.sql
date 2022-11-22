@@ -16,6 +16,7 @@ CREATE VIEW VIEW_CVIEC AS
 SELECT MaCViec, NoiDungCV,TienCong,TenVL
 FROM CONGVIEC,VATLIEU
 WHERE CONGVIEC.VatLieu=VATLIEU.MaVL
+GO
 CREATE VIEW VIEW_NV AS
 SELECT dbo.NHANVIEN.NV_NguoiID, dbo.TT_NGUOI.Hoten, dbo.TT_NGUOI.DiaChi, dbo.TT_NGUOI.DienThoai, dbo.TT_NGUOI.NgaySinh, 
 	   dbo.TT_NGUOI.CCCD, dbo.TT_NGUOI.GioiTinh, dbo.CHUCVU.TenCV, dbo.NHANVIEN.Luong
@@ -138,6 +139,34 @@ BEGIN
 
 	DELETE HOPDONG WHERE SoHD=@SoHD
 END
+GO
+---Tạo login khi thêm một user
+CREATE TRIGGER CREATR_LOGIN ON USERS
+AFTER INSERT AS
+DECLARE @username VARCHAR(20),@pass VARCHAR(20), @chucvu NVARCHAR(30)
+SELECT @username = Username, @pass=Pass, @chucvu=ChucVu FROM INSERTED
+DECLARE @t NVARCHAR(100)
+SET @t = N'CREATE LOGIN ' + QUOTENAME(@Username) + ' WITH PASSWORD = ''' + @Pass +''''
+EXEC(@t)
+SET @t = N'CREATE USER' + QUOTENAME(@Username) + 'FOR LOGIN' + QUOTENAME(@Username)
+EXEC(@t)
+IF(@Chucvu=N'Quản lý')
+BEGIN
+	EXEC sp_addrolemember 'Managers', @Username 
+END
+ELSE 
+BEGIN
+	EXEC sp_addrolemember 'Members', @Username 
+END
+GO
+---Sửa login khi thêm một user
+CREATE TRIGGER ALTER_LOGIN ON USERS
+AFTER UPDATE AS
+DECLARE @username VARCHAR(20),@pass VARCHAR(20)
+SELECT @username = Username, @pass=Pass FROM INSERTED
+DECLARE @t NVARCHAR(100)
+SET @t = N'ALTER LOGIN ' + QUOTENAME(@Username) + ' WITH PASSWORD = ''' + @Pass +''''
+EXEC(@t)
 
 GO
 ------Tạo role 
@@ -149,7 +178,7 @@ GRANT SELECT ON TIM_TEN_NV to Managers
 GRANT SELECT ON TIM_MS_NV to Managers
 GRANT EXEC ON XUAT_KH to Managers
 GRANT SELECT ON TIM_TEN_KH to Managers
-GRANT SELECT ON TIM_MS_KH to Managers
+GRANT EXEC ON XUAT_CHUCVU to Managers
 GRANT EXEC ON XUAT_VL to Managers
 GRANT SELECT ON TIM_TEN_VL to Managers
 GRANT SELECT ON TIM_MS_VL to Managers
@@ -217,6 +246,7 @@ GRANT SELECT ON TIM_MS_NV to Members
 GRANT EXEC ON XUAT_KH to Members
 GRANT SELECT ON TIM_TEN_KH to Members
 GRANT SELECT ON TIM_MS_KH to Members
+GRANT EXEC ON XUAT_CHUCVU to Members
 GRANT EXEC ON XUAT_VL to Members
 GRANT SELECT ON TIM_TEN_VL to Members
 GRANT SELECT ON TIM_MS_VL to Members

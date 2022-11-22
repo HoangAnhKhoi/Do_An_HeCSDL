@@ -103,11 +103,6 @@ namespace giaodien
             a.ShowDialog();
         }
 
-        private void ĐNhap_txt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void Sign_up_Load(object sender, EventArgs e)
         {
 
@@ -179,6 +174,26 @@ namespace giaodien
                             MessageBox.Show("Mật khẩu không giống nhau", "Thông báo", MessageBoxButtons.OK);
                     }
                 }
+            }
+        }
+
+        private void txt_manv_Leave(object sender, EventArgs e)
+        {
+            if (txt_manv.Text == "")
+            {
+                txt_manv.UseSystemPasswordChar = false;
+                txt_manv.Text = "Mã số nhân viên";
+                txt_manv.ForeColor = Color.Silver;
+            }
+        }
+
+        private void txt_manv_Enter(object sender, EventArgs e)
+        {
+            if (txt_manv.Text == "Mã số nhân viên")
+            {
+                txt_manv.UseSystemPasswordChar = true;
+                txt_manv.Text = "";
+                txt_manv.ForeColor = Color.Black;
             }
         }
     }

@@ -165,7 +165,6 @@
             this.ĐNhap_txt.SelectedText = "";
             this.ĐNhap_txt.Size = new System.Drawing.Size(387, 44);
             this.ĐNhap_txt.TabIndex = 2;
-            this.ĐNhap_txt.TextChanged += new System.EventHandler(this.ĐNhap_txt_TextChanged);
             this.ĐNhap_txt.Enter += new System.EventHandler(this.ĐNhap_txt_Enter);
             this.ĐNhap_txt.Leave += new System.EventHandler(this.ĐNhap_txt_Leave);
             // 
@@ -267,6 +266,8 @@
             this.txt_manv.SelectedText = "";
             this.txt_manv.Size = new System.Drawing.Size(159, 44);
             this.txt_manv.TabIndex = 30;
+            this.txt_manv.Enter += new System.EventHandler(this.txt_manv_Enter);
+            this.txt_manv.Leave += new System.EventHandler(this.txt_manv_Leave);
             // 
             // Sign_up
             // 
