@@ -21,7 +21,10 @@ namespace giaodien
         {
             //string strCnn = @"Data Source=DESKTOP-VB316NT\SQLEXPRESS; Database=QLSuaChuaXe3;" +
             //              "user id = sa;password = 123456; MultipleActiveResultSets=True;";
-            string strCnn = @"Data Source=LAPTOP-ER9IVPEV\SQLEXPRESS; Database=QLSuaChuaXe3;" +
+
+            //string strCnn = @"Data Source=LAPTOP-ER9IVPEV\SQLEXPRESS; Database=QLSuaChuaXe3;" +
+            //                   "user id = " + user_name + ";password =" + pass + "; MultipleActiveResultSets=True;";
+            string strCnn = @"Data Source=DESKTOP-VB316NT\SQLEXPRESS; Database=QLSuaChuaXe3;" +
                                "user id = " + user_name + ";password =" + pass + "; MultipleActiveResultSets=True;";
             sqlConn = new SqlConnection(strCnn);
 

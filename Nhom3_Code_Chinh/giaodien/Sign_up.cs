@@ -14,8 +14,10 @@ namespace giaodien
     public partial class Sign_up : Form
     {
 
-        DataBase db = new DataBase("sa","01677448545");
-        GarageDB gr = new GarageDB("sa", "01677448545");
+        //DataBase db = new DataBase("sa","01677448545");
+        //GarageDB gr = new GarageDB("sa", "01677448545");
+        DataBase db = new DataBase("sa", "123456");
+        GarageDB gr = new GarageDB("sa", "123456");
         public Sign_up()
         {
             InitializeComponent();
