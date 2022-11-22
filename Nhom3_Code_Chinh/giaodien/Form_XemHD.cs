@@ -70,5 +70,10 @@ namespace giaodien
                 txt_mahd.ForeColor = Color.Gray;
             }
         }
+
+        private void lb_gthopdong_TextChanged(object sender, EventArgs e)
+        {
+            lb_gthopdong.Text = string.Format("{0:0,0}", decimal.Parse(lb_gthopdong.Text));
+        }
     }
 }

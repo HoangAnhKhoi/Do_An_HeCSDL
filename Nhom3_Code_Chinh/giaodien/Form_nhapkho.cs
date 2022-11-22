@@ -502,5 +502,18 @@ namespace giaodien
             string query = "SELECT * FROM TIM_TG_NHAPKHO('" + date_bdnhapkho.Value.ToString("yyyy/MM/dd") + "','" + date_ktnhapkho.Value.ToString("yyyy/MM/dd") + "')";
             data_NKho.DataSource = db.Execute(query);
         }
+
+        private void txt_giatri_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+        }
+
+        private void txt_giatri_TextChanged(object sender, EventArgs e)
+        {
+            txt_giatri.Text = string.Format("{0:0,0}", decimal.Parse(txt_giatri.Text));
+            txt_giatri.SelectionStart = txt_giatri.Text.Length;
+
+        }
     }
 }

@@ -707,7 +707,9 @@ AS
 		DECLARE @giatriHD int, @tiendathu int
 		SELECT @giatriHD=TriGiaHD FROM HOPDONG WHERE SoHD = @soHD
 		SELECT @tiendathu = SUM(SoTienThu) FROM HOADON WHERE MaHopDong=@soHD
-		RETURN @giatriHD - @tiendathu
+		if(@tiendathu IS NULL)
+			set @tiendathu=0
+		RETURN @giatriHD -@tiendathu
 	END
 ---Thêm phiếu thu 
 go

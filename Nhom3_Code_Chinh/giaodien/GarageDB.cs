@@ -20,6 +20,10 @@ namespace giaodien
         public string HDON = "HOADON";
         public string NHANVIEN = "NV";
         public string NHAPKHO = "NHAPKHO";
+        public GarageDB()
+        {
+            this.db = new DataBase();
+        }
         public GarageDB(string user,string pass)
         {
             this.db = new DataBase(user, pass);

@@ -67,6 +67,7 @@ namespace giaodien
                 string KT = date_to.Value.ToString("yyyy-MM-dd");
                 string query1 = "EXEC XOA_DOANHTHU '" + BD + "','" + KT + "'";
                 db.ExecuteNonQuery(query1);
+                btn_tinhDthu_Click(sender, e);
             }
             catch(Exception ex)
             {
@@ -77,6 +78,30 @@ namespace giaodien
         private void btn_xuatDL_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void txt_tongtien_TextChanged(object sender, EventArgs e)
+        {
+            txt_tongtien.Text = string.Format("{0:0,0}", decimal.Parse(txt_tongtien.Text));
+            txt_tongtien.SelectionStart = txt_tongtien.Text.Length;
+        }
+
+        private void txt_tongtien_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+        }
+
+        private void txt_tienNKho_TextChanged(object sender, EventArgs e)
+        {
+            txt_tienNKho.Text = string.Format("{0:0,0}", decimal.Parse(txt_tienNKho.Text));
+            txt_tienNKho.SelectionStart = txt_tienNKho.Text.Length;
+        }
+
+        private void txt_tienNKho_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
         }
     }
 }

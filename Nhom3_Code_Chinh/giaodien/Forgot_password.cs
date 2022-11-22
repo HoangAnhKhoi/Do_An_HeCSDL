@@ -14,8 +14,8 @@ namespace giaodien
     public partial class Forgot_password : Form
     {
 
-        DataBase db = new DataBase("sa","01677448545");
-        GarageDB ga = new GarageDB("sa","01677448545");
+        DataBase db = new DataBase();
+        GarageDB ga = new GarageDB();
         public Forgot_password()
         {
             InitializeComponent();

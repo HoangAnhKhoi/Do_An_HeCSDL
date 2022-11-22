@@ -60,7 +60,7 @@ namespace giaodien
         private void button2_Click(object sender, EventArgs e)
         {
             //DataBase db = new DataBase("sa","01677448545");
-            DataBase db = new DataBase("sa", "123456");
+            DataBase db = new DataBase();
             string query = "SELECT dbo.XACMINH_USERS('"+txt_nameacc.Text+"','"+txt_pass.Text+"',N'"+ ChucVu() + "')";
             DataTable b = db.Execute(query);
             int result = int.Parse(b.Rows[0][0].ToString());

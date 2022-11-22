@@ -98,7 +98,7 @@ namespace giaodien
             setup_chinhsua();
             lb_ngayhopdong.Text = DateTime.Now.ToString("dd/MM/yyyy");
             lb_sohd.Text = ga.LayMaSo("H");
-            lb_gthopdong.Text = "0Đ";
+            lb_gthopdong.Text = "0";
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "EXECUTE THEM_HDONG @SoHD,@KH_NguoiID,@SoXe,@NgayGiaoDuKien,@result output";
             int result = them_sua_HD(cmd);
@@ -126,7 +126,7 @@ namespace giaodien
                 lb_ngayhopdong.Text= table_hd.Rows[0][1].ToString();
                 lb_kh.Text= table_hd.Rows[0][2].ToString();
                 lb_soxehd.Text= table_hd.Rows[0][3].ToString();
-                lb_gthopdong.Text= table_hd.Rows[0][4].ToString() + "Đ";
+                lb_gthopdong.Text= table_hd.Rows[0][4].ToString();
                 lb_ngaygiaodk.Text= table_hd.Rows[0][5].ToString();
                 tabControl1.TabPages.Add(tab_chinhsua);
                 tabControl1.TabPages.Remove(tab_hd);
@@ -180,7 +180,7 @@ namespace giaodien
         {
             string query = " SELECT * FROM TIMKIEM_HDONG('" + lb_sohd.Text + "')";
             DataTable table_hd = db.Execute(query);
-            lb_gthopdong.Text = table_hd.Rows[0][4].ToString()+"Đ";
+            lb_gthopdong.Text = table_hd.Rows[0][4].ToString();
         }
         private void FillDataCV(System.Data.DataTable list)
         {
@@ -353,6 +353,11 @@ namespace giaodien
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void lb_gthopdong_TextChanged(object sender, EventArgs e)
+        {
+            lb_gthopdong.Text = string.Format("{0:0,0}", decimal.Parse(lb_gthopdong.Text));
         }
     }
 }

@@ -44,7 +44,6 @@ namespace giaodien
                 cb_chucvu.DataSource = table_chuVu;
                 cb_chucvu.DisplayMember = "TenCV";
                 cb_chucvu.ValueMember = "MaCV";
-                data_nv_thungan.DataSource= table_nv;
             }
             catch (Exception ex)
             {
@@ -230,6 +229,18 @@ namespace giaodien
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void txt_luong_TextChanged(object sender, EventArgs e)
+        {
+            txt_luong.Text = string.Format("{0:0,0}", decimal.Parse(txt_luong.Text));
+            txt_luong.SelectionStart = txt_luong.Text.Length;
+        }
+
+        private void txt_luong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
         }
     }
 }

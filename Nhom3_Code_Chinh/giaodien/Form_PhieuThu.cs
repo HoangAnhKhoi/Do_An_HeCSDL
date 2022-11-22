@@ -222,5 +222,29 @@ namespace giaodien
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void txt_tienthieu_TextChanged(object sender, EventArgs e)
+        {
+            txt_tienthieu.Text = string.Format("{0:0,0}", decimal.Parse(txt_tienthieu.Text));
+            txt_tienthieu.SelectionStart = txt_tienthieu.Text.Length;
+        }
+
+        private void txt_tienthieu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+        }
+
+        private void txt_tienthu_TextChanged(object sender, EventArgs e)
+        {
+            txt_tienthu.Text = string.Format("{0:0,0}", decimal.Parse(txt_tienthu.Text));
+            txt_tienthu.SelectionStart = txt_tienthu.Text.Length;
+        }
+
+        private void txt_tienthu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
+        }
     }
 }

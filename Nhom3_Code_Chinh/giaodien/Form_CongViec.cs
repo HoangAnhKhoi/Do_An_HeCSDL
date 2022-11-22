@@ -44,7 +44,6 @@ namespace giaodien
                 cb_vlieu.DataSource = table_chuVu;
                 cb_vlieu.DisplayMember = "TenVL";
                 cb_vlieu.ValueMember = "MaVL";
-                data_cv_thungan.DataSource = table_cv;
             }
             catch (Exception ex)
             {
@@ -148,6 +147,18 @@ namespace giaodien
             {
                 MessageBox.Show("Xóa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void txt_tiencongcv_TextChanged(object sender, EventArgs e)
+        {
+            txt_tiencongcv.Text = string.Format("{0:0,0}", decimal.Parse(txt_tiencongcv.Text));
+            txt_tiencongcv.SelectionStart = txt_tiencongcv.Text.Length;
+        }
+
+        private void txt_tiencongcv_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+                e.Handled = true;
         }
     }
 }
