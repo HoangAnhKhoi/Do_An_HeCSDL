@@ -298,7 +298,7 @@ namespace giaodien
             }
             catch (Exception a)
             {
-                MessageBox.Show("Sửa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Xóa không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

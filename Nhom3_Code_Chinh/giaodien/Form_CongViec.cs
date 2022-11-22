@@ -73,7 +73,6 @@ namespace giaodien
         }
         private int them_sua_CV(SqlCommand cmd)
         {
-            cmd.CommandText = "EXECUTE SUA_CViec @macv,@noidungcv,@tietcong,@vatlieu,@result output";
             SqlParameter maCVParam = new SqlParameter("@macv", txt_macv.Text);
             maCVParam.SqlDbType = SqlDbType.Char;
             maCVParam.Size = 6;
