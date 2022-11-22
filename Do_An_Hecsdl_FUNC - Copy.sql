@@ -23,6 +23,7 @@ CREATE FUNCTION XUAT_NV_CHUCVU(@machucvu CHAR(6)) RETURNS table
 as
 	RETURN (SELECT * FROM VIEW_NV WHERE NV_NguoiID in (SELECT NV_NguoiID FROM NHANVIEN WHERE MaCV=@machucvu))
 -----thêm
+go
 CREATE proc THEM_NV
 @nguoiid CHAR(6),@hoten nvarchar(30),@diachi nvarchar(30),@dienthoai CHAR(11),
 @ngaysinh date,@cccd CHAR(11),@gioitinnh bit,@macv CHAR(6),@luong int,@result int output
@@ -41,6 +42,7 @@ AS
 		set @result=0
 		END CATCH
 -----sửa
+go
 CREATE PROC SUA_NV
 @nguoiid CHAR(6),@hoten nvarchar(30),@diachi nvarchar(30),@dienthoai CHAR(11),@ngaysinh date,
 @cccd CHAR(11),@gioitinh bit,@macv CHAR(6),@luong INT,@result int output
@@ -61,7 +63,7 @@ AS
 		set @result=0
 		END CATCH
 -----XÓA
-
+go
 CREATE PROC XOA_NV
 @nguoiid CHAR(6),
 @result int output
@@ -257,6 +259,7 @@ AS
 		set @result=0
 		END CATCH
 ----- SỬA
+go
 CREATE PROC SUA_NCC
 @manhacc CHAR(6),@tennhacc nvarchar(30),@dienthoai CHAR(11),
 @diachi nvarchar(30),@result int output 
@@ -274,6 +277,7 @@ AS
 		set @result=0
 		END CATCH
 ----- Xóa
+go
 CREATE PROC XOA_NCC
 @manhacc CHAR(6),@result int output 
 AS
@@ -294,7 +298,7 @@ GO
 CREATE FUNCTION XUAT_CVIEC() RETURNS table
 as
 RETURN (SELECT * FROM VIEW_CVIEC)
-
+go
 -----THÊM
 CREATE PROC THEM_CVIEC
 @macv CHAR(6),@noidungcv nvarchar(40),@tiencong int,
@@ -423,6 +427,7 @@ GO
 CREATE FUNCTION XUAT_HDONG() RETURNS table
 as
 RETURN (SELECT * FROM HOPDONG)
+go
 -----Thêm
 CREATE PROC THEM_HDONG
 @SoHD CHAR(15),@KH_NguoiID CHAR(6),@SoXe CHAR(10),
@@ -483,6 +488,7 @@ BEGIN
 	WHERE CHITIET_HD.MaNV=TT_NGUOI.NguoiID AND CHITIET_HD.MaCV=CONGVIEC.MaCViec AND CHITIET_HD.SoHD=@SoHD
 	return
 END
+go
 CREATE FUNCTION CONGVIEC_HD(@SoHD CHAR(15)) RETURNS
 @congviec table(TenCV NVARCHAR(40),TenTho NVARCHAR(30),TriGiaCV int)
 AS
@@ -501,6 +507,7 @@ BEGIN
 		END
 	return
 END
+go
 -----Thêm
 CREATE PROC THEM_CHITIET_HD
 @SoHD CHAR(15),@MaCV CHAR(6),@MaNV CHAR(6),@result int output 
@@ -546,6 +553,7 @@ GO
 CREATE FUNCTION TIM_TG_NHAPKHO(@ngaydautien date,@ngaycuoicung date) RETURNS table
 as
 RETURN (SELECT * FROM VIEW_NHAPKHO WHERE NgayNhap >= @ngaydautien AND NgayNhap <= @ngaycuoicung)
+go
 -----Tìm kiếm theo vật liệu
 CREATE FUNCTION TIM_VL_NHAPKHO(@tenVL NVARCHAR(20)) RETURNS table
 as
@@ -670,6 +678,7 @@ AS
 		END
 		RETURN
 	END
+go
 -----Xuất doanh thu
 CREATE FUNCTION XUAT_DOANHTHU(@ngaydautien date,@ngaycuoicung date) 
 RETURNS 
@@ -681,6 +690,7 @@ AS
 		WHERE NgayNghiemThu>=@ngaydautien AND NgayNghiemThu<=@ngaycuoicung
 		return
 	END
+	go
 ---Xóa doanh thu 
 CREATE PROC XOA_DOANHTHU
 @ngaydautien date,@ngaycuoicung date
@@ -694,11 +704,13 @@ BEGIN
 	FROM NHAPKHO_BACKUP 
 	WHERE NgayNhap>=@ngaydautien AND NgayNhap<=@ngaycuoicung
 END
+go
 -----Chỉnh sửa hóa đơn
 ---Tìm hóa đơn theo mã Hợp đồng 
 CREATE FUNCTION XUAT_HOADON(@soHD CHAR(15)) RETURNS TABLE
 AS
 	RETURN(SELECT * FROM HOADON WHERE MaHopDong=@soHD)
+	go
 ---Xác định số tiền phải nộp
 CREATE FUNCTION TIEN_HOADON(@soHD CHAR(15)) RETURNS int
 AS
@@ -709,6 +721,7 @@ AS
 		RETURN @giatriHD - @tiendathu
 	END
 ---Thêm phiếu thu 
+go
 CREATE PROC THEM_HOADON 
 @mahoadon CHAR(15),@mahdong CHAR(15),@hoten NVARCHAR(40),
 @sotienthu INT,@result int output
@@ -735,6 +748,7 @@ AS
 		set @result=0
 		END CATCH
 ---Xóa phiếu thu
+go
 CREATE PROC XOA_HOADON
 @mahoadon char(15) ,@result int output
 AS

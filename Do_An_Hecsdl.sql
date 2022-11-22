@@ -1,18 +1,12 @@
-﻿create database QLSuaChuaXe3
+﻿
+create database QLSuaChuaXe3
 go
 USE QLSuaChuaXe3
 GO
 ----------------------------------------------
 -------- ĐẶC TẢ ĐỀ TÀI QUẢN LÝ GARAGE --------
 ----------------------------------------------
-CREATE TABLE USERS
-(
-	Username VARCHAR(20) CONSTRAINT PK_USERS PRIMARY KEY,
-	MaNV char(6) FOREIGN KEY REFERENCES NHANVIEN(NV_NguoiID),
-	Pass VARCHAR(20) NOT NULL,
-	ChucVu NVARCHAR(30) NOT NULL,
-)
-go
+
 CREATE TABLE TT_NGUOI
 (
 	NguoiID CHAR(6) CONSTRAINT PK_TT_NGUOI PRIMARY KEY,
@@ -140,3 +134,11 @@ CREATE TABLE NHAPKHO_BACKUP
 	NgayNhap DATE,
 	MaNV CHAR(6)
 )
+CREATE TABLE USERS
+(
+	Username VARCHAR(20) CONSTRAINT PK_USERS PRIMARY KEY,
+	MaNV char(6) FOREIGN KEY REFERENCES NHANVIEN(NV_NguoiID),
+	Pass VARCHAR(20) NOT NULL,
+	ChucVu NVARCHAR(30) NOT NULL,
+)
+go

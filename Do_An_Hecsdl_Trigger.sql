@@ -1,4 +1,4 @@
-﻿	use QLSuaChuaXe3
+﻿use QLSuaChuaXe3
 go
 ---------------------View---------------------------
 CREATE VIEW VIEW_NHAPKHO AS
@@ -16,6 +16,8 @@ CREATE VIEW VIEW_CVIEC AS
 SELECT MaCViec, NoiDungCV,TienCong,TenVL
 FROM CONGVIEC,VATLIEU
 WHERE CONGVIEC.VatLieu=VATLIEU.MaVL
+go
+
 CREATE VIEW VIEW_NV AS
 SELECT dbo.NHANVIEN.NV_NguoiID, dbo.TT_NGUOI.Hoten, dbo.TT_NGUOI.DiaChi, dbo.TT_NGUOI.DienThoai, dbo.TT_NGUOI.NgaySinh, 
 	   dbo.TT_NGUOI.CCCD, dbo.TT_NGUOI.GioiTinh, dbo.CHUCVU.TenCV, dbo.NHANVIEN.Luong
@@ -205,7 +207,7 @@ GO
 GRANT EXEC ON DOANHTHU to Managers
 GRANT EXEC ON TONGTIEN_NHAPKHO to Managers
 GRANT SELECT ON XUAT_DOANHTHU to Managers
-EXEC sp_addrolemember 'Managers','Quanli1' 
+
 
 GO
 Exec sp_addrole 'Members'
