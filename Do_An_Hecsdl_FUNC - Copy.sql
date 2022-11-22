@@ -79,6 +79,11 @@ as
 		set @result=0
 		END CATCH
 GO
+
+CREATE PROC XUAT_CHUCVU
+as
+	SELECT * FROM CHUCVU
+GO
 ---Thêm, xóa, sửa, xuất bảng KHÁCH HÀNG
 -----XUẤT
 CREATE PROC XUAT_KH
@@ -362,19 +367,6 @@ AS
 		BEGIN TRY
 			INSERT INTO USERS
 			VALUES(@Username,@Pass,@Chucvu,@result)
-			DECLARE @t NVARCHAR(100)
-			SET @t = N'CREATE LOGIN ' + QUOTENAME(@Username) + ' WITH PASSWORD = ''' + @Pass +''''
-			EXEC(@t)
-			SET @t = N'CREATE USER' + QUOTENAME(@Username) + 'FOR LOGIN' + QUOTENAME(@Username)
-			EXEC(@t)
-			IF(@Chucvu=N'Quản lý')
-			BEGIN
-				EXEC sp_addrolemember 'Managers', @Username 
-			END
-			ELSE 
-			BEGIN
-				EXEC sp_addrolemember 'Members', @Username 
-			END
 			set @result=1
 			COMMIT TRAN
 		END TRY 
@@ -392,9 +384,6 @@ AS
 			UPDATE USERS
 			SET Username=@Username, Pass=@Pass, Chucvu=@Chucvu ,MaNV = @manv
 			WHERE Username=@Username
-			DECLARE @t NVARCHAR(100)
-			SET @t = N'ALTER LOGIN ' + QUOTENAME(@Username) + ' WITH PASSWORD = ''' + @Pass +''''
-			EXEC(@t)
 			set @result=1
 			COMMIT TRAN
 		END TRY 
