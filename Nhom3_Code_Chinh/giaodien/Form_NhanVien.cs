@@ -33,10 +33,6 @@ namespace giaodien
         {
             try
             {
-                Form1 formDangNhap = new Form1();
-                string query = "EXEC XUAT_NV";
-                DataTable table_nv = db.Execute(query);
-                data_nv.DataSource = table_nv;
                 string query1 = "EXEC XUAT_CHUCVU";
                 DataTable table_chuVu = db.Execute(query1);
                 cb_chucvu.DataSource = null;
@@ -44,6 +40,10 @@ namespace giaodien
                 cb_chucvu.DataSource = table_chuVu;
                 cb_chucvu.DisplayMember = "TenCV";
                 cb_chucvu.ValueMember = "MaCV";
+                Form1 formDangNhap = new Form1();
+                string query = "EXEC XUAT_NV";
+                DataTable table_nv = db.Execute(query);
+                data_nv.DataSource = table_nv;
             }
             catch (Exception ex)
             {
@@ -241,6 +241,20 @@ namespace giaodien
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
                 e.Handled = true;
+        }
+
+        private void cb_chucvu_TextChanged(object sender, EventArgs e)
+        {
+            if (fix == true)
+            {
+                if (cb_chucvu.Text != "")
+                {
+                    string query = "SELECT * FROM XUAT_NV_CHUCVU('" + cb_chucvu.SelectedValue.ToString() + "')";
+                    data_nv.DataSource = db.Execute(query);
+                }
+                else
+                    Form_NhanVien_Load(sender, e);
+            }
         }
     }
 }

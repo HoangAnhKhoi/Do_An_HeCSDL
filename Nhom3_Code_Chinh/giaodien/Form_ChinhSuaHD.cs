@@ -1,4 +1,5 @@
-﻿using Spire.Doc.Documents;
+﻿using Spire.Doc;
+using Spire.Doc.Documents;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -358,6 +359,69 @@ namespace giaodien
         private void lb_gthopdong_TextChanged(object sender, EventArgs e)
         {
             lb_gthopdong.Text = string.Format("{0:0,0}", decimal.Parse(lb_gthopdong.Text));
+        }
+
+        private void btn_xuathd_Click(object sender, EventArgs e)
+        {
+            GarageDB gr = new GarageDB();
+            string query = "SELECT * FROM TIM_MS_KH('" + lb_kh.Text + "')";
+            System.Data.DataTable KH = db.Execute(query);
+            Spire.Doc.Document doc = new Document();
+
+            Spire.Doc.Documents.Paragraph paragraph = doc.AddSection().AddParagraph();
+            Spire.Doc.Fields.TextRange text = paragraph.AppendText("Garage OWL");
+            text.CharacterFormat.Bold = true;
+            text.CharacterFormat.FontSize = 22;
+            paragraph.Format.TextAlignment = TextAlignment.Center;
+            paragraph.Format.HorizontalAlignment = Spire.Doc.Documents.HorizontalAlignment.Center;
+
+            Spire.Doc.Documents.Paragraph paragraph2 = doc.Sections[0].AddParagraph();
+            Spire.Doc.Fields.TextRange text1 = paragraph2.AppendText("HỢP ĐỒNG SỮA XE");
+            text1.CharacterFormat.Bold = true;
+            text1.CharacterFormat.FontSize = 20;
+            paragraph2.Format.TextAlignment = TextAlignment.Center;
+            paragraph2.Format.HorizontalAlignment = Spire.Doc.Documents.HorizontalAlignment.Center;
+            string[] str = new string[50];
+            str[0] = "";
+            str[1] = "THÔNG TIN KHÁCH HÀNG";
+            str[2] = "";
+            str[3] = "Tên khách hàng: " + KH.Rows[0][1].ToString();
+            str[4] = "Mã khách hàng: " + KH.Rows[0][0].ToString();
+            str[5] = "Số điện thoại: " + KH.Rows[0][3].ToString();
+            str[6] = "Địa chỉ: " + KH.Rows[0][2].ToString();
+            str[7] = "";
+            str[8] = "THÔNG TIN HỢP ĐỒNG";
+            str[9] = "";
+            str[10] = "Số hợp đồng: " + lb_sohd.Text;
+            str[11] = "Số xe: " + lb_soxehd.Text;
+            str[12] = "Ngày lập hợp đồng: " + lb_ngayhopdong.Text;
+            str[13] = "Ngày giao dự kiện: " + lb_ngaygiaodk.Text;
+            str[14] = "";
+            str[15] = "CÔNG VIỆC YÊU CẦU";
+            str[16] = "";
+            Form1 a = new Form1();
+            int index = 17;
+            int triGiaHD = 0;
+            foreach (DataRow i in tb_cv.Rows)
+            {
+                string query3 = "SELECT * FROM XUAT_CVIEC() WHERE MaCViec ='" + i["MaCV"].ToString()+"'";
+                str[index++] = i["TenCV"].ToString() + " - " + db.Execute(query3).Rows[0][2].ToString() + "VND" + " - " + i["TenTho"].ToString();
+            }
+            str[index++] = "Tổng giá trị hợp đồng: " + lb_gthopdong.Text;
+            str[index++] = "                                                                                                                Ký tên";
+            int index1 = 0;
+            foreach (string i in str)
+            {
+                ghileft(ref doc, str[index1++]);
+                if (index1 > index - 3)
+                    break;
+            }
+            ghiright(ref doc, str[index1++]);
+            ghileft(ref doc, str[index1]);
+            string tenhd = "HopDong-So" + lb_sohd.Text + ".doc";
+            doc.SaveToFile("D:/" + tenhd, Spire.Doc.FileFormat.Doc);
+            doc.Close();
+            MessageBox.Show("Xuất hợp đồng thành công", "Thông báo", MessageBoxButtons.OK);
         }
     }
 }

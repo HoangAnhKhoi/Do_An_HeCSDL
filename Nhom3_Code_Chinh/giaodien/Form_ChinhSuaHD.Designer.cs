@@ -103,7 +103,7 @@
             this.tabControl1.Controls.Add(this.tab_hd);
             this.tabControl1.Controls.Add(this.tab_chinhsua);
             this.tabControl1.Location = new System.Drawing.Point(-1, 1);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1056, 596);
@@ -115,9 +115,9 @@
             this.tab_hd.Controls.Add(this.groupBox2);
             this.tab_hd.Controls.Add(this.dtgHopDong);
             this.tab_hd.Location = new System.Drawing.Point(4, 25);
-            this.tab_hd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tab_hd.Margin = new System.Windows.Forms.Padding(4);
             this.tab_hd.Name = "tab_hd";
-            this.tab_hd.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tab_hd.Padding = new System.Windows.Forms.Padding(4);
             this.tab_hd.Size = new System.Drawing.Size(1048, 567);
             this.tab_hd.TabIndex = 0;
             this.tab_hd.Text = "Hợp đồng";
@@ -140,9 +140,9 @@
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(617, 1);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(424, 559);
             this.groupBox2.TabIndex = 44;
             this.groupBox2.TabStop = false;
@@ -162,7 +162,7 @@
             this.date_ngaygiaodukien.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.date_ngaygiaodukien.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.date_ngaygiaodukien.Location = new System.Drawing.Point(183, 218);
-            this.date_ngaygiaodukien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.date_ngaygiaodukien.Margin = new System.Windows.Forms.Padding(4);
             this.date_ngaygiaodukien.Name = "date_ngaygiaodukien";
             this.date_ngaygiaodukien.Size = new System.Drawing.Size(219, 26);
             this.date_ngaygiaodukien.TabIndex = 66;
@@ -181,7 +181,7 @@
             // txtSoxe
             // 
             this.txtSoxe.Location = new System.Drawing.Point(183, 155);
-            this.txtSoxe.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSoxe.Margin = new System.Windows.Forms.Padding(4);
             this.txtSoxe.Name = "txtSoxe";
             this.txtSoxe.Size = new System.Drawing.Size(219, 22);
             this.txtSoxe.TabIndex = 54;
@@ -211,7 +211,7 @@
             // txtSoHopDong
             // 
             this.txtSoHopDong.Location = new System.Drawing.Point(183, 31);
-            this.txtSoHopDong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSoHopDong.Margin = new System.Windows.Forms.Padding(4);
             this.txtSoHopDong.Name = "txtSoHopDong";
             this.txtSoHopDong.Size = new System.Drawing.Size(221, 22);
             this.txtSoHopDong.TabIndex = 46;
@@ -232,7 +232,7 @@
             this.btn_xemcthd.Image = null;
             this.btn_xemcthd.ImageSize = new System.Drawing.Size(20, 20);
             this.btn_xemcthd.Location = new System.Drawing.Point(52, 400);
-            this.btn_xemcthd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_xemcthd.Margin = new System.Windows.Forms.Padding(4);
             this.btn_xemcthd.Name = "btn_xemcthd";
             this.btn_xemcthd.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btn_xemcthd.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -262,7 +262,7 @@
             this.btn_xoahd.Image = null;
             this.btn_xoahd.ImageSize = new System.Drawing.Size(20, 20);
             this.btn_xoahd.Location = new System.Drawing.Point(52, 475);
-            this.btn_xoahd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_xoahd.Margin = new System.Windows.Forms.Padding(4);
             this.btn_xoahd.Name = "btn_xoahd";
             this.btn_xoahd.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btn_xoahd.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -302,7 +302,7 @@
             this.btn_themhd.Image = null;
             this.btn_themhd.ImageSize = new System.Drawing.Size(20, 20);
             this.btn_themhd.Location = new System.Drawing.Point(52, 321);
-            this.btn_themhd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_themhd.Margin = new System.Windows.Forms.Padding(4);
             this.btn_themhd.Name = "btn_themhd";
             this.btn_themhd.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btn_themhd.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -356,7 +356,7 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7});
             this.dtgHopDong.Location = new System.Drawing.Point(4, 4);
-            this.dtgHopDong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtgHopDong.Margin = new System.Windows.Forms.Padding(4);
             this.dtgHopDong.Name = "dtgHopDong";
             this.dtgHopDong.RowHeadersVisible = false;
             this.dtgHopDong.RowHeadersWidth = 51;
@@ -425,9 +425,9 @@
             this.tab_chinhsua.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(41)))), ((int)(((byte)(54)))));
             this.tab_chinhsua.Controls.Add(this.groupBox1);
             this.tab_chinhsua.Location = new System.Drawing.Point(4, 25);
-            this.tab_chinhsua.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tab_chinhsua.Margin = new System.Windows.Forms.Padding(4);
             this.tab_chinhsua.Name = "tab_chinhsua";
-            this.tab_chinhsua.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tab_chinhsua.Padding = new System.Windows.Forms.Padding(4);
             this.tab_chinhsua.Size = new System.Drawing.Size(1048, 567);
             this.tab_chinhsua.TabIndex = 1;
             this.tab_chinhsua.Text = "Chỉnh sửa";
@@ -461,9 +461,9 @@
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.groupBox1.Location = new System.Drawing.Point(7, 4);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(1035, 556);
             this.groupBox1.TabIndex = 42;
             this.groupBox1.TabStop = false;
@@ -551,7 +551,7 @@
             this.btn_thoat.Image = null;
             this.btn_thoat.ImageSize = new System.Drawing.Size(20, 20);
             this.btn_thoat.Location = new System.Drawing.Point(787, 196);
-            this.btn_thoat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_thoat.Margin = new System.Windows.Forms.Padding(4);
             this.btn_thoat.Name = "btn_thoat";
             this.btn_thoat.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btn_thoat.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -581,7 +581,7 @@
             this.btn_luuhd.Image = null;
             this.btn_luuhd.ImageSize = new System.Drawing.Size(20, 20);
             this.btn_luuhd.Location = new System.Drawing.Point(787, 36);
-            this.btn_luuhd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_luuhd.Margin = new System.Windows.Forms.Padding(4);
             this.btn_luuhd.Name = "btn_luuhd";
             this.btn_luuhd.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btn_luuhd.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -611,7 +611,7 @@
             this.btn_xuathd.Image = null;
             this.btn_xuathd.ImageSize = new System.Drawing.Size(20, 20);
             this.btn_xuathd.Location = new System.Drawing.Point(787, 113);
-            this.btn_xuathd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_xuathd.Margin = new System.Windows.Forms.Padding(4);
             this.btn_xuathd.Name = "btn_xuathd";
             this.btn_xuathd.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btn_xuathd.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -623,6 +623,7 @@
             this.btn_xuathd.TabIndex = 79;
             this.btn_xuathd.Text = "Xuất hợp đồng";
             this.btn_xuathd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btn_xuathd.Click += new System.EventHandler(this.btn_xuathd_Click);
             // 
             // data_cv
             // 
@@ -643,7 +644,7 @@
             this.dataGridViewButtonColumn1,
             this.dataGridViewButtonColumn2});
             this.data_cv.Location = new System.Drawing.Point(528, 281);
-            this.data_cv.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.data_cv.Margin = new System.Windows.Forms.Padding(4);
             this.data_cv.Name = "data_cv";
             this.data_cv.RowHeadersVisible = false;
             this.data_cv.RowHeadersWidth = 51;
@@ -684,9 +685,9 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.White;
             this.groupBox3.Location = new System.Drawing.Point(11, 273);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(509, 279);
             this.groupBox3.TabIndex = 77;
             this.groupBox3.TabStop = false;
@@ -708,7 +709,7 @@
             this.btn_xoacvhd.Image = null;
             this.btn_xoacvhd.ImageSize = new System.Drawing.Size(20, 20);
             this.btn_xoacvhd.Location = new System.Drawing.Point(267, 193);
-            this.btn_xoacvhd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_xoacvhd.Margin = new System.Windows.Forms.Padding(4);
             this.btn_xoacvhd.Name = "btn_xoacvhd";
             this.btn_xoacvhd.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btn_xoacvhd.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -738,7 +739,7 @@
             this.btn_themcvhd.Image = null;
             this.btn_themcvhd.ImageSize = new System.Drawing.Size(20, 20);
             this.btn_themcvhd.Location = new System.Drawing.Point(20, 193);
-            this.btn_themcvhd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btn_themcvhd.Margin = new System.Windows.Forms.Padding(4);
             this.btn_themcvhd.Name = "btn_themcvhd";
             this.btn_themcvhd.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btn_themcvhd.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -756,7 +757,7 @@
             // 
             this.cb_congviec.FormattingEnabled = true;
             this.cb_congviec.Location = new System.Drawing.Point(173, 127);
-            this.cb_congviec.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cb_congviec.Margin = new System.Windows.Forms.Padding(4);
             this.cb_congviec.Name = "cb_congviec";
             this.cb_congviec.Size = new System.Drawing.Size(307, 28);
             this.cb_congviec.TabIndex = 51;
@@ -765,7 +766,7 @@
             // 
             this.cb_thochinh.FormattingEnabled = true;
             this.cb_thochinh.Location = new System.Drawing.Point(173, 49);
-            this.cb_thochinh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cb_thochinh.Margin = new System.Windows.Forms.Padding(4);
             this.cb_thochinh.Name = "cb_thochinh";
             this.cb_thochinh.Size = new System.Drawing.Size(305, 28);
             this.cb_thochinh.TabIndex = 50;
@@ -954,7 +955,7 @@
             this.ClientSize = new System.Drawing.Size(1056, 593);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form_ChinhSuaHD";
             this.Text = "Form_HopDong";
             this.Load += new System.EventHandler(this.Form_ChinhSuaHD_Load);

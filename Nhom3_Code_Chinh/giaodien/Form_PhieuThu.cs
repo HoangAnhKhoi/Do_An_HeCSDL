@@ -67,7 +67,7 @@ namespace giaodien
                 hotenParam.SqlDbType = SqlDbType.NVarChar;
                 hotenParam.Size = 40;
                 SqlParameter tienthuParam = new SqlParameter("@sotienthu", tienthu);
-                tienthuParam.SqlDbType = SqlDbType.Int;
+                tienthuParam.SqlDbType = SqlDbType.Decimal;
                 SqlParameter resultParam = new SqlParameter("@result", 0);
                 resultParam.SqlDbType = SqlDbType.Int;
                 resultParam.Direction = ParameterDirection.Output;
@@ -103,11 +103,9 @@ namespace giaodien
                 }
                 else
                 {
-                    string query1 = "SoHD=" + txt_mahd.Text;
-                    DataTable tb = new DataTable();
                     Spire.Doc.Document doc = new Document();
-                    string query = "MaKH='" + tb.Rows[0][2].ToString() + "'";
-                    System.Data.DataTable KH = new DataTable();
+                    string query = "SELECT * FROM TIM_MS_KH('" + data_phieuthu.Rows[0].Cells[3].Value.ToString() + "')";
+                    System.Data.DataTable KH = db.Execute(query);
                     Spire.Doc.Documents.Paragraph paragraph = doc.AddSection().AddParagraph();
                     Spire.Doc.Fields.TextRange text = paragraph.AppendText("Garage OWL");
                     text.CharacterFormat.Bold = true;
@@ -138,7 +136,7 @@ namespace giaodien
                     str[13] = "Tiền thu: " + txt_tienthu.Text;
                     str[14] = "Tiền còn thiếu: " + txt_tienthieu.Text;
                     str[15] = "Tình trạng hợp đồng: ";
-                    if (int.Parse(txt_tienthieu.Text) == 0)
+                    if (txt_tienthieu.Text == txt_tienthu.Text)
                         str[15] = str[15] + "Đã hoàn thành";
                     else
                         str[15] = str[15] + "Chưa hoàn thành";
